@@ -21,10 +21,13 @@ namespace Advanced_Programming_2.Controls
     /// </summary>
     public partial class MediaPlayer : UserControl
     {
-
+           
+        double speed;
         public MediaPlayer()
         {
             InitializeComponent();
+            speed = 1;
+
         }
 
         private void V_ForwardButton_Click(object sender, RoutedEventArgs e)
@@ -49,5 +52,9 @@ namespace Advanced_Programming_2.Controls
 
         }
 
+        private void SpeedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }

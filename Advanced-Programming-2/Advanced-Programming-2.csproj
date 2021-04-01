@@ -122,6 +122,7 @@
     <Resource Include="MediaPlayer\MediaPlayerView\Images\skip_backward.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="MediaPlayer\MediaPlayerViewModel\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
