@@ -14,6 +14,6 @@ namespace Advanced_Programming_2.Model
     {
         void loadXMl(string fileName);
         void loadCSV(string fileName);
-        DateTime getTotalTime();
+        long getTotalTime();
     }
 }
