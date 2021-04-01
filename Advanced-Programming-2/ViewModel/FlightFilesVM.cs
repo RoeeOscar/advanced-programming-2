@@ -1,6 +1,6 @@
 class FlightFilesVM
 {
-    //IFlightAnalysisModel model;
+    IFlightAnalysisModel model;
     public string VM_csvFileName
     {
         get
