@@ -1,0 +1,205 @@
+﻿    <UserControl x:Class="Advanced_Programming_2.Controls.MediaPlayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Advanced_Programming_2.Controls"
+                 
+             mc:Ignorable="d" 
+             d:DesignHeight="480">
+    <Viewbox>
+        <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+            <!-- The Player -->
+
+            <Grid Grid.Row="5" Grid.ColumnSpan="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+
+                </Grid.ColumnDefinitions>
+
+
+                
+                <StatusBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="2">
+                    <StatusBar.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </StatusBar.ItemsPanel>
+                    <StatusBarItem>
+                        <Viewbox>
+                            <TextBlock Name="V_CurrentTime" HorizontalAlignment="center" Margin="10,10,0,10" TextWrapping="NoWrap" Text="00:00:00" VerticalAlignment="center" Foreground="Black" FontSize="10"/>
+                        </Viewbox>
+                    </StatusBarItem>
+                    <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Grid.Row="0">
+                        <Slider Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Maximum="100" SmallChange="2"/>
+                    </StatusBarItem>
+                    <StatusBarItem Grid.Column="2">
+                        <Viewbox>
+                            <TextBlock Name="V_TotalTime" HorizontalAlignment="center" Margin="0,10,10,10" TextWrapping="NoWrap" Text="00:00:00" VerticalAlignment="center" Foreground="Black" FontSize="10"/>
+                        </Viewbox>
+                    </StatusBarItem>
+                    <StatusBarItem Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,0">
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="1" Margin="0,0,20,0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Viewbox Stretch="Fill" Grid.Column="0" Margin="2,0,2,0">
+                                    <Canvas Width="30" Height="30" >
+                                        <Button Name="V_BackwardButton" Grid.Column="0" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Grid>
+                                                        <!-- circle to have inherited colour -->
+                                                        <Ellipse HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
+                                                            <Ellipse.Fill>
+                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/skip_backward.png" Stretch="Fill"></ImageBrush>
+                                                            </Ellipse.Fill>
+                                                        </Ellipse>
+
+                                                        <ContentPresenter />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </Canvas>
+                                </Viewbox>
+
+
+                                <Viewbox Stretch="Fill" Grid.Column="1" Margin="2,0,2,0">
+                                    <Canvas Width="30" Height="30" >
+                                        <Button x:Name="PlayPauseButton" Grid.Column="1" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Grid>
+                                                        <!-- circle to have inherited colour -->
+                                                        <Ellipse x:Name="playButtonEll"
+                                                        HorizontalAlignment="Stretch"
+                                                         Width="Auto"
+             Height="Auto" Margin="0,0,-30,-30">
+
+                                                            <Ellipse.Fill>
+                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/play.png" Stretch="Fill"></ImageBrush>
+                                                            </Ellipse.Fill>
+                                                        </Ellipse>
+
+                                                        <ContentPresenter />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </Canvas>
+                                </Viewbox>
+
+                                <Viewbox Stretch="Fill" Grid.Column="2" Margin="2,0,2,0">
+                                    <Canvas Width="30" Height="30" >
+                                        <Button Name="V_StopButton" Grid.Column="2" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Grid>
+                                                        <!-- circle to have inherited colour -->
+                                                        <Ellipse
+                                                        HorizontalAlignment="Stretch"
+                                                         Width="Auto"
+             Height="Auto" Margin="0,0,-30,-30">
+
+                                                            <Ellipse.Fill>
+                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/stop.png" Stretch="Fill"></ImageBrush>
+                                                            </Ellipse.Fill>
+                                                        </Ellipse>
+
+                                                        <ContentPresenter />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </Canvas>
+                                </Viewbox>
+                                <Viewbox Stretch="Fill" Grid.Column="3" Margin="2,0,2,0">
+                                    <Canvas Width="30" Height="30" >
+                                        <Button Name="V_ForwardButton" Grid.Column="0" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Grid>
+                                                        <!-- circle to have inherited colour -->
+                                                        <Ellipse
+                                                        HorizontalAlignment="Stretch"
+                                                         Width="Auto"
+             Height="Auto" Margin="0,0,-30,-30">
+
+                                                            <Ellipse.Fill>
+                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/skip_forward.png" Stretch="Fill"></ImageBrush>
+                                                            </Ellipse.Fill>
+                                                        </Ellipse>
+                                                        <ContentPresenter />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </Canvas>
+                                </Viewbox>
+                            </Grid>
+                            <Grid Grid.Column="0" Margin="0,0,0,0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" FontSize="10" Margin="0,3,0,0">
+                                    Video Speed:
+                                </Label>
+
+                                <Slider Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="20" SmallChange="1"></Slider>
+                                <Label Grid.Column="2" FontSize="10" Margin="0,3,0,0" Content="X1"></Label>
+                            </Grid>
+                        </Grid>
+                    </StatusBarItem>
+                </StatusBar>
+
+
+            </Grid>
+        </Grid>
+    </Viewbox>
+</UserControl>
