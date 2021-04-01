@@ -14,27 +14,30 @@ namespace Advanced_Programming_2.ViewModel
 
     class FlightFilesVM
     {
+        string csvFile, xmlFile;
         IFlightAnalysisModel model;
         public string VM_csvFileName
         {
             get
             {
-                return "";
+                return csvFile;
             }
             set
             {
-
+                csvFile = value;
+                model.loadCSV(csvFile);
             }
         }
         public string VM_xmlFileName
         {
             get
             {
-                return "";
+                return xmlFile;
             }
             set
             {
-
+                xmlFile = value;
+                model.loadXMl(xmlFile);
             }
         }
     }
