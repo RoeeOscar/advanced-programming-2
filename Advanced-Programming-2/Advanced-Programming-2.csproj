@@ -56,7 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MediaPlayer\MediaPlayerView\MediaPlayer.xaml">
+    <Page Include="Controls\FlightFiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MediaPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -68,9 +72,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\FlightFiles.xaml.cs">
+      <DependentUpon>FlightFiles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\FlightAnalysisModel.cs" />
     <Compile Include="Model\IFlightAnalysisModel.cs" />
-    <Compile Include="MediaPlayer\MediaPlayerView\MediaPlayer.xaml.cs">
+    <Compile Include="Controls\MediaPlayer.xaml.cs">
       <DependentUpon>MediaPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -122,6 +129,7 @@
     <Resource Include="MediaPlayer\MediaPlayerView\Images\skip_backward.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FlightFiles\" />
     <Folder Include="MediaPlayer\MediaPlayerViewModel\" />
     <Folder Include="Resources\" />
   </ItemGroup>

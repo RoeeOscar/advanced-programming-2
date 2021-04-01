@@ -10,6 +10,13 @@
     <TabControl Margin="0,0,0,0">
         <TabItem Header="1">
             <Grid>
+                <Controls:FlightFiles></Controls:FlightFiles>
+            </Grid>
+
+
+        </TabItem>
+        <TabItem Header="2">
+            <Grid>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -21,10 +28,6 @@
                 <Controls:MediaPlayer Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
 
             </Grid>
-
-
-        </TabItem>
-        <TabItem Header="2">
 
 
         </TabItem>
