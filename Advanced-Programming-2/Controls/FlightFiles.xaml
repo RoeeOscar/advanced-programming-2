@@ -5,14 +5,50 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Advanced_Programming_2.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Viewbox>
-        <Canvas>
-            <Button Content="Button" Canvas.Left="276" Canvas.Top="222" Width="75"/>
+             d:DesignHeight="250" d:DesignWidth="600">
 
-        </Canvas>
-       
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
 
-    </Viewbox>
+        </Grid.RowDefinitions>
 
+        <Label Grid.ColumnSpan="4" HorizontalAlignment="center" VerticalAlignment="center" FontSize="45">Welcome To Flight Analyzer!</Label>
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="10,83,9.8,0.4" Grid.RowSpan="2">
+            <WrapPanel  HorizontalAlignment="center" VerticalAlignment="center" DockPanel.Dock="Top">
+                <Viewbox>
+                    <Button Name="V_OpenCSVFileButton" Click="V_OpenCSVFileButton_Click" Height="50" Width="140" FontSize="20" BorderBrush="White"  Background="#13538a" Foreground="white"
+>Load CSV file</Button>
+                </Viewbox>
+            </WrapPanel>
+        </DockPanel>
+        <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="20">
+            <Viewbox VerticalAlignment="Top">
+                <TextBox Name="V_OpenCSVFileTextBox" VerticalAlignment="Top" Width="100" Height="15" IsEnabled="False" FontSize="8"  ></TextBox>
+            </Viewbox>
+        </DockPanel>
+
+        <DockPanel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="10,83,9.8,0.4" Grid.RowSpan="2">
+            <WrapPanel HorizontalAlignment="center" VerticalAlignment="center" DockPanel.Dock="Top">
+                <Viewbox>
+                    <Button Name="V_OpenXMLFileButton" Click="V_OpenXMLFileButton_Click" Margin="0" Height="50" Width="140" FontSize="20"             BorderBrush="White"  Background="#13538a" Foreground="white"
+>Load XML file</Button>
+                </Viewbox>
+            </WrapPanel>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="20">
+            <Viewbox VerticalAlignment="Top">
+                <TextBox Name="V_OpenXMLFileTextBox" VerticalAlignment="Top" Width="100" Height="15" FontSize="8" IsEnabled="False" />
+            </Viewbox>
+        </DockPanel>
+    </Grid>
 </UserControl>
