@@ -191,7 +191,7 @@
                                     Video Speed:
                                 </Label>
 
-                                <Slider Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0" Value="1" ValueChanged="SpeedSlider_ValueChanged"></Slider>
+                                <Slider Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0" Value="1"></Slider>
                                 <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="0,7,0,0" Text="X1"></TextBlock>
                             </Grid>
                         </Grid>
