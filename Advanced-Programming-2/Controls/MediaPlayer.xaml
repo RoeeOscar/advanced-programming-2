@@ -56,14 +56,17 @@
                     </StatusBar.ItemsPanel>
                     <StatusBarItem>
                         <Viewbox>
+                            <!-- Showing Current time -->
                             <TextBlock Name="V_CurrentTime" HorizontalAlignment="center" Margin="10,10,0,10" TextWrapping="NoWrap" Text="00:00:00" VerticalAlignment="center" Foreground="Black" FontSize="10"/>
                         </Viewbox>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Grid.Row="0">
+                        <!-- Video time slider -->
                         <Slider Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Maximum="{Binding VM_TotalTime}" SmallChange="2"/>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="2">
                         <Viewbox>
+                            <!-- Showing the total time of the video -->
                             <TextBlock Name="V_TotalTime" HorizontalAlignment="center" Margin="0,10,10,10" TextWrapping="NoWrap" Text="{Binding VM_TotalTimeFormat}" VerticalAlignment="center" Foreground="Black" FontSize="10"/>
                         </Viewbox>
                     </StatusBarItem>
@@ -87,11 +90,11 @@
                                 </Grid.ColumnDefinitions>
                                 <Viewbox Stretch="Fill" Grid.Column="0" Margin="2,0,2,0">
                                     <Canvas Width="30" Height="30" >
+                                        <!-- Skip backward button -->
                                         <Button Name="V_BackwardButton" Grid.Column="0" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid>
-                                                        <!-- circle to have inherited colour -->
                                                         <Ellipse HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
                                                             <Ellipse.Fill>
                                                                 <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/skip_backward.png" Stretch="Fill"></ImageBrush>
@@ -109,21 +112,16 @@
 
                                 <Viewbox Stretch="Fill" Grid.Column="1" Margin="2,0,2,0">
                                     <Canvas Width="30" Height="30" >
+                                        <!-- Play and pause button -->
                                         <Button x:Name="PlayPauseButton" Grid.Column="1" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid>
-                                                        <!-- circle to have inherited colour -->
-                                                        <Ellipse x:Name="playButtonEll"
-                                                        HorizontalAlignment="Stretch"
-                                                         Width="Auto"
-             Height="Auto" Margin="0,0,-30,-30">
-
+                                                        <Ellipse x:Name="playButtonEll" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
                                                             <Ellipse.Fill>
                                                                 <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/play.png" Stretch="Fill"></ImageBrush>
                                                             </Ellipse.Fill>
                                                         </Ellipse>
-
                                                         <ContentPresenter />
                                                     </Grid>
                                                 </ControlTemplate>
@@ -134,21 +132,16 @@
 
                                 <Viewbox Stretch="Fill" Grid.Column="2" Margin="2,0,2,0">
                                     <Canvas Width="30" Height="30" >
+                                        <!-- Stop button -->
                                         <Button Name="V_StopButton" Grid.Column="2" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid>
-                                                        <!-- circle to have inherited colour -->
-                                                        <Ellipse
-                                                        HorizontalAlignment="Stretch"
-                                                         Width="Auto"
-             Height="Auto" Margin="0,0,-30,-30">
-
+                                                        <Ellipse HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
                                                             <Ellipse.Fill>
                                                                 <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/stop.png" Stretch="Fill"></ImageBrush>
                                                             </Ellipse.Fill>
                                                         </Ellipse>
-
                                                         <ContentPresenter />
                                                     </Grid>
                                                 </ControlTemplate>
@@ -158,16 +151,12 @@
                                 </Viewbox>
                                 <Viewbox Stretch="Fill" Grid.Column="3" Margin="2,0,2,0">
                                     <Canvas Width="30" Height="30" >
+                                        <!-- Skip forward button -->
                                         <Button Name="V_ForwardButton" Grid.Column="0" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid>
-                                                        <!-- circle to have inherited colour -->
-                                                        <Ellipse
-                                                        HorizontalAlignment="Stretch"
-                                                         Width="Auto"
-             Height="Auto" Margin="0,0,-30,-30">
-
+                                                        <Ellipse HorizontalAlignment="Stretch"  Width="Auto" Height="Auto" Margin="0,0,-30,-30">
                                                             <Ellipse.Fill>
                                                                 <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/skip_forward.png" Stretch="Fill"></ImageBrush>
                                                             </Ellipse.Fill>
@@ -187,18 +176,18 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
+                                <!-- Video speed label -->
                                 <Label Grid.Column="0" FontSize="10" Margin="0,3,0,0">
                                     Video Speed:
                                 </Label>
-
+                                <!-- Video speed slider -->
                                 <Slider Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0" Value="1"></Slider>
+                                <!-- Current video speed -->
                                 <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="0,7,0,0" Text="X1"></TextBlock>
                             </Grid>
                         </Grid>
                     </StatusBarItem>
                 </StatusBar>
-
-
             </Grid>
         </Grid>
     </Viewbox>
