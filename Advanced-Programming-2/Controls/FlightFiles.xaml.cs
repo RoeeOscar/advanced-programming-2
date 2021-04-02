@@ -35,6 +35,7 @@ namespace Advanced_Programming_2.Controls
             // Bind the new data source to the myText TextBlock control's Text dependency property.
         }
 
+        // Open file dialog for the CSV File.
         private void V_OpenCSVFileButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -48,6 +49,7 @@ namespace Advanced_Programming_2.Controls
             }
         }
 
+        // Open file dialog for the XML File.
         private void V_OpenXMLFileButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -61,6 +63,7 @@ namespace Advanced_Programming_2.Controls
             }
         }
 
+        // Accepting the files.
         public bool AcceptFlightFiles()
         {
             if ((tempCSVFileName == null) || (tempXMLFileName == null))
