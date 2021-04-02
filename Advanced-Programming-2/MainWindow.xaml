@@ -35,7 +35,7 @@
 
 
 
-                <Controls:MediaPlayer Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
+                <Controls:MediaPlayer x:Name="MediaPlayerControl" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
 
             </Grid>
 
