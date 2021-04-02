@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Advanced_Programming_2.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,17 @@ namespace Advanced_Programming_2.Controls
     /// </summary>
     public partial class MediaPlayer : UserControl
     {
+        MediaPlayerVM vm;
         public MediaPlayer()
         {
             InitializeComponent();
         }
+
+        public void setViewModel(MediaPlayerVM vm)
+        {
+            this.vm = vm;
+            DataContext = vm;
+        }
+
     }
 }
