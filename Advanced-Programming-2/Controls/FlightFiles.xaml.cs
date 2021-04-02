@@ -25,15 +25,15 @@ namespace Advanced_Programming_2.Controls
     public partial class FlightFiles : UserControl
     {
         FlightFilesVM vm;
-        string CSVFileName, XMLFileName;
-        string tempCSVFileName, tempXMLFileName;
+        string CSVFileName, XMLFileName; // The final files - after the accepting.
+        string tempCSVFileName, tempXMLFileName; // The chosen files.
 
         public FlightFiles()
         {
             InitializeComponent();
-            // Bind the new data source to the myText TextBlock control's Text dependency property.
         }
 
+        // setting ViewModel for the Control.
         public void setViewModel (FlightFilesVM vm)
         {
             this.vm = vm;
@@ -70,6 +70,7 @@ namespace Advanced_Programming_2.Controls
         // Accepting the files.
         public bool AcceptFlightFiles()
         {
+            // The user have to choose both files.
             if ((tempCSVFileName == null) || (tempXMLFileName == null))
             {
                 return false;
