@@ -7,16 +7,29 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 using System.Threading;
-using System.Collections.Generic;
+using System.Xml;
+using System.ComponentModel;
 
-
+//using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
 {
     class FlightAnalysisModel : IFlightAnalysisModel
     {
         Dictionary<string, List<double>> dictValues = new Dictionary<string, List<double>>();
-        List<List<byte>> bytesValues = new List<List<byte>>();
+        List<string> keys;
+        List<List<double>> columns;
+        List<byte[]> bytesValues = new List<byte[]>();
         long totalTime;
+        List<IObserver<EventArgs>> subs;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string propertyName = "")
+        {
+            if(PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         public FlightAnalysisModel()
         {
@@ -24,7 +37,7 @@ namespace Advanced_Programming_2.Model
 
         public static void communicateWithFG()
         {
-                TcpClient client = new TcpClient();
+            TcpClient client = new TcpClient();
             client.Connect("localhost", 5400);
 
             StreamWriter streamWriter = new StreamWriter(client.GetStream());
@@ -45,6 +58,14 @@ namespace Advanced_Programming_2.Model
 
         }
 
+        private StreamWriter connectFG()
+        {
+            TcpClient client = new TcpClient();
+            client.Connect("localhost", 5400);
+            return new StreamWriter(client.GetStream());
+
+        }
+
         public long getTotalTime()
         {
             return totalTime;
@@ -52,11 +73,61 @@ namespace Advanced_Programming_2.Model
 
         public void loadCSV(string fileName)
         {
+            //  var lines = File.ReadAllLines(fileName);
+            var lines = File.ReadAllLines("C:/Users/hoday/Downloads/reg_flight.csv");
+            columns = new List<List<double>>(lines.Length);
+            foreach (var line in lines)
+            {
+                List<string> words = line.Split(',').ToList();
+                int i = 0;
+                foreach (var word in words)
+                {
+                    columns[i].Add(double.Parse(word));
+                    i++;
+                }
+                byte[] bytesData = Encoding.ASCII.GetBytes(line);
+                bytesValues.Add(bytesData);
+            }
+            totalTime = bytesValues.Count();
+            NotifyPropertyChanged("totalTime");
             
         }
-
+        private void updateSubsTime()
+        {
+            foreach (var sub in subs)
+            {
+                sub.OnCompleted();
+            }
+        }
         public void loadXMl(string fileName)
         {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(fileName);
+            // doc.Load("C:/Users/hoday/Downloads/playback_small.xml");
+            XmlElement root = doc.DocumentElement;
+            XmlNodeList elemList = root.GetElementsByTagName("name");
+            for (int i = 0; i < elemList.Count; i++)
+            {
+                keys.Add(elemList[i].InnerXml);
+            }
+        }
+
+        public void showFlight()
+        {
+            StreamWriter streamWriter = connectFG();
+            for (int i = 0; i < keys.Count(); i++)
+            {
+                dictValues.Add(keys[i], columns[i]);
+                streamWriter.WriteLine(bytesValues[i]);
+                Thread.Sleep(100);
+            }
+            streamWriter.Close();
+        }
+
+        public IDisposable Subscribe(IObserver<EventArgs> observer)
+        {
+            subs.Add(observer);
+            return null;
             
         }
     }

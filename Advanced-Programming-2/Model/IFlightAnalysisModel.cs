@@ -7,13 +7,15 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 using System.Threading;
+using System.ComponentModel;
 
 namespace Advanced_Programming_2.Model
 {
-    public interface IFlightAnalysisModel
+    public interface IFlightAnalysisModel : INotifyPropertyChanged
     {
         void loadXMl(string fileName);
         void loadCSV(string fileName);
         long getTotalTime();
+        void showFlight();
     }
 }
