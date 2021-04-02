@@ -18,10 +18,11 @@ namespace Advanced_Programming_2.ViewModel
         string csvFile, xmlFile;
         IFlightAnalysisModel model;
         // Total time of the vm
-        long vm_totalTime;
-        FlightFilesVM()
+        string vm_totalTime;
+        public FlightFilesVM(IFlightAnalysisModel model)
         {
-            model.PropertyChanged += Model_PropertyChanged;
+            this.model = model;
+            this.model.PropertyChanged += Model_PropertyChanged;
         }
 
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
