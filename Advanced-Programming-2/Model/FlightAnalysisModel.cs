@@ -16,10 +16,10 @@ namespace Advanced_Programming_2.Model
     class FlightAnalysisModel : IFlightAnalysisModel
     {
         Dictionary<string, List<double>> dictValues = new Dictionary<string, List<double>>();
-        List<string> keys;
+        List<string> keys = new List<string>();
         List<List<double>> columns;
         List<byte[]> bytesValues = new List<byte[]>();
-        long totalTime;
+        private long totalTime;
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName = "")
         {
@@ -71,18 +71,19 @@ namespace Advanced_Programming_2.Model
 
         public void loadCSV(string fileName)
         {
-              var lines = File.ReadAllLines(fileName);
-          //  var lines = File.ReadAllLines("C:/Users/hoday/Downloads/reg_flight.csv");
+            var lines = File.ReadAllLines(fileName);
+            //  var lines = File.ReadAllLines("C:/Users/hoday/Downloads/reg_flight.csv");
             columns = new List<List<double>>(lines.Length);
             foreach (var line in lines)
             {
+                columns.Add(new List<double>());
                 List<string> words = line.Split(',').ToList();
                 int i = 0;
                 foreach (var word in words)
                 {
                     columns[i].Add(double.Parse(word));
-                    i++;
                 }
+                i++;
                 byte[] bytesData = Encoding.ASCII.GetBytes(line);
                 bytesValues.Add(bytesData);
             }
