@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Advanced_Programming_2.Model;
 using Advanced_Programming_2.ViewModel;
 using Advanced_Programming_2.Controls;
-
+ 
 
 namespace Advanced_Programming_2
 {
@@ -32,6 +32,9 @@ namespace Advanced_Programming_2
             FlightFilesVM flightFilesVM = new FlightFilesVM(model);
             FlightFiles flightFilesView = new FlightFiles();
             FlightFilesControl.setViewModel(flightFilesVM);
+            MediaPlayerVM mediaPlayerVM = new MediaPlayerVM(model);
+            Controls.MediaPlayer MediaPlayerView = new Controls.MediaPlayer();
+            MediaPlayerControl.setViewModel(mediaPlayerVM);
 
         }
 
