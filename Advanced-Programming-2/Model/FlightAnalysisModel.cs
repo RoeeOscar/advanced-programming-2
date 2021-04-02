@@ -87,7 +87,7 @@ namespace Advanced_Programming_2.Model
                 byte[] bytesData = Encoding.ASCII.GetBytes(line);
                 bytesValues.Add(bytesData);
             }
-            totalTime = bytesValues.Count();
+            totalTime = bytesValues.Count() / 10;
             NotifyPropertyChanged("totalTime");
 
         }
