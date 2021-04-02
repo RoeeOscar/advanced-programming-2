@@ -31,10 +31,15 @@ namespace Advanced_Programming_2.Controls
         public FlightFiles()
         {
             InitializeComponent();
-            vm = new FlightFilesVM();
             // Bind the new data source to the myText TextBlock control's Text dependency property.
         }
 
+        public void setViewModel (FlightFilesVM vm)
+        {
+            this.vm = vm;
+        }
+
+        // Open file dialog for the CSV File.
         private void V_OpenCSVFileButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -48,6 +53,7 @@ namespace Advanced_Programming_2.Controls
             }
         }
 
+        // Open file dialog for the XML File.
         private void V_OpenXMLFileButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -61,6 +67,7 @@ namespace Advanced_Programming_2.Controls
             }
         }
 
+        // Accepting the files.
         public bool AcceptFlightFiles()
         {
             if ((tempCSVFileName == null) || (tempXMLFileName == null))

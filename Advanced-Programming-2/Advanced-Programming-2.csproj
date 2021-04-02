@@ -62,6 +62,7 @@
       <DependentUpon>MediaPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\FlightFilesVM.cs" />
+    <Compile Include="ViewModel\MediaPlayerVM.cs" />
     <Page Include="Controls\FlightFiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
