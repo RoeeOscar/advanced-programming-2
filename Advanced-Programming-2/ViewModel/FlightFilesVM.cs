@@ -18,20 +18,11 @@ namespace Advanced_Programming_2.ViewModel
         string csvFile, xmlFile;
         IFlightAnalysisModel model;
         // Total time of the vm
-        string vm_totalTime;
         public FlightFilesVM(IFlightAnalysisModel model)
         {
             this.model = model;
-            this.model.PropertyChanged += Model_PropertyChanged;
         }
 
-        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "totalTime")
-            {
-                this.VM_totalTime = model.getTotalTime();
-            }
-        }
         public string VM_csvFileName
         {
             get
@@ -56,10 +47,6 @@ namespace Advanced_Programming_2.ViewModel
                 model.loadXMl(xmlFile);
             }
         }
-        public long VM_totalTime
-        {
-            get { return model.getTotalTime(); }
-            set { }
-        }
+    
     }
 }
