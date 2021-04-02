@@ -21,11 +21,24 @@ namespace Advanced_Programming_2.Model
         List<byte[]> bytesValues = new List<byte[]>();
         private long totalTime;
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string propertyName = "")
+        private void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public long TotalTime
+        {
+            get
+            {
+                return totalTime;
+            }
+            set
+            {
+                totalTime = value;
+                NotifyPropertyChanged("TotalTime");
             }
         }
 
@@ -87,8 +100,10 @@ namespace Advanced_Programming_2.Model
                 byte[] bytesData = Encoding.ASCII.GetBytes(line);
                 bytesValues.Add(bytesData);
             }
-            totalTime = bytesValues.Count() / 10;
-            NotifyPropertyChanged("totalTime");
+            //totalTime = bytesValues.Count() / 10;
+            //NotifyPropertyChanged("totalTime");
+
+            TotalTime = bytesValues.Count() / 10;
 
         }
 
