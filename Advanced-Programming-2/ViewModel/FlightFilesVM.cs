@@ -12,10 +12,25 @@ using System.Threading;
 namespace Advanced_Programming_2.ViewModel
 {
 
-    class FlightFilesVM
+    public class FlightFilesVM
     {
+        // members of csv and xml
         string csvFile, xmlFile;
         IFlightAnalysisModel model;
+        // Total time of the vm
+        long vm_totalTime;
+        FlightFilesVM()
+        {
+            model.PropertyChanged += Model_PropertyChanged;
+        }
+
+        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "totalTime")
+            {
+                this.VM_totalTime = model.getTotalTime();
+            }
+        }
         public string VM_csvFileName
         {
             get
@@ -39,6 +54,11 @@ namespace Advanced_Programming_2.ViewModel
                 xmlFile = value;
                 model.loadXMl(xmlFile);
             }
+        }
+        public long VM_totalTime
+        {
+            get { return model.getTotalTime(); }
+            set { }
         }
     }
 }
