@@ -32,7 +32,7 @@
         </DockPanel>
         <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="20">
             <Viewbox VerticalAlignment="Top">
-                <!-- Text Box forthe csv File Name -->
+                <!-- Text Box for the csv File Name -->
                 <TextBox Name="V_OpenCSVFileTextBox" VerticalAlignment="Top" Width="100" Height="15" IsEnabled="False" FontSize="8"  ></TextBox>
             </Viewbox>
         </DockPanel>
@@ -40,6 +40,7 @@
         <DockPanel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="10,83,9.8,0.4" Grid.RowSpan="2">
             <WrapPanel HorizontalAlignment="center" VerticalAlignment="center" DockPanel.Dock="Top">
                 <Viewbox>
+                    <!-- Open XML File Button -->
                     <Button Name="V_OpenXMLFileButton" Click="V_OpenXMLFileButton_Click" Margin="0" Height="50" Width="140" FontSize="20"             BorderBrush="White"  Background="#13538a" Foreground="white"
 >Load XML file</Button>
                 </Viewbox>
@@ -48,6 +49,7 @@
 
         <DockPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="20">
             <Viewbox VerticalAlignment="Top">
+                <!-- Text Box for the XML File Name -->
                 <TextBox Name="V_OpenXMLFileTextBox" VerticalAlignment="Top" Width="100" Height="15" FontSize="8" IsEnabled="False" />
             </Viewbox>
         </DockPanel>
