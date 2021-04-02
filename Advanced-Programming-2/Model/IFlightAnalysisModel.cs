@@ -17,5 +17,8 @@ namespace Advanced_Programming_2.Model
         void loadCSV(string fileName);
         long getTotalTime();
         void showFlight();
+
+        // Properties
+        long TotalTime{ set; get; }
     }
 }
