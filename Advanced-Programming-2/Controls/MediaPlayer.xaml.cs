@@ -27,6 +27,7 @@ namespace Advanced_Programming_2.Controls
             InitializeComponent();
         }
 
+        // setting ViewModel for the Control.
         public void setViewModel(MediaPlayerVM vm)
         {
             this.vm = vm;
