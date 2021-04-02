@@ -20,12 +20,10 @@ namespace Advanced_Programming_2.Model
         List<List<double>> columns;
         List<byte[]> bytesValues = new List<byte[]>();
         long totalTime;
-        List<IObserver<EventArgs>> subs;
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName = "")
         {
-            if(PropertyChanged != null)
+            if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
@@ -73,8 +71,8 @@ namespace Advanced_Programming_2.Model
 
         public void loadCSV(string fileName)
         {
-            //  var lines = File.ReadAllLines(fileName);
-            var lines = File.ReadAllLines("C:/Users/hoday/Downloads/reg_flight.csv");
+              var lines = File.ReadAllLines(fileName);
+          //  var lines = File.ReadAllLines("C:/Users/hoday/Downloads/reg_flight.csv");
             columns = new List<List<double>>(lines.Length);
             foreach (var line in lines)
             {
@@ -90,15 +88,9 @@ namespace Advanced_Programming_2.Model
             }
             totalTime = bytesValues.Count();
             NotifyPropertyChanged("totalTime");
-            
+
         }
-        private void updateSubsTime()
-        {
-            foreach (var sub in subs)
-            {
-                sub.OnCompleted();
-            }
-        }
+
         public void loadXMl(string fileName)
         {
             XmlDocument doc = new XmlDocument();
@@ -124,12 +116,7 @@ namespace Advanced_Programming_2.Model
             streamWriter.Close();
         }
 
-        public IDisposable Subscribe(IObserver<EventArgs> observer)
-        {
-            subs.Add(observer);
-            return null;
-            
-        }
+
     }
 
 }
