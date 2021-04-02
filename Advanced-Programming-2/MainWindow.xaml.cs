@@ -25,5 +25,17 @@ namespace Advanced_Programming_2
             InitializeComponent();
         }
 
+        private void AcceptFiles_Click(object sender, RoutedEventArgs e)
+        {
+            if (FlightFilesControl.AcceptFlightFiles())
+            {
+                V_TabControl.SelectedIndex = 1;
+            }
+            else
+            {
+                MessageBox.Show("You must load both files.", "Error!");
+            }
+                
+        }
     }
 }
