@@ -15,10 +15,16 @@ namespace Advanced_Programming_2.Model
     {
         void loadXMl(string fileName);
         void loadCSV(string fileName);
-        long getTotalTime();
         void showFlight();
 
         // Properties
         long TotalTime{ set; get; }
+        bool IsPlaying { set; get; }
+        int CurrentTime { set; get; }
+
+        void startVideo();
+        void pauseVideo();
+        void stopVideo();
+        void changeCurrentTime(int newTime);
     }
 }
