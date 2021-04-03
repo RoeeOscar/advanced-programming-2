@@ -47,6 +47,5 @@ namespace Advanced_Programming_2.ViewModel
                 model.loadXMl(xmlFile);
             }
         }
-    
     }
 }
