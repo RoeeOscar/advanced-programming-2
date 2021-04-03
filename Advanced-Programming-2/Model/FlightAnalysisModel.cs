@@ -9,12 +9,15 @@ using System.IO;
 using System.Threading;
 using System.Xml;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 //using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
 {
     class FlightAnalysisModel : IFlightAnalysisModel
     {
+        List<string> lines1 = new List<string>();
+
         Dictionary<string, List<double>> dictValues = new Dictionary<string, List<double>>();
         List<string> keys = new List<string>();
         List<List<double>> columns;
@@ -69,9 +72,8 @@ namespace Advanced_Programming_2.Model
 
         }
 
-        private StreamWriter connectFG()
+        private StreamWriter connectFG(TcpClient client)
         {
-            TcpClient client = new TcpClient();
             client.Connect("localhost", 5400);
             return new StreamWriter(client.GetStream());
 
@@ -97,14 +99,17 @@ namespace Advanced_Programming_2.Model
                     columns[i].Add(double.Parse(word));
                 }
                 i++;
+
                 byte[] bytesData = Encoding.ASCII.GetBytes(line);
                 bytesValues.Add(bytesData);
+
+                lines1.Add(line);
+
             }
             //totalTime = bytesValues.Count() / 10;
             //NotifyPropertyChanged("totalTime");
-
+            CurrentTime = 0;
             TotalTime = bytesValues.Count() / 10;
-
         }
 
         public void loadXMl(string fileName)
@@ -120,19 +125,91 @@ namespace Advanced_Programming_2.Model
             }
         }
 
-        public void showFlight()
+
+
+
+
+
+
+
+
+        volatile private bool isPlaying = false;
+        public bool IsPlaying
         {
-            StreamWriter streamWriter = connectFG();
-            for (int i = 0; i < keys.Count(); i++)
+            set
             {
-                dictValues.Add(keys[i], columns[i]);
-                streamWriter.WriteLine(bytesValues[i]);
-                Thread.Sleep(100);
+                isPlaying = value;
+                NotifyPropertyChanged("IsPlaying");
             }
-            streamWriter.Close();
+            get
+            {
+                return isPlaying;
+            }
+        }
+
+        volatile private int currentTime;
+        public int CurrentTime
+        {
+            set
+            {
+                currentTime = value;
+                NotifyPropertyChanged("CurrentTime");
+            }
+            get
+            {
+                return currentTime;
+            }
+        }
+
+        public void startVideo()
+        {
+            IsPlaying = true;
+            showFlight();
+        }
+        public void pauseVideo()
+        {
+            IsPlaying = false;
+        }
+        public void stopVideo()
+        {
+            IsPlaying = false;
+            currentIndex = 0;
+            CurrentTime = 0;
+        }
+        public void changeCurrentTime(int newTime)
+        {
+            CurrentTime = newTime;
+            currentIndex = newTime * 10;
         }
 
 
+
+
+        private int currentIndex =0;
+        private void showFlight()
+        {
+            Thread t = new Thread(delegate ()
+            {
+                TcpClient client = new TcpClient();
+                StreamWriter streamWriter = connectFG(client);
+                while (isPlaying)
+                {
+                    streamWriter.WriteLine(lines1[currentIndex]);
+
+                    Thread.Sleep(100);
+                    currentIndex++;
+                    if (currentIndex % 10 == 0)
+                    {
+                        CurrentTime = currentIndex / 10;
+                    }
+                }
+                streamWriter.Close();
+                client.Close();
+
+            });
+            t.Start();
+
+        }
     }
 
 }
