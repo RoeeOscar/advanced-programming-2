@@ -22,6 +22,7 @@ namespace Advanced_Programming_2.Controls
     public partial class MediaPlayer : UserControl
     {
         MediaPlayerVM vm;
+
         public MediaPlayer()
         {
             InitializeComponent();
@@ -34,5 +35,21 @@ namespace Advanced_Programming_2.Controls
             DataContext = vm;
         }
 
+        private void V_PlayPauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!vm.VM_IsPlaying)
+            {
+                vm.startVideo();
+            }
+            else
+            {
+                vm.pauseVideo();
+            }
+        }
+
+        private void V_StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            vm.stopVideo();
+        }
     }
 }
