@@ -28,6 +28,15 @@ namespace Advanced_Programming_2.ViewModel
                         VM_TotalTimeFormat = String.Format("{0:D2}:{1:D2}:{2:D2}", time.Hours, time.Minutes, time.Seconds);
                         NotifyPropertyChanged("VM_TotalTimeFormat");
                     }
+
+                    if (e.PropertyName == "CurrentTime")
+                    {
+
+                        TimeSpan time = TimeSpan.FromSeconds(model.CurrentTime);
+                        VM_CurrentTimeFormat = String.Format("{0:D2}:{1:D2}:{2:D2}", time.Hours, time.Minutes, time.Seconds);
+                        NotifyPropertyChanged("VM_CurrentTimeFormat");
+                    }
+
                 }
             };
         }
@@ -60,7 +69,65 @@ namespace Advanced_Programming_2.ViewModel
                 VM_totalTimeFormat = value;
             }
 
+        }
 
+        private bool VM_isPlaying;
+        public bool VM_IsPlaying
+        {
+            get
+            {
+                return model.IsPlaying;
+            }
+            set
+            {
+                VM_isPlaying = value;
+            }
+        }
+
+        private int VM_currentTime;
+        public int VM_CurrentTime
+        {
+            get
+            {
+                return model.CurrentTime;
+            }
+            set
+            {
+                VM_currentTime = value;
+            }
+        }
+        public void startVideo()
+        {
+            model.startVideo();
+        }
+
+        public void pauseVideo()
+        {
+            model.pauseVideo();
+        }
+
+        public void stopVideo()
+        {
+            model.stopVideo();
+        }
+
+        private string VM_currentTimeFormat;
+        public string VM_CurrentTimeFormat
+        {
+            get
+            {
+                return VM_currentTimeFormat;
+            }
+            set
+            {
+                VM_currentTimeFormat = value;
+            }
+
+        }
+
+        public void changeCurrentTime(int newTime)
+        {
+            model.changeCurrentTime(newTime);
         }
     }
 }
