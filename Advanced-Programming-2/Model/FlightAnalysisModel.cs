@@ -70,9 +70,10 @@ namespace Advanced_Programming_2.Model
                 foreach (var word in words)
                 {
                     columns[i].Add(double.Parse(word));
-                    i++;
+                    //i++;
 
                 }
+                i++;
                 records.Add(line);
 
             }
@@ -155,15 +156,18 @@ namespace Advanced_Programming_2.Model
                 {
                  streamWriter.WriteLine(records[currentIndex]);
                     //////////////////////////////
-                    
-
-
-
-
-
-
-
-
+                    // airspeed - airspeed-indicator_indicated-speed-kt
+                    // altimeter - altimeter_indicated-altitude-ft
+                    // direction - heading-deg
+                    // pitch - pitch_deg
+                    // roll - roll_deg
+                    // yaw - side-slip-deg
+                    Altimeter = (float) dictValues["altimeter_indicated-altitude-ft"].ElementAt(currentIndex);
+                    Airspeed = (float)dictValues["airspeed-indicator_indicated-speed-kt"].ElementAt(currentIndex);
+                    Direction = (float)dictValues["heading-deg"].ElementAt(currentIndex);
+                    Pitch = (float)dictValues["pitch_deg"].ElementAt(currentIndex);
+                    Roll = (float)dictValues["roll_deg"].ElementAt(currentIndex);
+                    Yaw = (float)dictValues["side-slip-deg"].ElementAt(currentIndex);
                     /////////////////////////////////
 
                     int newSleep = (int)(100 / speed);
@@ -203,7 +207,85 @@ namespace Advanced_Programming_2.Model
             this.Speed = speed;
         }
         ///////////////////////////////////////////////////////////////////
-       
+        ///
+        volatile private float altimeter;
+        public float Altimeter 
+        {
+            get
+            {
+                return altimeter;
+            }
+            set
+            {
+                altimeter = value;
+                NotifyPropertyChanged("Altimeter");
+            }
+        }
+        volatile private float airspeed;
+        public float Airspeed 
+        { 
+            get
+            {
+                return airspeed;
+            }
+            set
+            {
+                airspeed = value;
+                NotifyPropertyChanged("Airspeed");
+            }
+                }
+        volatile private float direction;
+        public float Direction 
+        {
+            get
+            {
+                return direction;
+            }
+            set
+            {
+                direction = value;
+                NotifyPropertyChanged("Direction");
+            }
+        }
+        volatile private float pitch;
+        public float Pitch
+        {
+            get
+            {
+                return pitch;
+            }
+            set
+            {
+                pitch = value;
+                NotifyPropertyChanged("Pitch");
+            }
+        }
+        volatile private float roll;
+        public float Roll
+        {
+            get
+            {
+                return roll;
+            }
+            set
+            {
+                roll = value;
+                NotifyPropertyChanged("Roll");
+            }
+        }
+        volatile private float yaw;
+        public float Yaw
+        {
+            get
+            {
+                return yaw;
+            }
+            set
+            {
+                yaw = value;
+                NotifyPropertyChanged("Yaw");
+            }
+        }
 
 
     }

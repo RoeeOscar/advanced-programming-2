@@ -34,7 +34,7 @@
                 </Grid.RowDefinitions>
 
 
-                <Controls:DataControl ></Controls:DataControl>
+                <Controls:DataControl x:Name="DataControl1"></Controls:DataControl>
                 <Controls:MediaPlayer x:Name="MediaPlayerControl1" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
 
             </Grid>

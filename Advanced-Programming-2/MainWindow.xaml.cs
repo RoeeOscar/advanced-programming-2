@@ -36,7 +36,9 @@ namespace Advanced_Programming_2
             Controls.MediaPlayer MediaPlayerView = new Controls.MediaPlayer();
             MediaPlayerControl1.setViewModel(mediaPlayerVM);
             MediaPlayerControl2.setViewModel(mediaPlayerVM);
-
+            DataControlVM dataControlVM = new DataControlVM(model);
+            DataControl dataControlView = new DataControl();
+            DataControl1.setViewModel(dataControlVM);
         }
 
         private void AcceptFiles_Click(object sender, RoutedEventArgs e)

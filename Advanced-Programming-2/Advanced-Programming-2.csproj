@@ -64,6 +64,7 @@
     <Compile Include="Controls\MediaPlayer.xaml.cs">
       <DependentUpon>MediaPlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\DataControlVM.cs" />
     <Compile Include="ViewModel\FlightFilesVM.cs" />
     <Compile Include="ViewModel\MediaPlayerVM.cs" />
     <Page Include="Controls\DataControl.xaml">

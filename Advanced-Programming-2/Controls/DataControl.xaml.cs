@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Advanced_Programming_2.ViewModel;
 
 namespace Advanced_Programming_2.Controls
 {
@@ -23,6 +24,12 @@ namespace Advanced_Programming_2.Controls
         public DataControl()
         {
             InitializeComponent();
+        }
+        private DataControlVM vm;
+        public void setViewModel(DataControlVM vm)
+        {
+            this.vm = vm;
+            DataContext = vm;
         }
     }
 }
