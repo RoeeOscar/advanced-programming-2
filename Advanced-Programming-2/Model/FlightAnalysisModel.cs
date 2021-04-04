@@ -21,9 +21,9 @@ namespace Advanced_Programming_2.Model
         Dictionary<string, List<double>> dictValues = new Dictionary<string, List<double>>();
         List<string> keys = new List<string>();
         List<List<double>> columns;
-        List<byte[]> bytesValues = new List<byte[]>();
         private long totalTime;
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -49,39 +49,12 @@ namespace Advanced_Programming_2.Model
         {
         }
 
-        public static void communicateWithFG()
-        {
-            TcpClient client = new TcpClient();
-            client.Connect("localhost", 5400);
-
-            StreamWriter streamWriter = new StreamWriter(client.GetStream());
-            StreamReader streamReader = new StreamReader("C:/Users/roee0/source/repos/Advanced-Programming-2/Advanced-Programming-2/Model/reg_flight.csv");
-
-            string strline = "";
-
-
-            while (!streamReader.EndOfStream)
-            {
-                strline = streamReader.ReadLine();
-                byte[] bytesData = System.Text.Encoding.ASCII.GetBytes(strline);
-                streamWriter.WriteLine(strline);
-                Thread.Sleep(100);
-            }
-            streamWriter.Close();
-            streamReader.Close();
-
-        }
 
         private StreamWriter connectFG(TcpClient client)
         {
             client.Connect("localhost", 5400);
             return new StreamWriter(client.GetStream());
 
-        }
-
-        public long getTotalTime()
-        {
-            return totalTime;
         }
 
         public void loadCSV(string fileName)
@@ -100,16 +73,12 @@ namespace Advanced_Programming_2.Model
                 }
                 i++;
 
-                byte[] bytesData = Encoding.ASCII.GetBytes(line);
-                bytesValues.Add(bytesData);
-
                 lines1.Add(line);
 
             }
-            //totalTime = bytesValues.Count() / 10;
-            //NotifyPropertyChanged("totalTime");
+
             CurrentTime = 0;
-            TotalTime = bytesValues.Count() / 10;
+            TotalTime = lines1.Count() / 10;
         }
 
         public void loadXMl(string fileName)
@@ -124,14 +93,6 @@ namespace Advanced_Programming_2.Model
                 keys.Add(elemList[i].InnerXml);
             }
         }
-
-
-
-
-
-
-
-
 
         volatile private bool isPlaying = false;
         public bool IsPlaying
@@ -181,8 +142,6 @@ namespace Advanced_Programming_2.Model
             CurrentTime = newTime;
             currentIndex = newTime * 10;
         }
-
-
 
 
         private int currentIndex =0;
