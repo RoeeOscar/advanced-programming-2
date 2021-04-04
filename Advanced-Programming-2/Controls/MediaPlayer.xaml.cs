@@ -51,5 +51,6 @@ namespace Advanced_Programming_2.Controls
         {
             vm.stopVideo();
         }
+
     }
 }
