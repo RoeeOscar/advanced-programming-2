@@ -129,5 +129,10 @@ namespace Advanced_Programming_2.ViewModel
         {
             model.changeCurrentTime(newTime);
         }
+
+        public void changeSpeed(float speed)
+        {
+            model.changeSpeed(speed);
+        }
     }
 }
