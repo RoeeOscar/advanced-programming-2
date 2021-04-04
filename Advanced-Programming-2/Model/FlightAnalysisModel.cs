@@ -194,7 +194,7 @@ namespace Advanced_Programming_2.Model
                 StreamWriter streamWriter = connectFG(client);
                 while (isPlaying)
                 {
-                    streamWriter.WriteLine(lines1[currentIndex]);
+                 streamWriter.WriteLine(lines1[currentIndex]);
 
                     int newSleep = (int)(100 / speed);
                     Thread.Sleep(newSleep);
@@ -214,11 +214,26 @@ namespace Advanced_Programming_2.Model
 
         volatile private float speed = 1;
 
-        public void changeSpeed(float speed)
+        public float Speed
         {
-            this.speed = speed;
+            get
+            {
+                return speed;
+            }
+
+            set
+            {
+                speed = value;
+                NotifyPropertyChanged("Speed");
+            }
         }
 
+        public void changeSpeed(float speed)
+        {
+            this.Speed = speed;
+        }
+
+       
     }
 
 }
