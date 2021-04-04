@@ -26,7 +26,6 @@ namespace Advanced_Programming_2.ViewModel
                     {
                         TimeSpan time = TimeSpan.FromSeconds(model.TotalTime);
                         VM_TotalTimeFormat = String.Format("{0:D2}:{1:D2}:{2:D2}", time.Hours, time.Minutes, time.Seconds);
-                        NotifyPropertyChanged("VM_TotalTimeFormat");
                     }
 
                     if (e.PropertyName == "CurrentTime")
@@ -34,7 +33,6 @@ namespace Advanced_Programming_2.ViewModel
 
                         TimeSpan time = TimeSpan.FromSeconds(model.CurrentTime);
                         VM_CurrentTimeFormat = String.Format("{0:D2}:{1:D2}:{2:D2}", time.Hours, time.Minutes, time.Seconds);
-                        NotifyPropertyChanged("VM_CurrentTimeFormat");
                     }
 
                 }
@@ -67,6 +65,8 @@ namespace Advanced_Programming_2.ViewModel
             set
             {
                 VM_totalTimeFormat = value;
+                NotifyPropertyChanged("VM_TotalTimeFormat");
+
             }
 
         }
@@ -122,6 +122,7 @@ namespace Advanced_Programming_2.ViewModel
             set
             {
                 VM_currentTimeFormat = value;
+                NotifyPropertyChanged("VM_CurrentTimeFormat");
             }
 
         }
