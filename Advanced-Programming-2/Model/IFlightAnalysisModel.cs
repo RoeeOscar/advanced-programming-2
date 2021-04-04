@@ -26,6 +26,7 @@ namespace Advanced_Programming_2.Model
         void stopVideo();
         void changeCurrentTime(int newTime);
 
+        float Speed { get; set; }
         void changeSpeed(float speed);
     }
 
