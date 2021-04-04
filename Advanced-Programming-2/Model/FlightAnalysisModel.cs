@@ -196,7 +196,8 @@ namespace Advanced_Programming_2.Model
                 {
                     streamWriter.WriteLine(lines1[currentIndex]);
 
-                    Thread.Sleep(100);
+                    int newSleep = (int)(100 / speed);
+                    Thread.Sleep(newSleep);
                     currentIndex++;
                     if (currentIndex % 10 == 0)
                     {
@@ -210,6 +211,14 @@ namespace Advanced_Programming_2.Model
             t.Start();
 
         }
+
+        volatile private float speed = 1;
+
+        public void changeSpeed(float speed)
+        {
+            this.speed = speed;
+        }
+
     }
 
 }
