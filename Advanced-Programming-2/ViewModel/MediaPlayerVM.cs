@@ -94,6 +94,7 @@ namespace Advanced_Programming_2.ViewModel
             set
             {
                 VM_currentTime = value;
+                model.changeCurrentTime(VM_currentTime);
             }
         }
         public void startVideo()
@@ -130,9 +131,21 @@ namespace Advanced_Programming_2.ViewModel
             model.changeCurrentTime(newTime);
         }
 
-        public void changeSpeed(float speed)
+        private float VM_speed = 1;
+        public float VM_Speed
         {
-            model.changeSpeed(speed);
+            get
+            {
+
+                return VM_speed;
+            }
+            set
+            {
+                VM_speed = value;
+                model.changeSpeed(VM_speed);
+            }
         }
+
+
     }
 }
