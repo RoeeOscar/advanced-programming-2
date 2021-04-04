@@ -34,7 +34,8 @@ namespace Advanced_Programming_2
             FlightFilesControl.setViewModel(flightFilesVM);
             MediaPlayerVM mediaPlayerVM = new MediaPlayerVM(model);
             Controls.MediaPlayer MediaPlayerView = new Controls.MediaPlayer();
-            MediaPlayerControl.setViewModel(mediaPlayerVM);
+            MediaPlayerControl1.setViewModel(mediaPlayerVM);
+            MediaPlayerControl2.setViewModel(mediaPlayerVM);
 
         }
 

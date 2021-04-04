@@ -35,15 +35,26 @@
 
 
 
-                <Controls:MediaPlayer x:Name="MediaPlayerControl" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
+                <Controls:MediaPlayer x:Name="MediaPlayerControl1" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
 
             </Grid>
 
 
         </TabItem>
-        <TabItem Header="3">
+        <TabItem Header="Check">
+                <Grid Background="#FFF6E0">
 
-        </TabItem>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <Controls:MediaPlayer x:Name="MediaPlayerControl2" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
+
+                </Grid>
+            </TabItem>
 
     </TabControl>
 </Window>
