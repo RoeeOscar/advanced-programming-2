@@ -62,7 +62,7 @@
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Grid.Row="0">
                         <!-- Video time slider -->
-                        <Slider Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Value="{Binding VM_CurrentTime, Mode=TwoWay}" Maximum="{Binding VM_TotalTime}" SmallChange="2"/>
+                        <Slider Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Value="{Binding VM_CurrentTime, Mode=TwoWay}" Maximum="{Binding VM_TotalTime}" SmallChange="2" TickFrequency="1" IsSnapToTickEnabled="True"/>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="2">
                         <Viewbox>
@@ -181,9 +181,9 @@
                                     Video Speed:
                                 </Label>
                                 <!-- Video speed slider -->
-                                <Slider Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0" Value="1"></Slider>
+                                <Slider Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0.25" Value="{Binding VM_Speed}" TickFrequency="0.25" IsSnapToTickEnabled="true"></Slider>
                                 <!-- Current video speed -->
-                                <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="0,7,0,0" Text="X1"></TextBlock>
+                                <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="5,0,0,0" Width="30" HorizontalAlignment="Left" VerticalAlignment="center" Text="{Binding VM_Speed}"></TextBlock>
                             </Grid>
                         </Grid>
                     </StatusBarItem>
