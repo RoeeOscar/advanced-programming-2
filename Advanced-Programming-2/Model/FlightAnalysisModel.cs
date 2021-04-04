@@ -16,7 +16,7 @@ namespace Advanced_Programming_2.Model
 {
     class FlightAnalysisModel : IFlightAnalysisModel
     {
-        List<string> lines1 = new List<string>();
+        List<string> records = new List<string>();
 
         Dictionary<string, List<double>> dictValues = new Dictionary<string, List<double>>();
         List<string> keys = new List<string>();
@@ -70,15 +70,14 @@ namespace Advanced_Programming_2.Model
                 foreach (var word in words)
                 {
                     columns[i].Add(double.Parse(word));
-                }
-                i++;
+                    i++;
 
-                lines1.Add(line);
+                }
+                records.Add(line);
 
             }
 
-            CurrentTime = 0;
-            TotalTime = lines1.Count() / 10;
+            TotalTime = records.Count() / 10;
         }
 
         public void loadXMl(string fileName)
@@ -91,6 +90,7 @@ namespace Advanced_Programming_2.Model
             for (int i = 0; i < elemList.Count; i++)
             {
                 keys.Add(elemList[i].InnerXml);
+                dictValues.Add(keys[i], columns[i]);
             }
         }
 
@@ -108,7 +108,7 @@ namespace Advanced_Programming_2.Model
             }
         }
 
-        volatile private int currentTime;
+        volatile private int currentTime = 0;
         public int CurrentTime
         {
             set
@@ -153,7 +153,18 @@ namespace Advanced_Programming_2.Model
                 StreamWriter streamWriter = connectFG(client);
                 while (isPlaying)
                 {
-                 streamWriter.WriteLine(lines1[currentIndex]);
+                 streamWriter.WriteLine(records[currentIndex]);
+                    //////////////////////////////
+                    
+
+
+
+
+
+
+
+
+                    /////////////////////////////////
 
                     int newSleep = (int)(100 / speed);
                     Thread.Sleep(newSleep);
@@ -191,8 +202,10 @@ namespace Advanced_Programming_2.Model
         {
             this.Speed = speed;
         }
-
+        ///////////////////////////////////////////////////////////////////
        
+
+
     }
 
 }
