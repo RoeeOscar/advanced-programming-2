@@ -62,7 +62,7 @@
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Grid.Row="0">
                         <!-- Video time slider -->
-                        <Slider Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Value="{Binding VM_CurrentTime, Mode=TwoWay}" Maximum="{Binding VM_TotalTime}" SmallChange="2" DragEnter="V_TimeSlider_DragEnter" DragLeave="V_TimeSlider_DragLeave"/>
+                        <Slider Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Value="{Binding VM_CurrentTime, Mode=TwoWay}" Maximum="{Binding VM_TotalTime}" SmallChange="2"/>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="2">
                         <Viewbox>
