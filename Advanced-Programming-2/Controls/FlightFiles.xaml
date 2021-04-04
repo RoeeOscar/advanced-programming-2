@@ -41,8 +41,7 @@
             <WrapPanel HorizontalAlignment="center" VerticalAlignment="center" DockPanel.Dock="Top">
                 <Viewbox>
                     <!-- Open XML File Button -->
-                    <Button Name="V_OpenXMLFileButton" Click="V_OpenXMLFileButton_Click" Margin="0" Height="50" Width="140" FontSize="20"             BorderBrush="White"  Background="#13538a" Foreground="white"
->Load XML file</Button>
+                    <Button Name="V_OpenXMLFileButton" Click="V_OpenXMLFileButton_Click" Margin="0" Height="50" Width="140" FontSize="20" BorderBrush="White"  Background="#13538a" Foreground="white">Load XML file</Button>
                 </Viewbox>
             </WrapPanel>
         </DockPanel>
