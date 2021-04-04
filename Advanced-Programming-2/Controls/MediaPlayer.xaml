@@ -97,7 +97,7 @@
                                                     <Grid>
                                                         <Ellipse HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
                                                             <Ellipse.Fill>
-                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/skip_backward.png" Stretch="Fill"></ImageBrush>
+                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/pause.png" Stretch="Fill"></ImageBrush>
                                                             </Ellipse.Fill>
                                                         </Ellipse>
 
