@@ -56,7 +56,7 @@ volatile private float VM_altimeter;
             }
         }
         volatile private float VM_direction;
-        public float Direction
+        public float VM_Direction
         {
             get
             {
@@ -68,7 +68,7 @@ volatile private float VM_altimeter;
             }
         }
         volatile private float VM_pitch;
-        public float Pitch
+        public float VM_Pitch
         {
             get
             {
@@ -80,7 +80,7 @@ volatile private float VM_altimeter;
             }
         }
         volatile private float VM_roll;
-        public float Roll
+        public float VM_Roll
         {
             get
             {
@@ -92,7 +92,7 @@ volatile private float VM_altimeter;
             }
         }
         volatile private float VM_yaw;
-        public float Yaw
+        public float VM_Yaw
         {
             get
             {
