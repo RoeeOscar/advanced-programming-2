@@ -39,6 +39,9 @@ namespace Advanced_Programming_2
             DataControlVM dataControlVM = new DataControlVM(model);
             DataControl dataControlView = new DataControl();
             DataControl1.setViewModel(dataControlVM);
+            JoystickVM joystickVM = new JoystickVM(model);
+            Joystick joystick = new Joystick();
+            JoystickControl.setViewModel(joystickVM);
         }
 
         private void AcceptFiles_Click(object sender, RoutedEventArgs e)
