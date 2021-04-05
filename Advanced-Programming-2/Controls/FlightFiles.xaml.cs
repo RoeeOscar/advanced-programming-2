@@ -77,10 +77,11 @@ namespace Advanced_Programming_2.Controls
             }
             else
             {
-                CSVFileName = tempCSVFileName;
                 XMLFileName = tempXMLFileName;
-                vm.VM_csvFileName = CSVFileName;
+                CSVFileName = tempCSVFileName;
                 vm.VM_xmlFileName = XMLFileName;
+
+                vm.VM_csvFileName = CSVFileName;
                 return true;
             }
         }
