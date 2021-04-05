@@ -61,37 +61,49 @@ namespace Advanced_Programming_2.Model
         {
             var lines = File.ReadAllLines(fileName);
             //  var lines = File.ReadAllLines("C:/Users/hoday/Downloads/reg_flight.csv");
-            columns = new List<List<double>>(lines.Length);
+
             foreach (var line in lines)
             {
-                columns.Add(new List<double>());
-                List<string> words = line.Split(',').ToList();
+               List<string> words = line.Split(',').ToList();
                 int i = 0;
                 foreach (var word in words)
-                {
-                    columns[i].Add(double.Parse(word));
-                    //i++;
+                { 
 
+                        columns[i].Add(double.Parse(word));
+                        i++;
+                    
                 }
-                i++;
                 records.Add(line);
-
             }
+
+            for (int i = 0; i < keys.Count(); i++)
+            {
+                string s = keys[i];
+                if (dictValues.ContainsKey(s))
+                {
+                    s += "1";
+                }
+                dictValues.Add(s, columns[i]);
+            }
+            
 
             TotalTime = records.Count() / 10;
         }
 
         public void loadXMl(string fileName)
         {
+            columns = new List<List<double>>();
+
             XmlDocument doc = new XmlDocument();
             doc.Load(fileName);
             // doc.Load("C:/Users/hoday/Downloads/playback_small.xml");
             XmlElement root = doc.DocumentElement;
             XmlNodeList elemList = root.GetElementsByTagName("name");
-            for (int i = 0; i < elemList.Count; i++)
+            for (int i = 0; i < elemList.Count/2; i++)
             {
                 keys.Add(elemList[i].InnerXml);
-                dictValues.Add(keys[i], columns[i]);
+                columns.Add(new List<double>());
+
             }
         }
 
@@ -162,12 +174,12 @@ namespace Advanced_Programming_2.Model
                     // pitch - pitch_deg
                     // roll - roll_deg
                     // yaw - side-slip-deg
-                    Altimeter = (float) dictValues["altimeter_indicated-altitude-ft"].ElementAt(currentIndex);
-                    Airspeed = (float)dictValues["airspeed-indicator_indicated-speed-kt"].ElementAt(currentIndex);
-                    Direction = (float)dictValues["heading-deg"].ElementAt(currentIndex);
-                    Pitch = (float)dictValues["pitch_deg"].ElementAt(currentIndex);
-                    Roll = (float)dictValues["roll_deg"].ElementAt(currentIndex);
-                    Yaw = (float)dictValues["side-slip-deg"].ElementAt(currentIndex);
+                    Altimeter = (float)dictValues["altimeter_indicated-altitude-ft"][currentIndex];
+;                    Airspeed = (float)dictValues["airspeed-indicator_indicated-speed-kt"][currentIndex];
+                    Direction = (float)dictValues["heading-deg"][currentIndex];
+                    Pitch = (float)dictValues["pitch-deg"][currentIndex];
+                    Roll = (float)dictValues["roll-deg"][currentIndex];
+                    Yaw = (float)dictValues["side-slip-deg"][currentIndex];
                     /////////////////////////////////
 
                     int newSleep = (int)(100 / speed);
@@ -286,8 +298,5 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("Yaw");
             }
         }
-
-
     }
-
 }
