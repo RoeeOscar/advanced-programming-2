@@ -5,8 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Canvas  x:Name="Base" Margin="0" Width="340" Height="340">
+    <Viewbox>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+            <Slider Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" Height="50" Width="auto" Minimum="-1" Maximum="1" Value="{Binding VM_Rudder}"/>
+            <Slider VerticalAlignment="Stretch" Height="auto" Width="auto" Orientation="Vertical" Maximum="1" Value="{Binding VM_Throttle}"/>
+            
+
+
+            <Canvas Grid.Column="1" x:Name="Base" Margin="0" Width="340" Height="340">
             <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
                 <Ellipse.Fill>
                     <RadialGradientBrush>
@@ -57,7 +72,7 @@
                         </RadialGradientBrush>
                     </Ellipse.Fill>
                 </Ellipse>
-                <Ellipse HorizontalAlignment="Left" Height="74.313" VerticalAlignment="Top" Width="82.189" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Canvas.Left="0.613" Canvas.Top="1.692">
+                <Ellipse HorizontalAlignment="Left" Height="74.313" VerticalAlignment="Top" Width="82.189" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Canvas.Left="0" Canvas.Top="1.692">
                     <Ellipse.Fill>
                         <RadialGradientBrush>
                             <GradientStop Color="#C0828080" Offset="0.797" />
@@ -134,6 +149,7 @@
                     </Storyboard>
                 </Canvas.Resources>
             </Canvas>
-        </Canvas>
-    </Grid>
+            </Canvas>
+        </Grid>
+    </Viewbox>
 </UserControl>
