@@ -30,14 +30,21 @@ namespace Advanced_Programming_2.Model
         void changeSpeed(float speed);
 
 
-        /////////////
-        ///
         float Altimeter { set; get; }
         float Airspeed { set; get; }
         float Direction { set; get; }
         float Pitch { get; set; }
         float Roll { get; set; }
         float Yaw { get; set; }
+
+        ///
+        float Aileron { set; get; }
+        float Elevator { set; get; }
+        float Rudder { set; get; }
+        float Throttle { set; get; }
+
     }
+
+
 
 }
