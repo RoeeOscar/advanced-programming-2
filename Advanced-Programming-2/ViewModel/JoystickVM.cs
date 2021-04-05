@@ -32,5 +32,56 @@ namespace Advanced_Programming_2.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        /// <summary>
+        /// ////
+        /// </summary>
+        volatile private float VM_aileron;
+        public float VM_Aileron
+        {
+            get
+            {
+                return model.Aileron;
+            }
+            set
+            {
+                VM_aileron = value;
+            }
+        }
+        volatile private float VM_elevator;
+        public float VM_Elevator
+        {
+            get
+            {
+                return model.Elevator;
+            }
+            set
+            {
+                VM_elevator = value;
+            }
+        }
+        volatile private float VM_rudder;
+        public float VM_Rudder
+        {
+            get
+            {
+                return model.Rudder;
+            }
+            set
+            {
+                VM_rudder = value;
+            }
+        }
+        volatile private float VM_throttle;
+        public float VM_Throttle
+        {
+            get
+            {
+                return model.Throttle;
+            }
+            set
+            {
+                VM_throttle = value;
+            }
+        }
     }
 }

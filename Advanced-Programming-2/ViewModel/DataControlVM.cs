@@ -103,8 +103,6 @@ volatile private float VM_altimeter;
                 VM_yaw = value;
             }
         }
-
-
     }
 
 }

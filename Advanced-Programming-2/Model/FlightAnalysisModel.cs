@@ -175,13 +175,17 @@ namespace Advanced_Programming_2.Model
                     // roll - roll_deg
                     // yaw - side-slip-deg
                     Altimeter = (float)dictValues["altimeter_indicated-altitude-ft"][currentIndex];
-;                    Airspeed = (float)dictValues["airspeed-indicator_indicated-speed-kt"][currentIndex];
+;                   Airspeed = (float)dictValues["airspeed-indicator_indicated-speed-kt"][currentIndex];
                     Direction = (float)dictValues["heading-deg"][currentIndex];
                     Pitch = (float)dictValues["pitch-deg"][currentIndex];
                     Roll = (float)dictValues["roll-deg"][currentIndex];
                     Yaw = (float)dictValues["side-slip-deg"][currentIndex];
                     /////////////////////////////////
-
+                    Aileron = (float)dictValues["aileron"][currentIndex];
+                    Elevator = (float)dictValues["elevator"][currentIndex];
+                    Rudder = (float)dictValues["rudder"][currentIndex];
+                    Throttle = (float)dictValues["throttle"][currentIndex];
+                    /////////////////////////////////
                     int newSleep = (int)(100 / speed);
                     Thread.Sleep(newSleep);
                     currentIndex++;
@@ -296,6 +300,60 @@ namespace Advanced_Programming_2.Model
             {
                 yaw = value;
                 NotifyPropertyChanged("Yaw");
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        volatile private float aileron;
+        public float Aileron {
+            set
+            {
+                aileron = value;
+                NotifyPropertyChanged("Aileron");
+            }
+            get
+            {
+                return aileron;
+            }
+        }
+        volatile private float elevator;
+        public float Elevator
+        {
+            set
+            {
+                elevator = value;
+                NotifyPropertyChanged("Elevator");
+            }
+            get
+            {
+                return elevator;
+            }
+        }
+        volatile private float rudder;
+        public float Rudder
+        {
+            set
+            {
+                rudder = value;
+                NotifyPropertyChanged("Rudder");
+            }
+            get
+            {
+                return rudder;
+            }
+        }
+        volatile private float throttle;
+        public float Throttle
+        {
+            set
+            {
+                throttle = value;
+                NotifyPropertyChanged("Throttle");
+            }
+            get
+            {
+                return throttle;
             }
         }
     }
