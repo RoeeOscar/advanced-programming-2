@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Advanced_Programming_2.ViewModel
 {
-    class JoystickVM : INotifyPropertyChanged
+    public class JoystickVM : INotifyPropertyChanged
     {
         private IFlightAnalysisModel model;
         public JoystickVM(IFlightAnalysisModel model)
