@@ -29,6 +29,7 @@ namespace Advanced_Programming_2.Controls
         public void setViewModel(JoystickVM vm)
         {
             this.vm = vm;
+            DataContext = vm;
         }
     }
 }
