@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Advanced_Programming_2.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,14 @@ namespace Advanced_Programming_2.Controls
     /// </summary>
     public partial class Joystick : UserControl
     {
+        JoystickVM vm;
         public Joystick()
         { 
             InitializeComponent();
         }
-        int x;
+        public void setViewModel(JoystickVM vm)
+        {
+            this.vm = vm;
+        }
     }
 }
