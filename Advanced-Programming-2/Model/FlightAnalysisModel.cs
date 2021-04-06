@@ -17,13 +17,17 @@ namespace Advanced_Programming_2.Model
     class FlightAnalysisModel : IFlightAnalysisModel
     {
         List<string> records = new List<string>();
-
         Dictionary<string, List<double>> dictValues = new Dictionary<string, List<double>>();
         List<string> keys = new List<string>();
         List<List<double>> columns;
-        private long totalTime;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // Default constructor.
+        public FlightAnalysisModel()
+        {
+        }
+
+        // Sending notifications function.
         private void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -32,6 +36,60 @@ namespace Advanced_Programming_2.Model
             }
         }
 
+        // Connecting the client to FlightGear.
+        private StreamWriter connectFG(TcpClient client)
+        {
+            client.Connect("localhost", 5400);
+            return new StreamWriter(client.GetStream());
+        }
+
+        // Loading the CSV File.
+        public void loadCSV(string fileName)
+        {
+            var lines = File.ReadAllLines(fileName);
+            foreach (var line in lines)
+            {
+               List<string> words = line.Split(',').ToList();
+                int i = 0;
+                foreach (var word in words)
+                { 
+                        columns[i].Add(double.Parse(word));
+                        i++;
+                }
+                records.Add(line);
+            }
+
+            for (int i = 0; i < keys.Count(); i++)
+            {
+                string s = keys[i];
+                // Differentiate same keys.
+                if (dictValues.ContainsKey(s))
+                {
+                    s += "1";
+                }
+                dictValues.Add(s, columns[i]);
+            }
+            // There are 10 frames per second.
+            TotalTime = records.Count() / 10;
+        }
+
+        // Loading the XML File.
+        public void loadXMl(string fileName)
+        {
+            columns = new List<List<double>>();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(fileName);
+            XmlElement root = doc.DocumentElement;
+            XmlNodeList elemList = root.GetElementsByTagName("name");
+            for (int i = 0; i < elemList.Count/2; i++)
+            {
+                keys.Add(elemList[i].InnerXml);
+                columns.Add(new List<double>());
+            }
+        }
+
+        // Total video time data member & property (in seconds).
+        private long totalTime = 0;
         public long TotalTime
         {
             get
@@ -45,68 +103,7 @@ namespace Advanced_Programming_2.Model
             }
         }
 
-        public FlightAnalysisModel()
-        {
-        }
-
-
-        private StreamWriter connectFG(TcpClient client)
-        {
-            client.Connect("localhost", 5400);
-            return new StreamWriter(client.GetStream());
-
-        }
-
-        public void loadCSV(string fileName)
-        {
-            var lines = File.ReadAllLines(fileName);
-            //  var lines = File.ReadAllLines("C:/Users/hoday/Downloads/reg_flight.csv");
-
-            foreach (var line in lines)
-            {
-               List<string> words = line.Split(',').ToList();
-                int i = 0;
-                foreach (var word in words)
-                { 
-
-                        columns[i].Add(double.Parse(word));
-                        i++;
-                    
-                }
-                records.Add(line);
-            }
-
-            for (int i = 0; i < keys.Count(); i++)
-            {
-                string s = keys[i];
-                if (dictValues.ContainsKey(s))
-                {
-                    s += "1";
-                }
-                dictValues.Add(s, columns[i]);
-            }
-            
-
-            TotalTime = records.Count() / 10;
-        }
-
-        public void loadXMl(string fileName)
-        {
-            columns = new List<List<double>>();
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load(fileName);
-            // doc.Load("C:/Users/hoday/Downloads/playback_small.xml");
-            XmlElement root = doc.DocumentElement;
-            XmlNodeList elemList = root.GetElementsByTagName("name");
-            for (int i = 0; i < elemList.Count/2; i++)
-            {
-                keys.Add(elemList[i].InnerXml);
-                columns.Add(new List<double>());
-
-            }
-        }
-
+        // Is playing boolean data member and property. True if the video is playing, otherwise false.
         volatile private bool isPlaying = false;
         public bool IsPlaying
         {
@@ -121,6 +118,7 @@ namespace Advanced_Programming_2.Model
             }
         }
 
+        // Current time data member & property (in seconds).
         volatile private int currentTime = 0;
         public int CurrentTime
         {
@@ -135,29 +133,53 @@ namespace Advanced_Programming_2.Model
             }
         }
 
+        // Starting video function.
         public void startVideo()
         {
             IsPlaying = true;
             showFlight();
         }
+        
+        // Pause video function.
         public void pauseVideo()
         {
             IsPlaying = false;
         }
+
+        // Stopping video function.
         public void stopVideo()
         {
             IsPlaying = false;
             currentIndex = 0;
             CurrentTime = 0;
         }
+
+        // Changing current time function.
         public void changeCurrentTime(int newTime)
         {
             CurrentTime = newTime;
             currentIndex = newTime * 10;
         }
 
-
+        // Data member for the current index in the records lists (the line to send to the server).
         private int currentIndex =0;
+
+        // Updating the data after sending a data line to the server.
+        private void updateData()
+        {
+            Altimeter = (float)dictValues["altimeter_indicated-altitude-ft"][currentIndex];
+            Airspeed = (float)dictValues["airspeed-indicator_indicated-speed-kt"][currentIndex];
+            Direction = (float)dictValues["heading-deg"][currentIndex];
+            Pitch = (float)dictValues["pitch-deg"][currentIndex];
+            Roll = (float)dictValues["roll-deg"][currentIndex];
+            Yaw = (float)dictValues["side-slip-deg"][currentIndex];
+            Aileron = (float)dictValues["aileron"][currentIndex];
+            Elevator = (float)dictValues["elevator"][currentIndex];
+            Rudder = (float)dictValues["rudder"][currentIndex];
+            Throttle = (float)dictValues["throttle"][currentIndex];
+        }
+
+        // Showing the flight video.
         private void showFlight()
         {
             Thread t = new Thread(delegate ()
@@ -167,27 +189,8 @@ namespace Advanced_Programming_2.Model
                 while (isPlaying)
                 {
                  streamWriter.WriteLine(records[currentIndex]);
-                    //////////////////////////////
-                    // airspeed - airspeed-indicator_indicated-speed-kt
-                    // altimeter - altimeter_indicated-altitude-ft
-                    // direction - heading-deg
-                    // pitch - pitch_deg
-                    // roll - roll_deg
-                    // yaw - side-slip-deg
-                    Altimeter = (float)dictValues["altimeter_indicated-altitude-ft"][currentIndex];
-;                   Airspeed = (float)dictValues["airspeed-indicator_indicated-speed-kt"][currentIndex];
-                    Direction = (float)dictValues["heading-deg"][currentIndex];
-                    Pitch = (float)dictValues["pitch-deg"][currentIndex];
-                    Roll = (float)dictValues["roll-deg"][currentIndex];
-                    Yaw = (float)dictValues["side-slip-deg"][currentIndex];
-                    /////////////////////////////////
-                    Aileron = (float)dictValues["aileron"][currentIndex];
-                    Elevator = (float)dictValues["elevator"][currentIndex];
-                    Rudder = (float)dictValues["rudder"][currentIndex];
-                    Throttle = (float)dictValues["throttle"][currentIndex];
-                    /////////////////////////////////
-                    int newSleep = (int)(100 / speed);
-                    Thread.Sleep(newSleep);
+                    updateData();
+                    Thread.Sleep((int)(100 / speed));
                     currentIndex++;
                     if (currentIndex % 10 == 0)
                     {
@@ -202,8 +205,8 @@ namespace Advanced_Programming_2.Model
 
         }
 
+        // Data member and property for the video speed.
         volatile private float speed = 1;
-
         public float Speed
         {
             get
@@ -218,13 +221,15 @@ namespace Advanced_Programming_2.Model
             }
         }
 
+        // Changing video speed function.
         public void changeSpeed(float speed)
         {
             this.Speed = speed;
         }
-        ///////////////////////////////////////////////////////////////////
-        ///
-        volatile private float altimeter;
+
+        // Data members and properties for flight and joystick data.
+
+        private float altimeter;
         public float Altimeter 
         {
             get
@@ -237,7 +242,7 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("Altimeter");
             }
         }
-        volatile private float airspeed;
+        private float airspeed;
         public float Airspeed 
         { 
             get
@@ -250,7 +255,7 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("Airspeed");
             }
                 }
-        volatile private float direction;
+        private float direction;
         public float Direction 
         {
             get
@@ -263,7 +268,7 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("Direction");
             }
         }
-        volatile private float pitch;
+        private float pitch;
         public float Pitch
         {
             get
@@ -276,7 +281,7 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("Pitch");
             }
         }
-        volatile private float roll;
+        private float roll;
         public float Roll
         {
             get
@@ -289,7 +294,7 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("Roll");
             }
         }
-        volatile private float yaw;
+        private float yaw;
         public float Yaw
         {
             get
@@ -302,10 +307,8 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("Yaw");
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        volatile private float aileron;
+
+        private float aileron;
         public float Aileron {
             set
             {
@@ -317,7 +320,7 @@ namespace Advanced_Programming_2.Model
                 return aileron;
             }
         }
-        volatile private float elevator;
+        private float elevator;
         public float Elevator
         {
             set
@@ -330,7 +333,7 @@ namespace Advanced_Programming_2.Model
                 return elevator;
             }
         }
-        volatile private float rudder;
+        private float rudder;
         public float Rudder
         {
             set
@@ -343,7 +346,7 @@ namespace Advanced_Programming_2.Model
                 return rudder;
             }
         }
-        volatile private float throttle;
+        private float throttle;
         public float Throttle
         {
             set
