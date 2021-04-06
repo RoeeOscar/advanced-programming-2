@@ -13,23 +13,24 @@ namespace Advanced_Programming_2.Model
 {
     public interface IFlightAnalysisModel : INotifyPropertyChanged
     {
+        // Loading flight files functions.
         void loadXMl(string fileName);
         void loadCSV(string fileName);
 
-        // Properties
+        // Media player properties.
         long TotalTime{ set; get; }
         bool IsPlaying { set; get; }
         int CurrentTime { set; get; }
+        float Speed { get; set; }
 
+        // Media player functions.
         void startVideo();
         void pauseVideo();
         void stopVideo();
         void changeCurrentTime(int newTime);
-
-        float Speed { get; set; }
         void changeSpeed(float speed);
 
-
+        // Flight data properties.
         float Altimeter { set; get; }
         float Airspeed { set; get; }
         float Direction { set; get; }
@@ -37,7 +38,7 @@ namespace Advanced_Programming_2.Model
         float Roll { get; set; }
         float Yaw { get; set; }
 
-        ///
+        // Joystick properties.
         float Aileron { set; get; }
         float Elevator { set; get; }
         float Rudder { set; get; }
