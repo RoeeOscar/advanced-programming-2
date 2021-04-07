@@ -312,7 +312,7 @@ namespace Advanced_Programming_2.Model
         public float Aileron {
             set
             {
-                aileron = value;
+                aileron = value * 125;
                 NotifyPropertyChanged("Aileron");
             }
             get
@@ -325,7 +325,7 @@ namespace Advanced_Programming_2.Model
         {
             set
             {
-                elevator = value;
+                elevator = value * 125;
                 NotifyPropertyChanged("Elevator");
             }
             get
