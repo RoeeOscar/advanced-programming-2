@@ -14,7 +14,8 @@ namespace Advanced_Programming_2.ViewModel
 
     public class FlightFilesVM
     {
-        // members of csv and xml
+        #region Constructor and Properties
+        // Data members of csv and xml
         string csvFile, xmlFile;
         IFlightAnalysisModel model;
         // Total time of the vm
@@ -47,5 +48,6 @@ namespace Advanced_Programming_2.ViewModel
                 model.loadXMl(xmlFile);
             }
         }
+        #endregion
     }
 }

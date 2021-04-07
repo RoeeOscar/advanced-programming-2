@@ -48,7 +48,7 @@ namespace Advanced_Programming_2.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
+        #region Properties
         public long VM_TotalTime
         {
             get
@@ -97,21 +97,6 @@ namespace Advanced_Programming_2.ViewModel
                 model.changeCurrentTime(VM_currentTime);
             }
         }
-        public void startVideo()
-        {
-            model.startVideo();
-        }
-
-        public void pauseVideo()
-        {
-            model.pauseVideo();
-        }
-
-        public void stopVideo()
-        {
-            model.stopVideo();
-        }
-
         private string VM_currentTimeFormat;
         public string VM_CurrentTimeFormat
         {
@@ -126,12 +111,6 @@ namespace Advanced_Programming_2.ViewModel
             }
 
         }
-
-        public void changeCurrentTime(int newTime)
-        {
-            model.changeCurrentTime(newTime);
-        }
-
         private float VM_speed = 1;
         public float VM_Speed
         {
@@ -146,7 +125,24 @@ namespace Advanced_Programming_2.ViewModel
                 model.changeSpeed(VM_speed);
             }
         }
-
-
+        #endregion
+        #region Videos
+        public void startVideo()
+        {
+            model.startVideo();
+        }
+        public void pauseVideo()
+        {
+            model.pauseVideo();
+        }
+        public void stopVideo()
+        {
+            model.stopVideo();
+        }
+        #endregion
+        public void changeCurrentTime(int newTime)
+        {
+            model.changeCurrentTime(newTime);
+        }
     }
 }
