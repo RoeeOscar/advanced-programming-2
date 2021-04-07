@@ -14,6 +14,7 @@ namespace Advanced_Programming_2.ViewModel
         private IFlightAnalysisModel model;
         // Total time of the vm
         private string VM_totalTimeFormat;
+        // Constructor
         public MediaPlayerVM(IFlightAnalysisModel model)
         {
             this.model = model;
@@ -38,9 +39,7 @@ namespace Advanced_Programming_2.ViewModel
                 }
             };
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void NotifyPropertyChanged(string propertyName="")
         {
             if (PropertyChanged != null)
