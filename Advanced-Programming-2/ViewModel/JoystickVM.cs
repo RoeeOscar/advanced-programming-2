@@ -32,9 +32,7 @@ namespace Advanced_Programming_2.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        /// <summary>
-        /// ////
-        /// </summary>
+        #region Properties
         volatile private float VM_aileron;
         public float VM_Aileron
         {
@@ -83,5 +81,6 @@ namespace Advanced_Programming_2.ViewModel
                 VM_throttle = value;
             }
         }
+        #endregion
     }
 }
