@@ -8,6 +8,7 @@ using System.Net;
 using System.IO;
 using System.Threading;
 using System.ComponentModel;
+using OxyPlot;
 
 namespace Advanced_Programming_2.Model
 {
@@ -43,6 +44,11 @@ namespace Advanced_Programming_2.Model
         float Elevator { set; get; }
         float Rudder { set; get; }
         float Throttle { set; get; }
+        List<string> Attributes { set; get; }
+        List<DataPoint> GraphPoints { set; get; }
+        void changeGraph(string attribute);
+
+        string Graph { set; get; }
 
     }
 
