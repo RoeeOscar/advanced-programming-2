@@ -56,5 +56,9 @@
                 </Grid>
             </TabItem>
 
+        <TabItem Header="Graphs">
+            <Controls:Graphs x:Name="GraphsControl"></Controls:Graphs>
+        </TabItem>
+
     </TabControl>
 </Window>
