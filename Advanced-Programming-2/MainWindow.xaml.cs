@@ -42,6 +42,9 @@ namespace Advanced_Programming_2
             JoystickVM joystickVM = new JoystickVM(model);
             Joystick joystick = new Joystick();
             JoystickControl.setViewModel(joystickVM);
+            GraphsVM graphsVM = new GraphsVM(model);
+            Graphs graphs = new Graphs();
+            GraphsControl.setViewModel(graphsVM);
         }
 
         private void AcceptFiles_Click(object sender, RoutedEventArgs e)
