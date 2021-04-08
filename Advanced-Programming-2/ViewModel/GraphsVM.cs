@@ -1,4 +1,5 @@
 ﻿using Advanced_Programming_2.Model;
+using OxyPlot;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,5 +32,48 @@ namespace Advanced_Programming_2.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        private List<string> VM_attributes;
+        public List<string> VM_Attributes
+        {
+            get
+            {
+                return model.Attributes;
+            }
+            set
+            {
+                VM_attributes = value;
+            }
+        }
+
+        private List<DataPoint> VM_graphPoints;
+        public List<DataPoint> VM_GraphPoints
+        {
+            get
+            {
+                return model.GraphPoints;
+            }
+            set
+            {
+                VM_graphPoints = value;
+            }
+        }
+        public void changeGraph (string attribute)
+        {
+            model.changeGraph(attribute);
+        }
+
+        private string VM_graph;
+        public string VM_Graph
+        {
+            get
+            {
+                return model.Graph;
+            }
+            set
+            {
+                VM_graph = value;
+            }
+        }
+        
     }
 }

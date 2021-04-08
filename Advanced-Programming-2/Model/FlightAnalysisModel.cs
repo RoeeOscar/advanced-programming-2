@@ -10,6 +10,7 @@ using System.Threading;
 using System.Xml;
 using System.ComponentModel;
 using System.Windows.Forms;
+using OxyPlot;
 
 //using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
@@ -49,12 +50,12 @@ namespace Advanced_Programming_2.Model
             var lines = File.ReadAllLines(fileName);
             foreach (var line in lines)
             {
-               List<string> words = line.Split(',').ToList();
+                List<string> words = line.Split(',').ToList();
                 int i = 0;
                 foreach (var word in words)
-                { 
-                        columns[i].Add(double.Parse(word));
-                        i++;
+                {
+                    columns[i].Add(double.Parse(word));
+                    i++;
                 }
                 records.Add(line);
             }
@@ -81,11 +82,12 @@ namespace Advanced_Programming_2.Model
             doc.Load(fileName);
             XmlElement root = doc.DocumentElement;
             XmlNodeList elemList = root.GetElementsByTagName("name");
-            for (int i = 0; i < elemList.Count/2; i++)
+            for (int i = 0; i < elemList.Count / 2; i++)
             {
                 keys.Add(elemList[i].InnerXml);
                 columns.Add(new List<double>());
             }
+            Attributes = keys;
         }
         #endregion  
         #region Properties
@@ -305,7 +307,7 @@ namespace Advanced_Programming_2.Model
             IsPlaying = true;
             showFlight();
         }
-        
+
         // Pause video function.
         public void pauseVideo()
         {
@@ -328,7 +330,7 @@ namespace Advanced_Programming_2.Model
         }
         #endregion
         // Data member for the current index in the records lists (the line to send to the server).
-        private int currentIndex =0;
+        private int currentIndex = 0;
 
         // Updating the data after sending a data line to the server.
         private void updateData()
@@ -354,8 +356,18 @@ namespace Advanced_Programming_2.Model
                 StreamWriter streamWriter = connectFG(client);
                 while (isPlaying)
                 {
-                 streamWriter.WriteLine(records[currentIndex]);
+                    streamWriter.WriteLine(records[currentIndex]);
                     updateData();
+                    GraphPoints = new List<DataPoint>();
+                    if (graph != null)
+                    {
+                        for (int i = 0; i < currentIndex; i++)
+                        {
+                            GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graph][i]));
+
+                        }
+                    }
+
                     Thread.Sleep((int)(100 / speed));
                     currentIndex++;
                     if (currentIndex % 10 == 0)
@@ -369,6 +381,56 @@ namespace Advanced_Programming_2.Model
             });
             t.Start();
 
+        }
+
+        private List<string> attributes;
+        public List<string> Attributes
+        {
+            get
+            {
+                return attributes;
+            }
+            set
+            {
+                attributes = value;
+                NotifyPropertyChanged("Attributes");
+
+            }
+
+        }
+
+        private List<DataPoint> graphPoints;
+        public List<DataPoint> GraphPoints
+        {
+            get
+            {
+                return graphPoints;
+            }
+            set
+            {
+                graphPoints = value;
+                NotifyPropertyChanged("GraphPoints");
+
+            }
+        }
+
+        volatile string graph;
+
+        public string Graph
+        {
+            get
+            {
+                return graph;
+            }
+            set
+            {
+                graph = value;
+                NotifyPropertyChanged("Graph");
+            }
+        }
+        public void changeGraph(string attribute)
+        {
+            Graph = attribute;
         }
     }
 }
