@@ -10,23 +10,24 @@
 
     <TabControl Name="V_TabControl" Margin="0,0,0,0">
         <TabItem Header="Loading Files">
-            <Grid Background="#FFF6E0">
+            <Grid Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Viewbox Grid.Row="0">
-                    <Controls:FlightFiles Grid.Row="0" x:Name="FlightFilesControl" Height="248" Width="574"></Controls:FlightFiles>
+                    <Controls:FlightFiles Grid.Row="0" x:Name="FlightFilesControl" Height="248" Width="574" Loaded="FlightFilesControl_Loaded"></Controls:FlightFiles>
                 </Viewbox>
-                    <Viewbox Grid.Row="1" Margin="30,10,30,10">
-                    <Button BorderBrush="White" Name="AcceptFiles" Background="#179498" Click="AcceptFiles_Click" Foreground="white">Start Analyzing Flight</Button>
-                        </Viewbox>
+                <Viewbox Grid.Row="1" Margin="30,10,30,10">
+                    <Button  FontFamily="Yu Gothic UI Semibold" Name="AcceptFiles" Background="#FF13538A" Click="AcceptFiles_Click" Foreground="white" BorderBrush="#FF13538A" BorderThickness="0" Height="22" Width="118">Start Analyzing Flight
+                    </Button>
+                </Viewbox>
             </Grid>
-           
+
 
         </TabItem>
         <TabItem Header="Flight Analysis">
-            <Grid Background="#FFF6E0">
+            <Grid Background="White">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -42,19 +43,19 @@
 
         </TabItem>
         <TabItem Header="Check">
-                <Grid Background="#FFF6E0">
+            <Grid Background="White">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
 
                 <Controls:Joystick x:Name="JoystickControl"></Controls:Joystick>
-                    <Controls:MediaPlayer x:Name="MediaPlayerControl2" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
+                <Controls:MediaPlayer x:Name="MediaPlayerControl2" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
 
-                </Grid>
-            </TabItem>
+            </Grid>
+        </TabItem>
 
     </TabControl>
 </Window>

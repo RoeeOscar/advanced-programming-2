@@ -7,28 +7,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Viewbox>
-        <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-            <TextBox Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="15" Height="8" IsEnabled="false" FontSize="5" Text="{Binding VM_Altimeter}"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="15" Height="8" IsEnabled="false" FontSize="5" Text="{Binding VM_Airspeed}"/>
-            <TextBox Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="15" Height="8" IsEnabled="false" FontSize="5" Text="{Binding VM_Direction}"/>
-            <TextBox Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="15" Height="8" IsEnabled="false" FontSize="5" Text="{Binding VM_Pitch}"/>
-            <TextBox Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="15" Height="8" IsEnabled="false" FontSize="5" Text="{Binding VM_Roll}"/>
-            <TextBox Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="15" Height="8" IsEnabled="false" FontSize="5" Text="{Binding VM_Yaw}"/>
+        <Canvas>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="17*"/>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="17*"/>
+                    <ColumnDefinition Width="17*"/>
+                    <ColumnDefinition Width="33*"/>
+                    <ColumnDefinition Width="0*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition Height="Auto" MinHeight="9.333"/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,4.667,0.333" Grid.Row="1" IsEnabled="false" FontSize="5" Text="{Binding VM_Altimeter}"/>
+                <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5.333,0,4.333,0.333" Grid.Row="1" IsEnabled="false" FontSize="5" Text="{Binding VM_Airspeed}"/>
+                <TextBox Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4.667,0,5.333,0.333" Grid.Row="1" IsEnabled="false" FontSize="5" Text="{Binding VM_Direction}"/>
+                <TextBox Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4.667,0,5,0.333" Grid.Row="1" IsEnabled="false" FontSize="5" Text="{Binding VM_Pitch}"/>
+                <TextBox Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,4,0.333" Grid.Row="1" IsEnabled="false" FontSize="5" Text="{Binding VM_Roll}"/>
+                <TextBox Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,4.667,0.333" Grid.Row="1" IsEnabled="false" FontSize="5" Text="{Binding VM_Yaw}"/>
+                <ContentControl Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,7.667,0,-23.667" Grid.Row="2" Height="16" Width="0"/>
 
-            <!--  <ProgressBar Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,5,0" Grid.Row="1"  Width="8" Height="50" Orientation="Vertical"/>
+                <!--  <ProgressBar Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,5,0" Grid.Row="1"  Width="8" Height="50" Orientation="Vertical"/>
             <ProgressBar Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="8" Height="50" Orientation="Vertical"/>
             <ProgressBar Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="8" Height="50" Orientation="Vertical"/>
             <ProgressBar Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="1"  Width="8" Height="50" Orientation="Vertical"/>
@@ -37,6 +39,7 @@
 -->
 
 
-        </Grid>
+            </Grid>
+        </Canvas>
     </Viewbox>
 </UserControl>

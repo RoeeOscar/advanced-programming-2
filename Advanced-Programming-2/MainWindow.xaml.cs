@@ -56,5 +56,10 @@ namespace Advanced_Programming_2
             }
                 
         }
+
+        private void FlightFilesControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

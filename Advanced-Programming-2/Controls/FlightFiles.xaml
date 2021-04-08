@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="600">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -21,19 +21,19 @@
 
         </Grid.RowDefinitions>
         <!-- The Welcome message -->
-        <Label Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="center" VerticalAlignment="center" FontSize="45">Welcome To Flight Analyzer!</Label>
+        <Label Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="center" VerticalAlignment="center" FontSize="45" FontFamily="Yu Gothic UI Semibold" Foreground="#FF13538A">Welcome To Flight Analyzer!</Label>
         <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10,83,9.8,0.4">
             <WrapPanel  HorizontalAlignment="center" VerticalAlignment="center" DockPanel.Dock="Top">
                 <Viewbox>
                     <!-- Open CSV File Button -->
-                    <Button Name="V_OpenCSVFileButton" Height="50" Width="140" FontSize="20" BorderBrush="White" Background="#13538a" Foreground="white" Click="V_OpenCSVFileButton_Click">Load CSV file</Button>
+                    <Button Name="V_OpenCSVFileButton" Height="50" Width="140" FontSize="20" BorderBrush="White" Background="#13538a" Foreground="white" Click="V_OpenCSVFileButton_Click" FontFamily="Yu Gothic UI Semibold">Load CSV file</Button>
                 </Viewbox>
             </WrapPanel>
         </DockPanel>
         <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="20">
             <Viewbox VerticalAlignment="Top">
                 <!-- Text Box for the csv File Name -->
-                <TextBox Name="V_OpenCSVFileTextBox" VerticalAlignment="Top" Width="100" Height="15" IsEnabled="False" FontSize="8"  ></TextBox>
+                <TextBox Name="V_OpenCSVFileTextBox" VerticalAlignment="Top" Width="100" Height="15" IsEnabled="False" FontSize="8" BorderBrush="#FF13538A" Foreground="#FF13538A" FontFamily="Yu Gothic UI Semibold"  ></TextBox>
             </Viewbox>
         </DockPanel>
 
@@ -41,7 +41,7 @@
             <WrapPanel HorizontalAlignment="center" VerticalAlignment="center" DockPanel.Dock="Top">
                 <Viewbox>
                     <!-- Open XML File Button -->
-                    <Button Name="V_OpenXMLFileButton" Click="V_OpenXMLFileButton_Click" Margin="0" Height="50" Width="140" FontSize="20" BorderBrush="White"  Background="#13538a" Foreground="white">Load XML file</Button>
+                    <Button Name="V_OpenXMLFileButton" FontFamily="Yu Gothic UI Semibold" Click="V_OpenXMLFileButton_Click" Margin="0" Height="50" Width="140" FontSize="20" BorderBrush="White"  Background="#13538a" Foreground="white">Load XML file</Button>
                 </Viewbox>
             </WrapPanel>
         </DockPanel>
@@ -49,7 +49,7 @@
         <DockPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="20">
             <Viewbox VerticalAlignment="Top">
                 <!-- Text Box for the XML File Name -->
-                <TextBox Name="V_OpenXMLFileTextBox" VerticalAlignment="Top" Width="100" Height="15" FontSize="8" IsEnabled="False" />
+                <TextBox Name="V_OpenXMLFileTextBox" VerticalAlignment="Top" Width="100" Height="15" FontSize="8" IsEnabled="False" FontFamily="Yu Gothic UI Semibold" SelectionBrush="Black" Foreground="#FF13538A" BorderBrush="#FF13538A" />
             </Viewbox>
         </DockPanel>
     </Grid>
