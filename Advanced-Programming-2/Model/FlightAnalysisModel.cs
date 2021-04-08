@@ -10,6 +10,7 @@ using System.Threading;
 using System.Xml;
 using System.ComponentModel;
 using System.Windows.Forms;
+using OxyPlot;
 
 //using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
@@ -42,19 +43,19 @@ namespace Advanced_Programming_2.Model
             client.Connect("localhost", 5400);
             return new StreamWriter(client.GetStream());
         }
-
+        #region Loading files
         // Loading the CSV File.
         public void loadCSV(string fileName)
         {
             var lines = File.ReadAllLines(fileName);
             foreach (var line in lines)
             {
-               List<string> words = line.Split(',').ToList();
+                List<string> words = line.Split(',').ToList();
                 int i = 0;
                 foreach (var word in words)
-                { 
-                        columns[i].Add(double.Parse(word));
-                        i++;
+                {
+                    columns[i].Add(double.Parse(word));
+                    i++;
                 }
                 records.Add(line);
             }
@@ -81,10 +82,189 @@ namespace Advanced_Programming_2.Model
             doc.Load(fileName);
             XmlElement root = doc.DocumentElement;
             XmlNodeList elemList = root.GetElementsByTagName("name");
-            for (int i = 0; i < elemList.Count/2; i++)
+            for (int i = 0; i < elemList.Count / 2; i++)
             {
                 keys.Add(elemList[i].InnerXml);
                 columns.Add(new List<double>());
+            }
+            Attributes = keys;
+        }
+        #endregion  
+        #region Properties
+        // Current time data member & property (in seconds).
+        volatile private int currentTime = 0;
+        public int CurrentTime
+        {
+            set
+            {
+                currentTime = value;
+                NotifyPropertyChanged("CurrentTime");
+            }
+            get
+            {
+                return currentTime;
+            }
+        }
+        // Data member and property for the video speed.
+        volatile private float speed = 1;
+        public float Speed
+        {
+            get
+            {
+                return speed;
+            }
+
+            set
+            {
+                speed = value;
+                NotifyPropertyChanged("Speed");
+            }
+        }
+
+        // Changing video speed function.
+        public void changeSpeed(float speed)
+        {
+            this.Speed = speed;
+        }
+
+        // Data members and properties for flight and joystick data.
+        private float altimeter;
+        public float Altimeter
+        {
+            get
+            {
+                return altimeter;
+            }
+            set
+            {
+                altimeter = value;
+                NotifyPropertyChanged("Altimeter");
+            }
+        }
+        // Data members and properties for airspeed.
+        private float airspeed;
+        public float Airspeed
+        {
+            get
+            {
+                return airspeed;
+            }
+            set
+            {
+                airspeed = value;
+                NotifyPropertyChanged("Airspeed");
+            }
+        }
+        // Data members and properties for direction.
+        private float direction;
+        public float Direction
+        {
+            get
+            {
+                return direction;
+            }
+            set
+            {
+                direction = value;
+                NotifyPropertyChanged("Direction");
+            }
+        }
+        // Data members and properties for pitch.
+        private float pitch;
+        public float Pitch
+        {
+            get
+            {
+                return pitch;
+            }
+            set
+            {
+                pitch = value;
+                NotifyPropertyChanged("Pitch");
+            }
+        }
+        // Data members and properties for roll.
+        private float roll;
+        public float Roll
+        {
+            get
+            {
+                return roll;
+            }
+            set
+            {
+                roll = value;
+                NotifyPropertyChanged("Roll");
+            }
+        }
+        // Data members and properties for yaw.
+        private float yaw;
+        public float Yaw
+        {
+            get
+            {
+                return yaw;
+            }
+            set
+            {
+                yaw = value;
+                NotifyPropertyChanged("Yaw");
+            }
+        }
+        // Data members and properties for aileron.
+        private float aileron;
+        public float Aileron
+        {
+            set
+            {
+                aileron = value;
+                NotifyPropertyChanged("Aileron");
+            }
+            get
+            {
+                return aileron;
+            }
+        }
+        // Data members and properties for elevator.
+        private float elevator;
+        public float Elevator
+        {
+            set
+            {
+                elevator = value;
+                NotifyPropertyChanged("Elevator");
+            }
+            get
+            {
+                return elevator;
+            }
+        }
+        // Data members and properties for rudder.
+        private float rudder;
+        public float Rudder
+        {
+            set
+            {
+                rudder = value;
+                NotifyPropertyChanged("Rudder");
+            }
+            get
+            {
+                return rudder;
+            }
+        }
+        // Data members and properties for throttle.
+        private float throttle;
+        public float Throttle
+        {
+            set
+            {
+                throttle = value;
+                NotifyPropertyChanged("Throttle");
+            }
+            get
+            {
+                return throttle;
             }
         }
 
@@ -118,28 +298,16 @@ namespace Advanced_Programming_2.Model
             }
         }
 
-        // Current time data member & property (in seconds).
-        volatile private int currentTime = 0;
-        public int CurrentTime
-        {
-            set
-            {
-                currentTime = value;
-                NotifyPropertyChanged("CurrentTime");
-            }
-            get
-            {
-                return currentTime;
-            }
-        }
 
+        #endregion
+        #region Videos
         // Starting video function.
         public void startVideo()
         {
             IsPlaying = true;
             showFlight();
         }
-        
+
         // Pause video function.
         public void pauseVideo()
         {
@@ -160,9 +328,9 @@ namespace Advanced_Programming_2.Model
             CurrentTime = newTime;
             currentIndex = newTime * 10;
         }
-
+        #endregion
         // Data member for the current index in the records lists (the line to send to the server).
-        private int currentIndex =0;
+        private int currentIndex = 0;
 
         // Updating the data after sending a data line to the server.
         private void updateData()
@@ -188,8 +356,18 @@ namespace Advanced_Programming_2.Model
                 StreamWriter streamWriter = connectFG(client);
                 while (isPlaying)
                 {
-                 streamWriter.WriteLine(records[currentIndex]);
+                    streamWriter.WriteLine(records[currentIndex]);
                     updateData();
+                    GraphPoints = new List<DataPoint>();
+                    if (graph != null)
+                    {
+                        for (int i = 0; i < currentIndex; i++)
+                        {
+                            GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graph][i]));
+
+                        }
+                    }
+
                     Thread.Sleep((int)(100 / speed));
                     currentIndex++;
                     if (currentIndex % 10 == 0)
@@ -205,159 +383,54 @@ namespace Advanced_Programming_2.Model
 
         }
 
-        // Data member and property for the video speed.
-        volatile private float speed = 1;
-        public float Speed
+        private List<string> attributes;
+        public List<string> Attributes
         {
             get
             {
-                return speed;
+                return attributes;
+            }
+            set
+            {
+                attributes = value;
+                NotifyPropertyChanged("Attributes");
+
             }
 
-            set
-            {
-                speed = value;
-                NotifyPropertyChanged("Speed");
-            }
         }
 
-        // Changing video speed function.
-        public void changeSpeed(float speed)
+        private List<DataPoint> graphPoints;
+        public List<DataPoint> GraphPoints
         {
-            this.Speed = speed;
-        }
+            get
+            {
+                return graphPoints;
+            }
+            set
+            {
+                graphPoints = value;
+                NotifyPropertyChanged("GraphPoints");
 
-        // Data members and properties for flight and joystick data.
-
-        private float altimeter;
-        public float Altimeter 
-        {
-            get
-            {
-                return altimeter;
-            }
-            set
-            {
-                altimeter = value;
-                NotifyPropertyChanged("Altimeter");
-            }
-        }
-        private float airspeed;
-        public float Airspeed 
-        { 
-            get
-            {
-                return airspeed;
-            }
-            set
-            {
-                airspeed = value;
-                NotifyPropertyChanged("Airspeed");
-            }
-                }
-        private float direction;
-        public float Direction 
-        {
-            get
-            {
-                return direction;
-            }
-            set
-            {
-                direction = value;
-                NotifyPropertyChanged("Direction");
-            }
-        }
-        private float pitch;
-        public float Pitch
-        {
-            get
-            {
-                return pitch;
-            }
-            set
-            {
-                pitch = value;
-                NotifyPropertyChanged("Pitch");
-            }
-        }
-        private float roll;
-        public float Roll
-        {
-            get
-            {
-                return roll;
-            }
-            set
-            {
-                roll = value;
-                NotifyPropertyChanged("Roll");
-            }
-        }
-        private float yaw;
-        public float Yaw
-        {
-            get
-            {
-                return yaw;
-            }
-            set
-            {
-                yaw = value;
-                NotifyPropertyChanged("Yaw");
             }
         }
 
-        private float aileron;
-        public float Aileron {
-            set
-            {
-                aileron = value;
-                NotifyPropertyChanged("Aileron");
-            }
+        volatile string graph;
+
+        public string Graph
+        {
             get
             {
-                return aileron;
+                return graph;
+            }
+            set
+            {
+                graph = value;
+                NotifyPropertyChanged("Graph");
             }
         }
-        private float elevator;
-        public float Elevator
+        public void changeGraph(string attribute)
         {
-            set
-            {
-                elevator = value;
-                NotifyPropertyChanged("Elevator");
-            }
-            get
-            {
-                return elevator;
-            }
-        }
-        private float rudder;
-        public float Rudder
-        {
-            set
-            {
-                rudder = value;
-                NotifyPropertyChanged("Rudder");
-            }
-            get
-            {
-                return rudder;
-            }
-        }
-        private float throttle;
-        public float Throttle
-        {
-            set
-            {
-                throttle = value;
-                NotifyPropertyChanged("Throttle");
-            }
-            get
-            {
-                return throttle;
-            }
+            Graph = attribute;
         }
     }
 }

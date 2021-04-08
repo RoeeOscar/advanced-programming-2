@@ -31,7 +31,8 @@ private void NotifyPropertyChanged(string propertyName = "")
         PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
     }
 }
-volatile private float VM_altimeter;
+        #region Properties
+        volatile private float VM_altimeter;
         public float VM_Altimeter
         {
             get
@@ -103,6 +104,7 @@ volatile private float VM_altimeter;
                 VM_yaw = value;
             }
         }
+        #endregion
     }
 
 }
