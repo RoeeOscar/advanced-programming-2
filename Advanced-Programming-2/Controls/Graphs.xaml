@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Advanced_Programming_2.Controls.Graphs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Advanced_Programming_2.Controls"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Viewbox VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+        <Grid Width="800" Height="450">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <oxy:Plot Title="{Binding VM_Graph}"  TitleFontSize="10" Margin="0" Background="Transparent">
+            <oxy:Plot.Series>
+                <oxy:LineSeries ItemsSource="{Binding VM_GraphPoints}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+            </Grid>
+            <ListBox Name="listBox" ItemsSource="{Binding VM_Attributes}" SelectionChanged="ListBox_SelectionChanged"></ListBox>
+    </Grid>
+    </Viewbox>
+</UserControl>
