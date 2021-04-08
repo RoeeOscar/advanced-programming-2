@@ -10,6 +10,7 @@ using System.Threading;
 using System.Xml;
 using System.ComponentModel;
 using System.Windows.Forms;
+using OxyPlot;
 
 //using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
@@ -86,6 +87,7 @@ namespace Advanced_Programming_2.Model
                 keys.Add(elemList[i].InnerXml);
                 columns.Add(new List<double>());
             }
+            Attributes = keys;
         }
 
         // Total video time data member & property (in seconds).
@@ -190,6 +192,15 @@ namespace Advanced_Programming_2.Model
                 {
                  streamWriter.WriteLine(records[currentIndex]);
                     updateData();
+                    GraphPoints = new List<DataPoint>();
+                    if (graph != null)
+                    {
+                        for (int i = 0; i < currentIndex; i++)
+                        {
+                            GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graph][i]));
+
+                        }
+                    }
                     Thread.Sleep((int)(100 / speed));
                     currentIndex++;
                     if (currentIndex % 10 == 0)
@@ -358,6 +369,56 @@ namespace Advanced_Programming_2.Model
             {
                 return throttle;
             }
+        }
+
+        private List<string> attributes;
+        public List<string> Attributes
+        {
+            get
+            {
+                return attributes;
+            }
+            set
+            {
+                attributes = value;
+                NotifyPropertyChanged("Attributes");
+
+            }
+
+        }
+
+        private List<DataPoint> graphPoints;
+        public List<DataPoint> GraphPoints
+        {
+            get
+            {
+                return graphPoints;
+            }
+            set
+            {
+                graphPoints = value;
+                NotifyPropertyChanged("GraphPoints");
+
+            }
+        }
+
+        volatile string graph;
+
+        public string Graph
+        {
+            get
+            {
+                return graph;
+            }
+            set
+            {
+                graph = value;
+                NotifyPropertyChanged("Graph");
+            }
+        }
+        public void changeGraph(string attribute)
+        {
+            Graph = attribute;
         }
     }
 }
