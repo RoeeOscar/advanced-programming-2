@@ -358,7 +358,7 @@ namespace Advanced_Programming_2.Model
             {
                 TcpClient client = new TcpClient();
                 StreamWriter streamWriter = connectFG(client);
-                while (isPlaying)
+                while (isPlaying && currentIndex < records.Count())
                 {
                     streamWriter.WriteLine(records[currentIndex]);
                     updateData();

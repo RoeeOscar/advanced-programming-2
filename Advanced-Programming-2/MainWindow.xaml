@@ -9,16 +9,16 @@
         Title="Flight Analyzer" Height="600" Width="800" WindowState="Normal">
 
     <TabControl Name="V_TabControl" Margin="0,0,0,0">
-		<TabItem Header="Welcome">
+        <TabItem Foreground="#13538a"  Header="Welcome">
 
 				<Viewbox Grid.Row="0">
-					<Controls:WelcomeScreenControl Grid.Row="0" x:Name="Welcome" Loaded="Welcome_Loaded"></Controls:WelcomeScreenControl>
+					<Controls:WelcomeScreenControl Grid.Row="0" x:Name="Welcome" ></Controls:WelcomeScreenControl>
 				</Viewbox>
 
 
 		</TabItem>
-		<TabItem Header="Loading Files">
-			<Grid Background="#FFF6E0">
+		<TabItem Foreground="#13538a" Header="Loading Files">
+			<Grid Background="White">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="2*"/>
 					<RowDefinition Height="*"/>
@@ -26,15 +26,15 @@
 				<Viewbox Grid.Row="0">
 					<Controls:FlightFiles Grid.Row="0" x:Name="FlightFilesControl" Height="248" Width="574"></Controls:FlightFiles>
 				</Viewbox>
-				<Viewbox Grid.Row="1" Margin="30,10,30,10">
-					<Button BorderBrush="White" Name="AcceptFiles" Background="#179498" Click="AcceptFiles_Click" Foreground="white">Start Analyzing Flight</Button>
+                <Viewbox Grid.Row="1" Margin="30,10,30,10">
+                    <Button BorderBrush="#13538a" FontFamily="Yu Gothic UI Semibold" BorderThickness="0.5" Name="AcceptFiles" Background="White" Click="AcceptFiles_Click" Foreground="#13538a">Start Analyzing Flight</Button>
 				</Viewbox>
 			</Grid>
 
 
 		</TabItem>
-		<TabItem Header="Flight Analysis">
-            <Grid Background="#FFF6E0">
+        <TabItem Foreground="#13538a" Header="Flight Analysis">
+            <Grid Background="White">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -49,8 +49,8 @@
 
 
         </TabItem>
-        <TabItem Header="Check">
-                <Grid Background="#FFF6E0">
+        <TabItem Foreground="#13538a" Header="Check">
+                <Grid Background="White">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -64,7 +64,7 @@
                 </Grid>
             </TabItem>
 
-        <TabItem Header="Graphs">
+        <TabItem Foreground="#13538a" Header="Graphs">
             <Controls:Graphs x:Name="GraphsControl"></Controls:Graphs>
         </TabItem>
 

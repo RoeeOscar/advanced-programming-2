@@ -51,7 +51,7 @@ namespace Advanced_Programming_2
         {
             if (FlightFilesControl.AcceptFlightFiles())
             {
-                V_TabControl.SelectedIndex = 1;
+                V_TabControl.SelectedIndex = 2;
             }
             else
             {
@@ -60,14 +60,5 @@ namespace Advanced_Programming_2
                 
         }
 
-        private void FlightFilesControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Welcome_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
