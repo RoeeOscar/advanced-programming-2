@@ -9,23 +9,31 @@
         Title="Flight Analyzer" Height="600" Width="800" WindowState="Normal">
 
     <TabControl Name="V_TabControl" Margin="0,0,0,0">
-        <TabItem Header="Loading Files">
-            <Grid Background="#FFF6E0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Viewbox Grid.Row="0">
-                    <Controls:FlightFiles Grid.Row="0" x:Name="FlightFilesControl" Height="248" Width="574"></Controls:FlightFiles>
-                </Viewbox>
-                    <Viewbox Grid.Row="1" Margin="30,10,30,10">
-                    <Button BorderBrush="White" Name="AcceptFiles" Background="#179498" Click="AcceptFiles_Click" Foreground="white">Start Analyzing Flight</Button>
-                        </Viewbox>
-            </Grid>
-           
+		<TabItem Header="Welcome">
 
-        </TabItem>
-        <TabItem Header="Flight Analysis">
+				<Viewbox Grid.Row="0">
+					<Controls:WelcomeScreenControl Grid.Row="0" x:Name="Welcome" Loaded="Welcome_Loaded"></Controls:WelcomeScreenControl>
+				</Viewbox>
+
+
+		</TabItem>
+		<TabItem Header="Loading Files">
+			<Grid Background="#FFF6E0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<Viewbox Grid.Row="0">
+					<Controls:FlightFiles Grid.Row="0" x:Name="FlightFilesControl" Height="248" Width="574"></Controls:FlightFiles>
+				</Viewbox>
+				<Viewbox Grid.Row="1" Margin="30,10,30,10">
+					<Button BorderBrush="White" Name="AcceptFiles" Background="#179498" Click="AcceptFiles_Click" Foreground="white">Start Analyzing Flight</Button>
+				</Viewbox>
+			</Grid>
+
+
+		</TabItem>
+		<TabItem Header="Flight Analysis">
             <Grid Background="#FFF6E0">
 
                 <Grid.RowDefinitions>
