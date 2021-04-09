@@ -182,5 +182,15 @@
   <ItemGroup>
     <Resource Include="MediaPlayer\MediaPlayerView\Images\airplane.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MediaPlayer\MediaPlayerView\Images\leftrightarrow.png" />
+    <Resource Include="MediaPlayer\MediaPlayerView\Images\updownarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="updownarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

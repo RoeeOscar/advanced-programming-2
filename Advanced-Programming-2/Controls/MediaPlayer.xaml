@@ -7,6 +7,97 @@
                  
              mc:Ignorable="d" 
              d:DesignHeight="480">
+
+    <UserControl.Resources>
+        <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border  BorderThickness="0.5" BorderBrush="#13538a" Background="White" Height="7"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SliderRepeatButton1" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border SnapsToDevicePixels="True" Background="#13538a"  BorderThickness="0" BorderBrush="#13538a" Height="7" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0.004"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SliderThumb" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Ellipse Height="9" Width="9" Fill="#13538a" Stroke="#13538a" StrokeThickness="0.5"></Ellipse>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="Slider"  TargetType="Slider">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Track Grid.Row="1" x:Name="PART_Track"   >
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton1}"  Command="Slider.DecreaseLarge" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource SliderThumb}"  />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton}" Command="Slider.IncreaseLarge" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+        <Style x:Key="Horizontal_Slider" TargetType="Slider">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="MinHeight" Value="21" />
+                    <Setter Property="MinWidth" Value="104" />
+                    <Setter Property="Template" Value="{StaticResource Slider}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Vertical_Slider" TargetType="Slider">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="MinHeight" Value="20" />
+                    <Setter Property="MinWidth" Value="200" />
+                    <Setter Property="Template" Value="{StaticResource Slider}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Viewbox>
         <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
@@ -62,7 +153,11 @@
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Grid.Row="0">
                         <!-- Video time slider -->
-                        <Slider Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Value="{Binding VM_CurrentTime, Mode=TwoWay}" Maximum="{Binding VM_TotalTime}" SmallChange="2" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                        <Slider  Style="{StaticResource Horizontal_Slider}"  Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Value="{Binding VM_CurrentTime, Mode=TwoWay}" Maximum="{Binding VM_TotalTime}" SmallChange="2" TickFrequency="1" IsSnapToTickEnabled="True" Background="#FF13538A" BorderBrush="White" OpacityMask="Black">
+                            <Slider.Foreground>
+                                <ImageBrush/>
+                            </Slider.Foreground>
+                        </Slider>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="2">
                         <Viewbox>
@@ -181,7 +276,7 @@
                                     Video Speed:
                                 </Label>
                                 <!-- Video speed slider -->
-                                <Slider Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0.25" Value="{Binding VM_Speed}" TickFrequency="0.25" IsSnapToTickEnabled="true"></Slider>
+                                <Slider   Style="{StaticResource Horizontal_Slider}"  Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0.25" Value="{Binding VM_Speed}" TickFrequency="0.25" IsSnapToTickEnabled="true" Foreground="#FF13538A" Background="#FF13538A"></Slider>
                                 <!-- Current video speed -->
                                 <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="5,0,0,0" Width="30" HorizontalAlignment="Left" VerticalAlignment="center" Text="{Binding VM_Speed}"></TextBlock>
                             </Grid>

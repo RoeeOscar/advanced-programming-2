@@ -221,7 +221,7 @@ namespace Advanced_Programming_2.Model
         {
             set
             {
-                aileron = value * 125;
+                aileron = value;
                 NotifyPropertyChanged("Aileron");
             }
             get
@@ -235,7 +235,7 @@ namespace Advanced_Programming_2.Model
         {
             set
             {
-                elevator = value * 125;
+                elevator = value;
                 NotifyPropertyChanged("Elevator");
             }
             get
@@ -358,7 +358,7 @@ namespace Advanced_Programming_2.Model
             {
                 TcpClient client = new TcpClient();
                 StreamWriter streamWriter = connectFG(client);
-                while (isPlaying)
+                while (isPlaying && currentIndex < records.Count())
                 {
                     streamWriter.WriteLine(records[currentIndex]);
                     updateData();
