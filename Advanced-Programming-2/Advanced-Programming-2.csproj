@@ -78,6 +78,12 @@
     <Compile Include="Controls\MediaPlayer.xaml.cs">
       <DependentUpon>MediaPlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WelcomeScreenControl.xaml.cs">
+      <DependentUpon>WelcomeScreenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\AnomalyDetectionUtil.cs" />
+    <Compile Include="Utilities\CorrelatedFeatures.cs" />
+    <Compile Include="Utilities\Correlations.cs" />
     <Compile Include="ViewModel\DataControlVM.cs" />
     <Compile Include="ViewModel\FlightFilesVM.cs" />
     <Compile Include="ViewModel\GraphsVM.cs" />
@@ -100,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MediaPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WelcomeScreenControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +178,9 @@
   <ItemGroup>
     <Folder Include="MediaPlayer\MediaPlayerViewModel\" />
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MediaPlayer\MediaPlayerView\Images\airplane.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MediaPlayer\MediaPlayerView\Images\leftrightarrow.png" />

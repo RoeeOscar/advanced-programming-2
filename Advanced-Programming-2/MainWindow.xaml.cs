@@ -64,5 +64,10 @@ namespace Advanced_Programming_2
         {
 
         }
+
+        private void Welcome_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

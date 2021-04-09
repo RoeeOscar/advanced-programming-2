@@ -11,6 +11,7 @@ using System.Xml;
 using System.ComponentModel;
 using System.Windows.Forms;
 using OxyPlot;
+using Advanced_Programming_2.Utilities;
 
 //using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
@@ -21,6 +22,7 @@ namespace Advanced_Programming_2.Model
         Dictionary<string, List<double>> dictValues = new Dictionary<string, List<double>>();
         List<string> keys = new List<string>();
         List<List<double>> columns;
+        Correlations correlations;
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Default constructor.
@@ -72,6 +74,8 @@ namespace Advanced_Programming_2.Model
             }
             // There are 10 frames per second.
             TotalTime = records.Count() / 10;
+
+            correlations = new Correlations(dictValues);
         }
 
         // Loading the XML File.
@@ -359,11 +363,13 @@ namespace Advanced_Programming_2.Model
                     streamWriter.WriteLine(records[currentIndex]);
                     updateData();
                     GraphPoints = new List<DataPoint>();
-                    if (graph != null)
+                    CorrelatedGraphPoints = new List<DataPoint>();
+                    if (graphName != null)
                     {
                         for (int i = 0; i < currentIndex; i++)
                         {
-                            GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graph][i]));
+                            GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
+                            CorrelatedGraphPoints.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
 
                         }
                     }
@@ -414,23 +420,66 @@ namespace Advanced_Programming_2.Model
             }
         }
 
-        volatile string graph;
+        volatile string graphName;
 
-        public string Graph
+        public string GraphName
         {
             get
             {
-                return graph;
+                return graphName;
             }
             set
             {
-                graph = value;
+                graphName = value;
                 NotifyPropertyChanged("Graph");
             }
         }
         public void changeGraph(string attribute)
         {
-            Graph = attribute;
+
+            GraphName = attribute;
+            NotifyPropertyChanged("GraphName");
+            List<CorrelatedFeatures> cf = correlations.getCorrelations();
+            foreach (CorrelatedFeatures x in cf)
+            {
+                if (x.getFeature1() == GraphName)
+                {
+                    CorrelatedGraphName = x.getFeature2();
+                }
+            }
+        }
+        /// <summary>
+        /// /////////////////////////
+        /// </summary>
+
+        private List<DataPoint> correlatedGraphPoints;
+        public List<DataPoint> CorrelatedGraphPoints
+        {
+            get
+            {
+                return correlatedGraphPoints;
+            }
+            set
+            {
+                correlatedGraphPoints = value;
+                NotifyPropertyChanged("CorrelatedGraphPoints");
+
+            }
+        }
+
+        volatile string correlatedGraphName;
+
+        public string CorrelatedGraphName
+        {
+            get
+            {
+                return correlatedGraphName;
+            }
+            set
+            {
+                correlatedGraphName = value;
+                NotifyPropertyChanged("CorrelatedGraphName");
+            }
         }
     }
 }

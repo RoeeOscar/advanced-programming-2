@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Advanced_Programming_2.Controls.WelcomeScreenControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Advanced_Programming_2.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<Viewbox>
+		<Grid Margin="0,0,10,10" Height="453" Width="747">
+			<Grid.Background>
+				<ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/airplane.png"/>
+			</Grid.Background>
+			<Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Bottom" Width="100" Margin="0,0,0,350"/>
+			<Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+			<Label Content="Welcome To Flight Analyzer" HorizontalAlignment="Left" Foreground="White" FontSize="25" VerticalAlignment="Top" Height="56" Width="322" Margin="215,10,0,0"/>
+			<Label Content="In the app we can see the appearance of the plane at any given moment from the beginning&#x0a;of the flight to the end at the sampled pace and thus you can learn about aircraft control.&#x0a;The rudders of the aircraft can be seen in the live time of the flight and next &#x0a;to the aircraft is a joystick that illustrates the rudder data." Foreground="White" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,77,0,0" Height="104" Width="686"/>
+			<Label Content="Tabs: &#x0a;Loading Files - Load CSV and XML to start flying&#x0a;Flight analysis - States of the plane (Altimeter, Airspeed, Direction, Yaw, Roll and Pitch) &#x0a;Flight Data - A joystick that displays the position of the rudders as they are displayed from the file" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.644,1.801" Margin="11,186,0,0" Height="134"  FontSize="16" />
+			<Label Content="Good Luck!" FontSize="25" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,372,0,0"/>
+
+		</Grid>
+	</Viewbox>
+</UserControl>
