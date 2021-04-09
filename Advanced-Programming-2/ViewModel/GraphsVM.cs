@@ -62,18 +62,45 @@ namespace Advanced_Programming_2.ViewModel
             model.changeGraph(attribute);
         }
 
-        private string VM_graph;
-        public string VM_Graph
+        private string VM_graphName;
+        public string VM_GraphName
         {
             get
             {
-                return model.Graph;
+                return model.GraphName;
             }
             set
             {
-                VM_graph = value;
+                VM_graphName = value;
             }
         }
-        
+
+                   private List<DataPoint> VM_correlatedGraphPoints;
+        public List<DataPoint> VM_CorrelatedGraphPoints
+        {
+            get
+            {
+                return model.CorrelatedGraphPoints;
+            }
+            set
+            {
+                VM_correlatedGraphPoints = value;
+            }
+        }
+
+        private string VM_correlatedGraphName;
+        public string VM_CorrelatedGraphName
+        {
+            get
+            {
+                return model.CorrelatedGraphName;
+            }
+            set
+            {
+                VM_correlatedGraphName = value;
+            }
+        }
     }
+        
+    
 }

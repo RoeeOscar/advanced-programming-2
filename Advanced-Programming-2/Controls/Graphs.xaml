@@ -23,11 +23,16 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <oxy:Plot Title="{Binding VM_Graph}"  TitleFontSize="10" Margin="0" Background="Transparent">
-            <oxy:Plot.Series>
-                <oxy:LineSeries ItemsSource="{Binding VM_GraphPoints}"/>
-            </oxy:Plot.Series>
-        </oxy:Plot>
+                <oxy:Plot Title="{Binding VM_GraphName}" TitleFontSize="10" Margin="0" Background="Transparent">
+                    <oxy:Plot.Series>
+                        <oxy:LineSeries ItemsSource="{Binding VM_GraphPoints}"/>
+                    </oxy:Plot.Series>
+                </oxy:Plot>
+                <oxy:Plot Title="{Binding VM_CorrelatedGraphName}" Grid.Column="1" TitleFontSize="10" Margin="0" Background="Transparent">
+                    <oxy:Plot.Series>
+                        <oxy:LineSeries ItemsSource="{Binding VM_CorrelatedGraphPoints}"/>
+                    </oxy:Plot.Series>
+                </oxy:Plot>
             </Grid>
             <ListBox Name="listBox" ItemsSource="{Binding VM_Attributes}" SelectionChanged="ListBox_SelectionChanged"></ListBox>
     </Grid>

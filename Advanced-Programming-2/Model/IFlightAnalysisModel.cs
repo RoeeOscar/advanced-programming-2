@@ -48,7 +48,10 @@ namespace Advanced_Programming_2.Model
         List<DataPoint> GraphPoints { set; get; }
         void changeGraph(string attribute);
 
-        string Graph { set; get; }
+        string GraphName { set; get; }
+
+        List<DataPoint> CorrelatedGraphPoints { get; set; }
+        string CorrelatedGraphName { get; set; }
 
     }
 
