@@ -35,7 +35,6 @@ namespace Advanced_Programming_2.Utilities
                     correlatedFeatures.setFeature1(key);
                     correlatedFeatures.setFeature2(maxCorrelationAttribute);
                     correlatedFeatures.setCorrelation(maxCorrelation);
-                    MessageBox.Show(correlatedFeatures.getFeature1());
                     cf.Add(correlatedFeatures);
                 }
             }
