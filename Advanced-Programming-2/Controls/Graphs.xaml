@@ -34,11 +34,14 @@
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <oxy:Plot Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="10" Margin="0" Background="Transparent">
+                <oxy:Plot  Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="10" Margin="0" Background="Transparent">
+                    <oxy:Plot.Axes>
+                        <oxy:LinearAxis Position="Bottom" Title="{Binding VM_GraphName}"/>
+                        <oxy:LinearAxis Position="left" Title="{Binding VM_CorrelatedGraphName}"/>
+                    </oxy:Plot.Axes>
                     <oxy:Plot.Series>
-                        <oxy:LineSeries ItemsSource="{Binding VM_RegressionLine}" Color="#13538a"/>
-                        <oxy:LineSeries ItemsSource="{Binding VM_Last30Points}" Color="Orange" LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="Black"/>
-
+                        <oxy:LineSeries ItemsSource="{Binding VM_RegressionLine}" Color="#13538a" Title=""/>
+                        <oxy:LineSeries  ItemsSource="{Binding VM_Last30Points}" Color="Orange" LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="Black"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>
