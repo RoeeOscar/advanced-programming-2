@@ -42,7 +42,18 @@ namespace Advanced_Programming_2.Utilities
 
         public static double pearson(List<double> numbers1, List<double> numbers2)
         {
-            return covariance(numbers1, numbers2) / ((Math.Sqrt(variance(numbers1))) * (Math.Sqrt(variance(numbers2))));
+            if ((Math.Sqrt(variance(numbers1))==0)|| (Math.Sqrt(variance(numbers2)) == 0)){
+                return 0;
+            }
+                return covariance(numbers1, numbers2) / ((Math.Sqrt(variance(numbers1))) * (Math.Sqrt(variance(numbers2))));
+        }
+
+        public static Line linearRegression(List<double> numbers1, List<double> numbers2)
+        {
+            double a = covariance(numbers1, numbers2) / variance(numbers1);
+            double b = average(numbers2) - a * (average(numbers1));
+
+            return new Line(a, b);
         }
     }
 }
