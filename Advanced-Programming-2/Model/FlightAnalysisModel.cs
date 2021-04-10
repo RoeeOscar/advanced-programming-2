@@ -18,9 +18,9 @@ namespace Advanced_Programming_2.Model
 {
     class FlightAnalysisModel : IFlightAnalysisModel
     {
-        List<string> records = new List<string>();
-        Dictionary<string, List<double>> dictValues = new Dictionary<string, List<double>>();
-        List<string> keys = new List<string>();
+        List<string> records;
+        Dictionary<string, List<double>> dictValues;
+        List<string> keys;
         List<List<double>> columns;
         Correlations correlations;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,14 +33,11 @@ namespace Advanced_Programming_2.Model
         // Sending notifications function.
         private void NotifyPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         // Connecting the client to FlightGear.
-        private StreamWriter connectFG(TcpClient client)
+        private StreamWriter connectToFG(TcpClient client)
         {
             client.Connect("localhost", 5400);
             return new StreamWriter(client.GetStream());
@@ -49,6 +46,7 @@ namespace Advanced_Programming_2.Model
         // Loading the CSV File.
         public void loadCSV(string fileName)
         {
+            records = new List<string>();
             var lines = File.ReadAllLines(fileName);
             foreach (var line in lines)
             {
@@ -68,10 +66,16 @@ namespace Advanced_Programming_2.Model
                 // Differentiate same keys.
                 if (dictValues.ContainsKey(s))
                 {
-                    s += "1";
+                    s += "_2";
                 }
                 dictValues.Add(s, columns[i]);
             }
+
+            Attributes = new List<string>();
+            foreach (string st in dictValues.Keys) {
+                Attributes.Add(st);
+            }
+
             // There are 10 frames per second.
             TotalTime = records.Count() / 10;
 
@@ -81,6 +85,8 @@ namespace Advanced_Programming_2.Model
         // Loading the XML File.
         public void loadXMl(string fileName)
         {
+            keys = new List<string>();
+            dictValues = new Dictionary<string, List<double>>();
             columns = new List<List<double>>();
             XmlDocument doc = new XmlDocument();
             doc.Load(fileName);
@@ -91,7 +97,6 @@ namespace Advanced_Programming_2.Model
                 keys.Add(elemList[i].InnerXml);
                 columns.Add(new List<double>());
             }
-            Attributes = keys;
         }
         #endregion  
         #region Properties
@@ -351,52 +356,56 @@ namespace Advanced_Programming_2.Model
             Throttle = (float)dictValues["throttle"][currentIndex];
         }
 
+        private void updateGraphs()
+        {
+            GraphPoints = new List<DataPoint>();
+            CorrelatedGraphPoints = new List<DataPoint>();
+            RegressionLine = new List<DataPoint>();
+            Last30Points = new List<DataPoint>();
+
+            if (graphName != null)
+            {
+                for (int i = 0; i < currentIndex; i++)
+                {
+                    GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
+                    CorrelatedGraphPoints.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
+                }
+            }
+            List<CorrelatedFeatures> cf = correlations.getCorrelations();
+            foreach (CorrelatedFeatures x in cf)
+            {
+                if (x.getFeature1() == GraphName)
+                {
+                    RegressionLine.Add(new DataPoint(x.getMinXY().getX(), x.getMinXY().getY()));
+                    RegressionLine.Add(new DataPoint(x.getMaxXY().getX(), x.getMaxXY().getY()));
+
+                }
+            }
+            if (graphName != null)
+            {
+                for (int i = currentIndex - 300; i <= currentIndex; i++)
+                {
+                    if (i >= 0)
+                    {
+                        Last30Points.Add(new DataPoint(dictValues[graphName][i], dictValues[correlatedGraphName][i]));
+                    }
+
+                }
+            }
+
+        }
         // Showing the flight video.
         private void showFlight()
         {
             Thread t = new Thread(delegate ()
             {
                 TcpClient client = new TcpClient();
-                StreamWriter streamWriter = connectFG(client);
+                StreamWriter streamWriter = connectToFG(client);
                 while (isPlaying && currentIndex < records.Count())
                 {
                     streamWriter.WriteLine(records[currentIndex]);
                     updateData();
-                    GraphPoints = new List<DataPoint>();
-                    CorrelatedGraphPoints = new List<DataPoint>();
-                    RegressionLine = new List<DataPoint>();
-                    Last30Points = new List<DataPoint>();
-
-                    if (graphName != null)
-                    {
-                        for (int i = 0; i < currentIndex; i++)
-                        {
-                            GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
-                            CorrelatedGraphPoints.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
-                        }
-                    }
-                    List<CorrelatedFeatures> cf = correlations.getCorrelations();
-                    foreach (CorrelatedFeatures x in cf)
-                    {
-                        if (x.getFeature1() == GraphName)
-                        {
-                            RegressionLine.Add(new DataPoint(x.getMinXY().getX(), x.getMinXY().getY()));
-                            RegressionLine.Add(new DataPoint(x.getMaxXY().getX(), x.getMaxXY().getY()));
-
-                        }
-                    }
-                    if (graphName != null)
-                    {
-                        for (int i = currentIndex - 300; i <= currentIndex; i++)
-                        {
-                            if (i >= 0)
-                            {
-                                Last30Points.Add(new DataPoint(dictValues[graphName][i], dictValues[correlatedGraphName][i]));
-                            }
-
-                        }
-                    }
-
+                    updateGraphs();
                     Thread.Sleep((int)(100 / speed));
                     currentIndex++;
                     if (currentIndex % 10 == 0)
@@ -471,9 +480,6 @@ namespace Advanced_Programming_2.Model
                 }
             }
         }
-        /// <summary>
-        /// /////////////////////////
-        /// </summary>
 
         private List<DataPoint> correlatedGraphPoints;
         public List<DataPoint> CorrelatedGraphPoints
