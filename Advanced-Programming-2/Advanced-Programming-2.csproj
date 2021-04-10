@@ -84,6 +84,8 @@
     <Compile Include="Utilities\AnomalyDetectionUtil.cs" />
     <Compile Include="Utilities\CorrelatedFeatures.cs" />
     <Compile Include="Utilities\Correlations.cs" />
+    <Compile Include="Utilities\Line.cs" />
+    <Compile Include="Utilities\Point.cs" />
     <Compile Include="ViewModel\DataControlVM.cs" />
     <Compile Include="ViewModel\FlightFilesVM.cs" />
     <Compile Include="ViewModel\GraphsVM.cs" />
