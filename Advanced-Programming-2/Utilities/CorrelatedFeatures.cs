@@ -10,6 +10,8 @@ namespace Advanced_Programming_2.Utilities
     {
         private string feature1, feature2;
         private double correlation;
+        private Line regressionLine;
+        private Point maxxy, minxy;
       //  private double threshold;
 
         public string getFeature1()
@@ -27,11 +29,20 @@ namespace Advanced_Programming_2.Utilities
             return correlation;
         }
 
-   //     public double getThreshold()
-   //     {
-   //         return threshold;
-   //     }
+        public Line getRegressionLine()
+        {
+            return regressionLine;
+        }
 
+        public Point getMinXY()
+        {
+            return minxy;
+        }
+
+        public Point getMaxXY()
+        {
+            return maxxy;
+        }
         public void setFeature1(string feature)
         {
             feature1 = feature;
@@ -47,9 +58,17 @@ namespace Advanced_Programming_2.Utilities
             correlation = cor;
         }
 
-        public void setThreshold(double th)
+        public void setRegressionLine(Line line) {
+            regressionLine=line;
+        }
+
+        public void setMinXY(Point minxy)
         {
-     //       threshold = th;
+            this.minxy = minxy;
+        }
+        public void setMaxXY(Point maxxy)
+        {
+            this.maxxy = maxxy;
         }
     }
 }

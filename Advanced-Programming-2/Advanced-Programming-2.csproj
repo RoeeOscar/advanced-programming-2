@@ -84,6 +84,8 @@
     <Compile Include="Utilities\AnomalyDetectionUtil.cs" />
     <Compile Include="Utilities\CorrelatedFeatures.cs" />
     <Compile Include="Utilities\Correlations.cs" />
+    <Compile Include="Utilities\Line.cs" />
+    <Compile Include="Utilities\Point.cs" />
     <Compile Include="ViewModel\DataControlVM.cs" />
     <Compile Include="ViewModel\FlightFilesVM.cs" />
     <Compile Include="ViewModel\GraphsVM.cs" />
@@ -181,6 +183,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MediaPlayer\MediaPlayerView\Images\airplane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MediaPlayer\MediaPlayerView\Images\leftrightarrow.png" />
+    <Resource Include="MediaPlayer\MediaPlayerView\Images\updownarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="updownarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

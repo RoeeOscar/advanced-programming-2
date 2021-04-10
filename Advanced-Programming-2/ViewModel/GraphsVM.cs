@@ -100,6 +100,34 @@ namespace Advanced_Programming_2.ViewModel
                 VM_correlatedGraphName = value;
             }
         }
+
+        private List<DataPoint> VM_regressionLine;
+
+        public List<DataPoint> VM_RegressionLine
+        {
+            get
+            {
+                return model.RegressionLine;
+            }
+            set
+            {
+                VM_regressionLine = value;
+            }
+        }
+
+        private List<DataPoint> VM_last30Points;
+
+        public List<DataPoint> VM_Last30Points
+        {
+            get
+            {
+                return model.Last30Points;
+            }
+            set
+            {
+                VM_last30Points = value;
+            }
+        }
     }
         
     
