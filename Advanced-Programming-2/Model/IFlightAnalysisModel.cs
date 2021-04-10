@@ -53,6 +53,8 @@ namespace Advanced_Programming_2.Model
         List<DataPoint> CorrelatedGraphPoints { get; set; }
         string CorrelatedGraphName { get; set; }
 
+        List<DataPoint> RegressionLine { get; set; }
+        List<DataPoint> Last30Points { get; set; }
     }
 
 

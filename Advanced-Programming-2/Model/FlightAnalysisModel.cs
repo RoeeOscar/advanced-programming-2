@@ -364,12 +364,35 @@ namespace Advanced_Programming_2.Model
                     updateData();
                     GraphPoints = new List<DataPoint>();
                     CorrelatedGraphPoints = new List<DataPoint>();
+                    RegressionLine = new List<DataPoint>();
+                    Last30Points = new List<DataPoint>();
+
                     if (graphName != null)
                     {
                         for (int i = 0; i < currentIndex; i++)
                         {
                             GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
                             CorrelatedGraphPoints.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
+                        }
+                    }
+                    List<CorrelatedFeatures> cf = correlations.getCorrelations();
+                    foreach (CorrelatedFeatures x in cf)
+                    {
+                        if (x.getFeature1() == GraphName)
+                        {
+                            RegressionLine.Add(new DataPoint(x.getMinXY().getX(), x.getMinXY().getY()));
+                            RegressionLine.Add(new DataPoint(x.getMaxXY().getX(), x.getMaxXY().getY()));
+
+                        }
+                    }
+                    if (graphName != null)
+                    {
+                        for (int i = currentIndex - 300; i <= currentIndex; i++)
+                        {
+                            if (i >= 0)
+                            {
+                                Last30Points.Add(new DataPoint(dictValues[graphName][i], dictValues[correlatedGraphName][i]));
+                            }
 
                         }
                     }
@@ -481,5 +504,35 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("CorrelatedGraphName");
             }
         }
+        volatile List<DataPoint> regressionLine;
+        public List<DataPoint> RegressionLine
+        {
+            get
+            {
+                return regressionLine;
+            }
+            set
+            {
+                regressionLine = value;
+                NotifyPropertyChanged("RegressionLine");
+
+            }
+        }
+
+        volatile List<DataPoint> last30Points;
+        public List<DataPoint> Last30Points
+        {
+            get
+            {
+                return last30Points;
+            }
+            set
+            {
+                last30Points = value;
+                NotifyPropertyChanged("Last30Points");
+
+            }
+        }
     }
+    
 }
