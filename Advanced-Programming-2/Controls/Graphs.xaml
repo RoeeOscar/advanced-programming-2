@@ -25,12 +25,20 @@
                 </Grid.RowDefinitions>
                 <oxy:Plot Title="{Binding VM_GraphName}" TitleFontSize="10" Margin="0" Background="Transparent">
                     <oxy:Plot.Series>
-                        <oxy:LineSeries ItemsSource="{Binding VM_GraphPoints}"/>
+                        <oxy:LineSeries ItemsSource="{Binding VM_GraphPoints}" Color="#13538a"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
                 <oxy:Plot Title="{Binding VM_CorrelatedGraphName}" Grid.Column="1" TitleFontSize="10" Margin="0" Background="Transparent">
                     <oxy:Plot.Series>
-                        <oxy:LineSeries ItemsSource="{Binding VM_CorrelatedGraphPoints}"/>
+                        <oxy:LineSeries ItemsSource="{Binding VM_CorrelatedGraphPoints}" Color="#13538a"/>
+                    </oxy:Plot.Series>
+                </oxy:Plot>
+
+                <oxy:Plot Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="10" Margin="0" Background="Transparent">
+                    <oxy:Plot.Series>
+                        <oxy:LineSeries ItemsSource="{Binding VM_RegressionLine}" Color="#13538a"/>
+                        <oxy:LineSeries ItemsSource="{Binding VM_Last30Points}" Color="Orange" LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="Black"/>
+
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>
