@@ -35,7 +35,6 @@ namespace Advanced_Programming_2
             MediaPlayerVM mediaPlayerVM = new MediaPlayerVM(model);
             Controls.MediaPlayer MediaPlayerView = new Controls.MediaPlayer();
             MediaPlayerControl1.setViewModel(mediaPlayerVM);
-            MediaPlayerControl2.setViewModel(mediaPlayerVM);
             DataControlVM dataControlVM = new DataControlVM(model);
             DataControl dataControlView = new DataControl();
             DataControl1.setViewModel(dataControlVM);

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Advanced_Programming_2.Controls.Glossary"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Advanced_Programming_2.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Glossary" FontWeight="ExtraBold" FontSize="20" FontFamily="Yu Gothic UI" Foreground="#13538a" HorizontalAlignment="Left"  Margin="0, 8, 0, 10" VerticalAlignment="Center" />
+        <TextBlock TextWrapping="Wrap" Text="Pitch:" Grid.Row="1" FontSize="12" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="Rotation around the side-to-side axis" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top"  Foreground="Gray" FontFamily="Yu Gothic UI Medium" Margin="0,0,0,10"/>
+        <TextBlock TextWrapping="Wrap" Text="Roll:" Grid.Row="3" FontSize="12" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="Rotation around the front-to-back axis" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Top"  Foreground="Gray" FontFamily="Yu Gothic UI Medium" Margin="0,0,0,10" />
+        <TextBlock TextWrapping="Wrap" Text="Yaw:" Grid.Row="5" FontSize="12" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="Rotation around the vertical axis" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Top"  Foreground="Gray" FontFamily="Yu Gothic UI Medium"  Margin="0,0,0,10"/>
+        <TextBlock TextWrapping="Wrap" Text="Altimeter:" Grid.Row="7" FontSize="12" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10" Text="The height of an aircraft above a fixed level" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top"  Foreground="Gray" FontFamily="Yu Gothic UI Medium" />
+        <TextBlock TextWrapping="Wrap" Text="Rudder:" Grid.Column="1" Grid.Row="1" FontSize="12" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="A primary flight control surface which controls rotation about the vertical axis of an aircraft" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Margin="0,0,0,10" Foreground="Gray" FontFamily="Yu Gothic UI Medium" />
+        <TextBlock TextWrapping="Wrap" Text="Throttle:" Grid.Column="1" Grid.Row="3" FontSize="12" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="The means by which the pilot controls the amount of fuel provided to the engine with which it is associated" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Margin="0,0,0,10" Foreground="Gray" FontFamily="Yu Gothic UI Medium" />
+        <TextBlock TextWrapping="Wrap" Text="Aileron:" Grid.Column="1" Grid.Row="5" FontSize="12" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="Forming part of the trailing edge of each wing of a fixed-wing aircraft" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="6" VerticalAlignment="Top" Margin="0,0,0,10" Foreground="Gray" FontFamily="Yu Gothic UI Medium" />
+        <TextBlock TextWrapping="Wrap" Text="Elevator:" Grid.Column="1" Grid.Row="7" FontSize="12" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" VerticalAlignment="Bottom" HorizontalAlignment="Left"  >
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="Controls movement about the lateral axis of an aircraft" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="8" VerticalAlignment="Top"  Foreground="Gray" FontFamily="Yu Gothic UI Medium" />
+    </Grid>
+</UserControl>

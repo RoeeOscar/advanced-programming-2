@@ -17,7 +17,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RepeatButton">
-                        <Border  BorderThickness="0.5" BorderBrush="#13538a" Background="White" Height="7"/>
+                        <Border  BorderThickness="15" BorderBrush="#13538a" Background="White" Height="4"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -28,7 +28,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RepeatButton">
-                        <Border SnapsToDevicePixels="True" Background="#13538a"  BorderThickness="0" BorderBrush="#13538a" Height="7" RenderTransformOrigin="0.5,0.5">
+                        <Border SnapsToDevicePixels="True" Background="#13538a"  BorderThickness="15" BorderBrush="#13538a" Height="4" RenderTransformOrigin="0.5,0.5">
                             <Border.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -48,7 +48,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Thumb">
-                        <Ellipse Height="9" Width="9" Fill="#13538a" Stroke="#13538a" StrokeThickness="0.5"></Ellipse>
+                        <Ellipse Height="9" Width="9" Fill="#13538a" Stroke="#13538a" StrokeThickness="3"></Ellipse>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -129,7 +129,7 @@
 
 
 
-                <StatusBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="2">
+                <StatusBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="2" Background="LightGray">
                     <StatusBar.ItemsPanel>
                         <ItemsPanelTemplate>
                             <Grid>
@@ -148,7 +148,7 @@
                     <StatusBarItem>
                         <Viewbox>
                             <!-- Showing Current time -->
-                            <TextBlock Name="V_CurrentTime" HorizontalAlignment="center" Margin="10,10,0,10" TextWrapping="NoWrap" Text="{Binding VM_CurrentTimeFormat}" VerticalAlignment="center" Foreground="Black" FontSize="10"/>
+                            <TextBlock Name="V_CurrentTime" HorizontalAlignment="center" Margin="10,10,0,10" TextWrapping="NoWrap" Text="{Binding VM_CurrentTimeFormat}" VerticalAlignment="center" Foreground="#13538a" FontSize="10"/>
                         </Viewbox>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Grid.Row="0">
@@ -162,7 +162,7 @@
                     <StatusBarItem Grid.Column="2">
                         <Viewbox>
                             <!-- Showing the total time of the video -->
-                            <TextBlock Name="V_TotalTime" HorizontalAlignment="center" Margin="0,10,10,10" TextWrapping="NoWrap" Text="{Binding VM_TotalTimeFormat}" VerticalAlignment="center" Foreground="Black" FontSize="10"/>
+                            <TextBlock Name="V_TotalTime" HorizontalAlignment="center" Margin="0,10,10,10" TextWrapping="NoWrap" Text="{Binding VM_TotalTimeFormat}" VerticalAlignment="center" Foreground="#13538a" FontSize="10"/>
                         </Viewbox>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,0">
@@ -184,39 +184,21 @@
 
                                 </Grid.ColumnDefinitions>
                                 <Viewbox Stretch="Fill" Grid.Column="0" Margin="2,0,2,0">
-                                    <Canvas Width="30" Height="30" >
-                                        <!-- Skip backward button -->
-                                        <Button Name="V_BackwardButton" Grid.Column="0" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                            <Button.Template>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Grid>
-                                                        <Ellipse HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
-                                                            <Ellipse.Fill>
-                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/pause.png" Stretch="Fill"></ImageBrush>
-                                                            </Ellipse.Fill>
-                                                        </Ellipse>
-
-                                                        <ContentPresenter />
-                                                    </Grid>
-                                                </ControlTemplate>
-                                            </Button.Template>
-                                        </Button>
-                                    </Canvas>
                                 </Viewbox>
 
 
                                 <Viewbox Stretch="Fill" Grid.Column="1" Margin="2,0,2,0">
                                     <Canvas Width="30" Height="30" >
                                         <!-- Play and pause button -->
-                                        <Button x:Name="V_PlayPauseButton" Grid.Column="1" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="V_PlayPauseButton_Click">
+                                        <Button  ToolTip="Play/Pause" x:Name="V_PlayPauseButton" Grid.Column="1" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="V_PlayPauseButton_Click">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid>
-                                                        <Ellipse x:Name="playButtonEll" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
-                                                            <Ellipse.Fill>
+                                                        <Rectangle x:Name="playButtonEll" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
+                                                            <Rectangle.Fill>
                                                                 <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/play.png" Stretch="Fill"></ImageBrush>
-                                                            </Ellipse.Fill>
-                                                        </Ellipse>
+                                                            </Rectangle.Fill>
+                                                        </Rectangle>
                                                         <ContentPresenter />
                                                     </Grid>
                                                 </ControlTemplate>
@@ -228,7 +210,7 @@
                                 <Viewbox Stretch="Fill" Grid.Column="2" Margin="2,0,2,0">
                                     <Canvas Width="30" Height="30" >
                                         <!-- Stop button -->
-                                        <Button Name="V_StopButton" Grid.Column="2" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="V_StopButton_Click">
+                                        <Button Name="V_StopButton"  ToolTip="Start Over" Grid.Column="2" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="V_StopButton_Click">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid>
@@ -245,23 +227,7 @@
                                     </Canvas>
                                 </Viewbox>
                                 <Viewbox Stretch="Fill" Grid.Column="3" Margin="2,0,2,0">
-                                    <Canvas Width="30" Height="30" >
-                                        <!-- Skip forward button -->
-                                        <Button Name="V_ForwardButton" Grid.Column="0" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                            <Button.Template>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Grid>
-                                                        <Ellipse HorizontalAlignment="Stretch"  Width="Auto" Height="Auto" Margin="0,0,-30,-30">
-                                                            <Ellipse.Fill>
-                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/skip_forward.png" Stretch="Fill"></ImageBrush>
-                                                            </Ellipse.Fill>
-                                                        </Ellipse>
-                                                        <ContentPresenter />
-                                                    </Grid>
-                                                </ControlTemplate>
-                                            </Button.Template>
-                                        </Button>
-                                    </Canvas>
+                                
                                 </Viewbox>
                             </Grid>
                             <Grid Grid.Column="0" Margin="0,0,0,0">
@@ -272,13 +238,13 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <!-- Video speed label -->
-                                <Label Grid.Column="0" FontSize="10" Margin="0,3,0,0">
+                                <Label Grid.Column="0" FontSize="10" Foreground="#13538a" Margin="0,3,0,0">
                                     Video Speed:
                                 </Label>
                                 <!-- Video speed slider -->
                                 <Slider   Style="{StaticResource Horizontal_Slider}"  Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0.25" Value="{Binding VM_Speed}" TickFrequency="0.25" IsSnapToTickEnabled="true" Foreground="#FF13538A" Background="#FF13538A"></Slider>
                                 <!-- Current video speed -->
-                                <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="5,0,0,0" Width="30" HorizontalAlignment="Left" VerticalAlignment="center" Text="{Binding VM_Speed}"></TextBlock>
+                                <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="5,0,0,0" Width="30" HorizontalAlignment="Left" Foreground="#13538a" VerticalAlignment="center" Text="{Binding VM_Speed}" ></TextBlock>
                             </Grid>
                         </Grid>
                     </StatusBarItem>

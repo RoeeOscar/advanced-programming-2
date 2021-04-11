@@ -3,97 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Advanced_Programming_2.Controls"
+             xmlns:gauge="clr-namespace:CircularGauge;assembly=CircularGauge"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
-            <Setter Property="SnapsToDevicePixels" Value="true" />
-            <Setter Property="OverridesDefaultStyle" Value="true" />
-            <Setter Property="IsTabStop" Value="false" />
-            <Setter Property="Focusable" Value="false" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RepeatButton">
-                        <Border  BorderThickness="0" BorderBrush="#13538a" Background="#13538a" Height="7"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="SliderRepeatButton1" TargetType="RepeatButton">
-            <Setter Property="SnapsToDevicePixels" Value="true" />
-            <Setter Property="OverridesDefaultStyle" Value="true" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RepeatButton">
-                        <Border SnapsToDevicePixels="True" Background="#13538a"  BorderThickness="0" BorderBrush="#13538a" Height="7"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="SliderThumb" TargetType="Thumb">
-            <Setter Property="SnapsToDevicePixels" Value="true" />
-            <Setter Property="OverridesDefaultStyle" Value="true" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Thumb">
-                        <Ellipse Height="8" Width="8" Fill="White" Stroke="#13538a"></Ellipse>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <ControlTemplate x:Key="Slider"  TargetType="Slider">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Track Grid.Row="1" x:Name="PART_Track"   >
-                    <Track.DecreaseRepeatButton>
-                        <RepeatButton Style="{StaticResource SliderRepeatButton1}"  Command="Slider.DecreaseLarge" />
-                    </Track.DecreaseRepeatButton>
-                    <Track.Thumb>
-                        <Thumb Style="{StaticResource SliderThumb}"  />
-                    </Track.Thumb>
-                    <Track.IncreaseRepeatButton>
-                        <RepeatButton Style="{StaticResource SliderRepeatButton}" Command="Slider.IncreaseLarge" />
-                    </Track.IncreaseRepeatButton>
-                </Track>
-            </Grid>
-        </ControlTemplate>
-        <Style x:Key="Horizontal_Slider" TargetType="Slider">
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="SnapsToDevicePixels" Value="true" />
-            <Setter Property="OverridesDefaultStyle" Value="true" />
-            <Style.Triggers>
-                <Trigger Property="Orientation" Value="Horizontal">
-                    <Setter Property="MinHeight" Value="0" />
-                    <Setter Property="MinWidth" Value="50" />
-                    <Setter Property="Template" Value="{StaticResource Slider}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="Vertical_Slider" TargetType="Slider">
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="SnapsToDevicePixels" Value="true" />
-            <Setter Property="OverridesDefaultStyle" Value="true" />
-            <Style.Triggers>
-                <Trigger Property="Orientation" Value="Vertical">
-                    <Setter Property="MinHeight" Value="0" />
-                    <Setter Property="MinWidth" Value="5" />
-                    <Setter Property="Template" Value="{StaticResource Slider}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Resources>
 
     <Viewbox>
-        <Grid Height="83">
+        <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -103,18 +19,97 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="0"  Width="50" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Altimeter}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="0"  Width="50" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Airspeed}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A"/>
-            <TextBox Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="0"  Width="50" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Direction}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A" />
-            <TextBox Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="0"  Width="50" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Pitch}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A"/>
-            <TextBox Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="0"  Width="50" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Roll}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A" />
-            <TextBox Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,5,0" Grid.Row="0"  Width="50" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Yaw}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A"/>
+            <gauge:CircularGaugeControl Grid.Row="0" Grid.Column="0"   Radius="70"
+  ScaleRadius="45"
+  ScaleStartAngle="120"
+  ScaleSweepAngle="300"
+  PointerLength="23"
+  PointerCapRadius="20"
+  MinValue="-180"
+  MaxValue="180"
+  MajorDivisionsCount="10"
+  MinorDivisionsCount="5"
+  CurrentValue="{Binding VM_Yaw}"
+  RangeIndicatorThickness="10"
+  RangeIndicatorLightRadius="10"
+  ScaleLabelRadius="32"
+  ScaleLabelSize="30,10"
+  ScaleLabelFontSize="8"
+  ScaleLabelForeground="LightGray"
+  MajorTickSize="10,3"
+  MinorTickSize="3,1"
+  MajorTickColor="LightGray"
+  MinorTickColor="White"
+  GaugeBackgroundColor="#13538a"
+  PointerThickness ="10"
+  DialTextOffset="40"
+  DialText="Yaw"
+  FontFamily="Yu Gothic UI Semibold"
+  DialTextColor="LightGray"
+                   DialTextFontSize="20" Width="157" Margin="0,10,0,10"/>
 
-            <Slider Style="{StaticResource Horizontal_Slider}" Minimum="-180" Maximum="180" Grid.Column="2" Grid.Row="1" Value="{Binding VM_Direction}" Margin="9.667,10,10.333,0.333"></Slider>
-            <Slider Style="{StaticResource Horizontal_Slider}" Minimum="-90" Maximum="90" Grid.Column="3" Grid.Row="1" Value="{Binding VM_Pitch}" Margin="9.667,10,10.333,0.333" ></Slider>
-            <Slider Style="{StaticResource Horizontal_Slider}" Minimum="-180" Maximum="180" Grid.Column="4" Grid.Row="1" Value="{Binding VM_Roll}" Margin="9.667,10,10.333,0.333"></Slider>
-            <Slider Style="{StaticResource Horizontal_Slider}" Minimum="-180" Maximum="180" Grid.Column="5" Margin="9.667,10,10.333,0.333" Grid.Row="1" Value="{Binding VM_Yaw}"></Slider>
-
+            <gauge:CircularGaugeControl Grid.Row="0" Grid.Column="1"   Radius="70"
+  ScaleRadius="45"
+  ScaleStartAngle="120"
+  ScaleSweepAngle="300"
+  PointerLength="23"
+  PointerCapRadius="20"
+  MinValue="-180"
+  MaxValue="180"
+  MajorDivisionsCount="10"
+  MinorDivisionsCount="5"
+  CurrentValue="{Binding VM_Roll}"
+  RangeIndicatorThickness="10"
+  RangeIndicatorLightRadius="10"
+  ScaleLabelRadius="32"
+  ScaleLabelSize="30,10"
+  ScaleLabelFontSize="8"
+  ScaleLabelForeground="LightGray"
+  MajorTickSize="10,3"
+  MinorTickSize="3,1"
+  MajorTickColor="LightGray"
+  MinorTickColor="White"
+  GaugeBackgroundColor="#13538a"
+  PointerThickness ="10"
+  DialTextOffset="40"
+  DialText="Roll"
+                                           FontFamily="Yu Gothic UI Semibold"
+  DialTextColor="LightGray"
+                   DialTextFontSize="20" Width="157" Margin="0,0,0,0"/>
+            <gauge:CircularGaugeControl Grid.Row="0" Grid.Column="2"   Radius="70"
+  ScaleRadius="45"
+  ScaleStartAngle="120"
+  ScaleSweepAngle="300"
+  PointerLength="23"
+  PointerCapRadius="20"                                    
+  MinValue="-90"
+  MaxValue="90"
+  MajorDivisionsCount="10"
+  MinorDivisionsCount="5"
+  CurrentValue="{Binding VM_Pitch}"
+  RangeIndicatorThickness="10"
+  RangeIndicatorLightRadius="10"
+  ScaleLabelRadius="32"
+  ScaleLabelSize="30,10"
+  ScaleLabelFontSize="8"
+  ScaleLabelForeground="LightGray"
+  MajorTickSize="10,3"
+  MinorTickSize="3,1"
+  MajorTickColor="LightGray"
+  MinorTickColor="White"
+  GaugeBackgroundColor="#13538a"
+  PointerThickness ="10"
+  DialTextOffset="40"
+  DialText="Pitch"
+                                           FontFamily="Yu Gothic UI Semibold"
+  DialTextColor="LightGray"
+                   DialTextFontSize="20" Width="157" Margin="0,0,0,0"/>
+            <TextBox Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,15,5,0" Grid.Row="1"  Width="100" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Altimeter}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,15,5,0" Grid.Row="1"  Width="100" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Airspeed}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A"/>
+            <TextBox Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,15,5,0" Grid.Row="1"  Width="100" Height="20" IsEnabled="false" FontSize="14" Text="{Binding VM_Direction}" BorderBrush="#FF13538A" FontFamily="Yu Gothic Medium" Foreground="#FF13538A" />
+            <Label Grid.Row="2" Grid.Column="0" Margin="45, 0, 0,0"  FontFamily="Yu Gothic UI Semibold" FontSize="14" Foreground="#13538a">Altimeter</Label>
+            <Label Grid.Row="2" Grid.Column="1" Margin="45, 0, 0,0"  FontFamily="Yu Gothic UI Semibold" FontSize="14" Foreground="#13538a">Airspeed</Label>
+            <Label Grid.Row="2" Grid.Column="2" Margin="45, 0, 0,0"  FontFamily="Yu Gothic UI Semibold" FontSize="14" Foreground="#13538a">Direction</Label>
         </Grid>
     </Viewbox>
 </UserControl>

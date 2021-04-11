@@ -38,32 +38,33 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                 
+                        <Controls:DataControl x:Name="DataControl1" ></Controls:DataControl>
+                        <Controls:Joystick Margin="-50, 0 ,0,0" HorizontalAlignment="Center"  Grid.Row="1" x:Name="JoystickControl"></Controls:Joystick>
+                    <Controls:Glossary x:Name="GlossaryControl" Grid.Column="1" Grid.RowSpan="2"></Controls:Glossary>
+
+                </Grid>
 
 
-                <Controls:DataControl x:Name="DataControl1"></Controls:DataControl>
-                <Controls:MediaPlayer x:Name="MediaPlayerControl1" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
+
+                <Controls:MediaPlayer x:Name="MediaPlayerControl1" Margin="0,0,0,0" Grid.Row="1" Background="LightGray" VerticalAlignment="Bottom"></Controls:MediaPlayer>
 
             </Grid>
 
 
         </TabItem>
-        <TabItem Foreground="#13538a" Header="Check">
-                <Grid Background="White">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-
-                <Controls:Joystick x:Name="JoystickControl"></Controls:Joystick>
-                    <Controls:MediaPlayer x:Name="MediaPlayerControl2" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Controls:MediaPlayer>
-
-                </Grid>
-            </TabItem>
-
         <TabItem Foreground="#13538a" Header="Graphs">
             <Controls:Graphs x:Name="GraphsControl"></Controls:Graphs>
         </TabItem>
