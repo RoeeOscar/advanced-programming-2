@@ -27,7 +27,7 @@
             <WrapPanel  HorizontalAlignment="center" VerticalAlignment="center" DockPanel.Dock="Top">
                 <Viewbox>
                     <!-- Open CSV File Button -->
-                    <Button  Margin="0,7,0,0" Name="V_OpenCSVFileButton" Height="50" Width="140" FontSize="20" BorderBrush="White" Background="White" Foreground="#13538a" Click="V_OpenCSVFileButton_Click" FontFamily="Yu Gothic UI Semibold">Load CSV file</Button>
+                    <Button Cursor="Hand" Margin="0,10,0,0" Name="V_OpenCSVFileButton" Height="50" Width="140" FontSize="20" BorderBrush="White" Background="White" Foreground="#13538a" Click="V_OpenCSVFileButton_Click" FontFamily="Yu Gothic UI Semibold">Load CSV file</Button>
                 </Viewbox>
             </WrapPanel>
         </DockPanel>
@@ -38,11 +38,11 @@
             </Viewbox>
         </DockPanel>
 
-        <DockPanel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="7,7,0,0" >
+        <DockPanel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"  >
             <WrapPanel HorizontalAlignment="center" VerticalAlignment="center" DockPanel.Dock="Top">
                 <Viewbox>
                     <!-- Open XML File Button -->
-                    <Button Name="V_OpenXMLFileButton" FontFamily="Yu Gothic UI Semibold" Click="V_OpenXMLFileButton_Click" Margin="0" Height="50" Width="140" FontSize="20" BorderBrush="White"  Background="White" Foreground="#13538a">Load XML file</Button>
+                    <Button  Cursor="Hand" Name="V_OpenXMLFileButton" FontFamily="Yu Gothic UI Semibold" Click="V_OpenXMLFileButton_Click"  Height="50" Width="140" FontSize="20" BorderBrush="White" Margin="0,10,0,0" Background="White" Foreground="#13538a">Load XML file</Button>
                 </Viewbox>
             </WrapPanel>
         </DockPanel>

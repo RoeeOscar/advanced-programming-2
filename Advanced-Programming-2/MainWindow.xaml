@@ -27,7 +27,7 @@
 					<Controls:FlightFiles Grid.Row="0" x:Name="FlightFilesControl" Height="248" Width="574"></Controls:FlightFiles>
 				</Viewbox>
                 <Viewbox Grid.Row="1" Margin="30,10,30,10">
-                    <Button BorderBrush="#13538a" FontFamily="Yu Gothic UI Semibold" BorderThickness="0.5" Name="AcceptFiles" Background="White" Click="AcceptFiles_Click" Foreground="#13538a">Start Analyzing Flight</Button>
+                    <Button BorderBrush="#13538a" FontFamily="Yu Gothic UI Semibold" BorderThickness="0.5" Name="AcceptFiles" Background="White" Cursor="Hand" Click="AcceptFiles_Click" Foreground="#13538a">Start Analyzing Flight</Button>
 				</Viewbox>
 			</Grid>
 

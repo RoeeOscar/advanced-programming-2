@@ -23,18 +23,18 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <oxy:Plot Title="{Binding VM_GraphName}" TitleFontSize="10" Margin="0" Background="Transparent">
+                <oxy:Plot Title="{Binding VM_GraphName}" TitleFontSize="10" Margin="0"  TextColor="#13538a" Background="Transparent">
                     <oxy:Plot.Series>
                         <oxy:LineSeries ItemsSource="{Binding VM_GraphPoints}" Color="#13538a"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
-                <oxy:Plot Title="{Binding VM_CorrelatedGraphName}" Grid.Column="1" TitleFontSize="10" Margin="0" Background="Transparent">
+                <oxy:Plot Title="{Binding VM_CorrelatedGraphName}" Grid.Column="1" TitleFontSize="10" Margin="0" TextColor="#13538a" Background="Transparent">
                     <oxy:Plot.Series>
                         <oxy:LineSeries ItemsSource="{Binding VM_CorrelatedGraphPoints}" Color="#13538a"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <oxy:Plot  Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="10" Margin="0" Background="Transparent">
+                <oxy:Plot TextColor="#13538a" Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="10"  Margin="0" Background="Transparent">
                     <oxy:Plot.Axes>
                         <oxy:LinearAxis Position="Bottom" Title="{Binding VM_GraphName}"/>
                         <oxy:LinearAxis Position="left" Title="{Binding VM_CorrelatedGraphName}"/>
@@ -45,7 +45,22 @@
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>
-            <ListBox Name="listBox" ItemsSource="{Binding VM_Attributes}" SelectionChanged="ListBox_SelectionChanged"></ListBox>
+            <ListBox Name="listBox" ItemsSource="{Binding VM_Attributes}" SelectionChanged="ListBox_SelectionChanged">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem" >
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True" >
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Background" Value="LightGray" />
+                                <Setter Property="Foreground" Value="#135381" />
+                            </Trigger>
+                        </Style.Triggers>
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                        </Style.Resources>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
     </Grid>
     </Viewbox>
 </UserControl>

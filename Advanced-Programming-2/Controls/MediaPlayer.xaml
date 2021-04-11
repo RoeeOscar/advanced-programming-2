@@ -153,7 +153,7 @@
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Grid.Row="0">
                         <!-- Video time slider -->
-                        <Slider  Style="{StaticResource Horizontal_Slider}"  Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Value="{Binding VM_CurrentTime, Mode=TwoWay}" Maximum="{Binding VM_TotalTime}" SmallChange="2" TickFrequency="1" IsSnapToTickEnabled="True" Background="#FF13538A" BorderBrush="White" OpacityMask="Black">
+                        <Slider Cursor="Hand" Style="{StaticResource Horizontal_Slider}"  Name="V_TimeSlider"  Margin="0,0,0,0"  VerticalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="1" Value="{Binding VM_CurrentTime, Mode=TwoWay}" Maximum="{Binding VM_TotalTime}" SmallChange="2" TickFrequency="1" IsSnapToTickEnabled="True" Background="#FF13538A" BorderBrush="White" OpacityMask="Black">
                             <Slider.Foreground>
                                 <ImageBrush/>
                             </Slider.Foreground>
@@ -190,7 +190,7 @@
                                 <Viewbox Stretch="Fill" Grid.Column="1" Margin="2,0,2,0">
                                     <Canvas Width="30" Height="30" >
                                         <!-- Play and pause button -->
-                                        <Button  ToolTip="Play/Pause" x:Name="V_PlayPauseButton" Grid.Column="1" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="V_PlayPauseButton_Click">
+                                        <Button Cursor="Hand" ToolTip="Play/Pause" x:Name="V_PlayPauseButton" Grid.Column="1" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="V_PlayPauseButton_Click">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid>
@@ -210,7 +210,7 @@
                                 <Viewbox Stretch="Fill" Grid.Column="2" Margin="2,0,2,0">
                                     <Canvas Width="30" Height="30" >
                                         <!-- Stop button -->
-                                        <Button Name="V_StopButton"  ToolTip="Start Over" Grid.Column="2" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="V_StopButton_Click">
+                                        <Button Name="V_StopButton"  ToolTip="Start Over" Cursor="Hand" Grid.Column="2" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="V_StopButton_Click">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Grid>
@@ -242,7 +242,7 @@
                                     Video Speed:
                                 </Label>
                                 <!-- Video speed slider -->
-                                <Slider   Style="{StaticResource Horizontal_Slider}"  Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0.25" Value="{Binding VM_Speed}" TickFrequency="0.25" IsSnapToTickEnabled="true" Foreground="#FF13538A" Background="#FF13538A"></Slider>
+                                <Slider  Cursor="Hand" Style="{StaticResource Horizontal_Slider}"  Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0.25" Value="{Binding VM_Speed}" TickFrequency="0.25" IsSnapToTickEnabled="true" Foreground="#FF13538A" Background="#FF13538A"></Slider>
                                 <!-- Current video speed -->
                                 <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="5,0,0,0" Width="30" HorizontalAlignment="Left" Foreground="#13538a" VerticalAlignment="center" Text="{Binding VM_Speed}" ></TextBlock>
                             </Grid>
