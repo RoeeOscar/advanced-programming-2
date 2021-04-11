@@ -7,6 +7,45 @@
              xmlns:oxy="http://oxyplot.org/wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <AlternationConverter x:Key="BackgroundConverter">
+            <SolidColorBrush Color="#D3D3D3" />
+            <SolidColorBrush Color="White" />
+        </AlternationConverter>
+
+        <Style x:Key="Style2" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="Border"  Padding="7" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" >
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="FontWeight" Value="ExtraBold"/>
+                                <Setter Property="FontSize" Value="15"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#135381"/>
+                                <Setter TargetName="Border" Property="BorderThickness" Value="3"/>
+                            </Trigger>
+                       
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Style1" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource Style2}">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self},
+                 Path=(ItemsControl.AlternationIndex),
+                 Converter={StaticResource BackgroundConverter}}"/>
+            <Setter Property="Foreground" Value="#13538a"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontFamily" Value="Yu Gothic UI Semibold"/>
+
+        </Style>
+    </UserControl.Resources>
     <Viewbox VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
         <Grid Width="800" Height="450">
@@ -23,21 +62,21 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <oxy:Plot Title="{Binding VM_GraphName}" TitleFontSize="10" Margin="0"  TextColor="#13538a" Background="Transparent">
+                <oxy:Plot Title="{Binding VM_GraphName}" TitleFontSize="15" FontFamily="Yu Gothic UI Semibold" Margin="0"  TextColor="#13538a" Background="Transparent">
                     <oxy:Plot.Series>
                         <oxy:LineSeries ItemsSource="{Binding VM_GraphPoints}" Color="#13538a"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
-                <oxy:Plot Title="{Binding VM_CorrelatedGraphName}" Grid.Column="1" TitleFontSize="10" Margin="0" TextColor="#13538a" Background="Transparent">
+                <oxy:Plot Title="{Binding VM_CorrelatedGraphName}" Grid.Column="1" TitleFontSize="15" Margin="0" TextColor="#13538a" FontFamily="Yu Gothic UI Semibold" Background="Transparent">
                     <oxy:Plot.Series>
                         <oxy:LineSeries ItemsSource="{Binding VM_CorrelatedGraphPoints}" Color="#13538a"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <oxy:Plot TextColor="#13538a" Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="10"  Margin="0" Background="Transparent">
+                <oxy:Plot TextColor="#13538a" Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="15" FontFamily="Yu Gothic UI Semibold" Margin="0" Background="Transparent">
                     <oxy:Plot.Axes>
-                        <oxy:LinearAxis Position="Bottom" Title="{Binding VM_GraphName}"/>
-                        <oxy:LinearAxis Position="left" Title="{Binding VM_CorrelatedGraphName}"/>
+                        <oxy:LinearAxis TitleFontSize="15" Font="Yu Gothic UI Semibold" Position="Bottom" Title="{Binding VM_GraphName}"/>
+                        <oxy:LinearAxis TitleFontSize="15" Font="Yu Gothic UI Semibold" Position="left" Title="{Binding VM_CorrelatedGraphName}"/>
                     </oxy:Plot.Axes>
                     <oxy:Plot.Series>
                         <oxy:LineSeries ItemsSource="{Binding VM_RegressionLine}" Color="#13538a" Title=""/>
@@ -45,8 +84,8 @@
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>
-            <ListBox Name="listBox" ItemsSource="{Binding VM_Attributes}" SelectionChanged="ListBox_SelectionChanged">
-                <ListBox.ItemContainerStyle>
+            <ListBox Cursor="Hand" Name="listBox" ItemsSource="{Binding VM_Attributes}" AlternationCount="2" ItemContainerStyle="{StaticResource Style1}" SelectionChanged="ListBox_SelectionChanged">
+             <!--   <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem" >
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True" >
@@ -59,7 +98,7 @@
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
                         </Style.Resources>
                     </Style>
-                </ListBox.ItemContainerStyle>
+                </ListBox.ItemContainerStyle>-->
             </ListBox>
     </Grid>
     </Viewbox>
