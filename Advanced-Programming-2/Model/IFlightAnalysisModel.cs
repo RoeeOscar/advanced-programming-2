@@ -54,6 +54,8 @@ namespace Advanced_Programming_2.Model
         string CorrelatedGraphName { get; set; }
         List<DataPoint> RegressionLine { get; set; }
         List<DataPoint> Last30Points { get; set; }
+
+        void loadDLL(string DLLfile);
     }
 
 
