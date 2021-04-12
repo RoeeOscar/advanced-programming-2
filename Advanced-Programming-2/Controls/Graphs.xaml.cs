@@ -1,4 +1,5 @@
 ﻿using Advanced_Programming_2.ViewModel;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,18 @@ namespace Advanced_Programming_2.Controls
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             vm.changeGraph(listBox.SelectedItem.ToString());
+        }
+
+        private void V_LoadDLL_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "DLL Files (.dll)|*.dll";
+            openFileDialog.InitialDirectory = "c:\\";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                vm.loadDLL(openFileDialog.FileName);
+            }
         }
     }
 }

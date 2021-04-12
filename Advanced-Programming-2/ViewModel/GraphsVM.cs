@@ -128,6 +128,11 @@ namespace Advanced_Programming_2.ViewModel
                 VM_last30Points = value;
             }
         }
+
+        public void loadDLL(string DLLfile)
+        {
+            model.loadDLL(DLLfile);
+        }
     }
         
     

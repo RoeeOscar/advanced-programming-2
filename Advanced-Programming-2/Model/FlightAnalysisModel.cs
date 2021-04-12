@@ -12,6 +12,9 @@ using System.ComponentModel;
 //using System.Windows.Forms;
 using OxyPlot;
 using Advanced_Programming_2.Utilities;
+using System.Reflection;
+using OxyPlot.Series;
+using System.Windows.Forms;
 
 //using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
@@ -25,6 +28,8 @@ namespace Advanced_Programming_2.Model
         Correlations correlations;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private string csvFileName, xmlFileName;
+
         // Default constructor.
         public FlightAnalysisModel()
         {
@@ -37,7 +42,7 @@ namespace Advanced_Programming_2.Model
         }
 
         // Connecting the client to FlightGear.
-        private StreamWriter connectToFG(TcpClient client)
+        private StreamWriter connectToFG(TcpClient client)  
         {
             client.Connect("localhost", 5400);
             return new StreamWriter(client.GetStream());
@@ -46,6 +51,7 @@ namespace Advanced_Programming_2.Model
         // Loading the CSV File.
         public void loadCSV(string fileName)
         {
+            this.csvFileName = fileName;
             records = new List<string>();
             var lines = File.ReadAllLines(fileName);
             foreach (var line in lines)
@@ -85,6 +91,7 @@ namespace Advanced_Programming_2.Model
         // Loading the XML File.
         public void loadXMl(string fileName)
         {
+            this.xmlFileName = fileName;
             keys = new List<string>();
             dictValues = new Dictionary<string, List<double>>();
             columns = new List<List<double>>();
@@ -538,6 +545,41 @@ namespace Advanced_Programming_2.Model
                 NotifyPropertyChanged("Last30Points");
 
             }
+        }
+
+        public string DllFileName { get; set; }
+        public Assembly AssemblyofDLL { get; set; }
+        public Type AnomalyDetector { get; set; }
+        public object AnomalyDetectionAlg { get; set;}
+        public MethodInfo LearnNormalMethod { get; set; }
+        public MethodInfo DetectMethod { get; set; }
+        public MethodInfo DrawShapeMethod { get; set; }
+        List<Tuple<string, string, int>> anomalies;
+        LineSeries shape;
+        public void loadDLL(string DLLfile)
+        {
+            DllFileName = DLLfile;
+
+            this.AssemblyofDLL = Assembly.LoadFile("C:/Users/roee0/source/repos/LinearRegressionLineAnomaliesDetector/LinearRegressionLineAnomaliesDetector/bin/Debug/netcoreapp3.0/linearRegressionLineAnomaliesDetector.dll");
+
+            this.AnomalyDetector = AssemblyofDLL.GetType("linearRegressionLineAnomaliesDetector.LinearRegressionLineAnomaliesDetector");
+            string[] parameters = { xmlFileName };
+            this.AnomalyDetectionAlg = Activator.CreateInstance(this.AnomalyDetector, parameters);
+
+            this.LearnNormalMethod = AnomalyDetector.GetMethod("learnNormal");
+            parameters = new string[] { "C:/Users/roee0/source/repos/Advanced-Programming-2/Advanced-Programming-2/Model/reg_flight.csv" };
+            this.LearnNormalMethod.Invoke(AnomalyDetectionAlg, parameters);
+
+            this.DetectMethod = AnomalyDetector.GetMethod("detect");
+            parameters = new string[] { csvFileName };
+            anomalies = (List<Tuple<string,string,int>>) DetectMethod.Invoke(AnomalyDetectionAlg, parameters);
+
+            foreach (Tuple<string,string,int> a in anomalies)
+            {
+                MessageBox.Show(a.Item1+" : "+a.Item2+" : "+a.Item3);
+            }
+
+            this.DrawShapeMethod = AnomalyDetector.GetMethod("drawShape");
         }
     }
     
