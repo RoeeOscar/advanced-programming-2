@@ -29,7 +29,7 @@
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#135381"/>
                                 <Setter TargetName="Border" Property="BorderThickness" Value="3"/>
                             </Trigger>
-                       
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -49,10 +49,10 @@
     <Viewbox VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
         <Grid Width="800" Height="450">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -84,8 +84,8 @@
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>
-            <ListBox Cursor="Hand" Name="listBox" ItemsSource="{Binding VM_Attributes}" AlternationCount="2" ItemContainerStyle="{StaticResource Style1}" SelectionChanged="ListBox_SelectionChanged">
-             <!--   <ListBox.ItemContainerStyle>
+            <ListBox Cursor="Hand" Name="listBox" ItemsSource="{Binding VM_Attributes}" AlternationCount="2" ItemContainerStyle="{StaticResource Style1}" SelectionChanged="ListBox_SelectionChanged" Margin="0,0,0.4,41">
+                <!--   <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem" >
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True" >
@@ -100,6 +100,7 @@
                     </Style>
                 </ListBox.ItemContainerStyle>-->
             </ListBox>
-    </Grid>
+            <Button Content="Load Anomaly Detector DLL" Cursor="Hand" Name="V_LoadDLL" FontFamily="Yu Gothic UI Semibold" Height="26" Width="266" FontSize="16" BorderBrush="#13538a" Margin="0,414,0.4,10" Background="White" Foreground="#13538a" Click="V_LoadDLL_Click"/>
+        </Grid>
     </Viewbox>
 </UserControl>
