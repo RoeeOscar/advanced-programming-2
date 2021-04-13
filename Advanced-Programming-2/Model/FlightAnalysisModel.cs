@@ -12,9 +12,9 @@ using System.ComponentModel;
 //using System.Windows.Forms;
 using OxyPlot;
 using Advanced_Programming_2.Utilities;
-using System.Reflection;
 using OxyPlot.Series;
 using System.Windows.Forms;
+using System.Reflection;
 
 //using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
@@ -470,14 +470,13 @@ namespace Advanced_Programming_2.Model
             set
             {
                 graphName = value;
-                NotifyPropertyChanged("Graph");
+                NotifyPropertyChanged("GraphName");
             }
         }
         public void changeGraph(string attribute)
         {
 
             GraphName = attribute;
-            NotifyPropertyChanged("GraphName");
             List<CorrelatedFeatures> cf = correlations.getCorrelations();
             foreach (CorrelatedFeatures x in cf)
             {
@@ -548,8 +547,8 @@ namespace Advanced_Programming_2.Model
         }
 
         public string DllFileName { get; set; }
-        public Assembly AssemblyofDLL { get; set; }
-        public Type AnomalyDetector { get; set; }
+        public Assembly DLLFileAssembly { get; set; }
+         public Type AnomalyDetector { get; set; }
         public object AnomalyDetectionAlg { get; set;}
         public MethodInfo LearnNormalMethod { get; set; }
         public MethodInfo DetectMethod { get; set; }
@@ -560,15 +559,17 @@ namespace Advanced_Programming_2.Model
         {
             DllFileName = DLLfile;
 
-            this.AssemblyofDLL = Assembly.LoadFile("C:/Users/roee0/source/repos/LinearRegressionLineAnomaliesDetector/LinearRegressionLineAnomaliesDetector/bin/Debug/netcoreapp3.0/linearRegressionLineAnomaliesDetector.dll");
+            this.DLLFileAssembly = Assembly.LoadFile(DLLfile);
 
-            this.AnomalyDetector = AssemblyofDLL.GetType("linearRegressionLineAnomaliesDetector.LinearRegressionLineAnomaliesDetector");
+            this.AnomalyDetector = DLLFileAssembly.GetType("circleAnomalyDetector.AnomalyDetector");
+
+
             string[] parameters = { xmlFileName };
-            this.AnomalyDetectionAlg = Activator.CreateInstance(this.AnomalyDetector, parameters);
-
-            this.LearnNormalMethod = AnomalyDetector.GetMethod("learnNormal");
+           this.AnomalyDetectionAlg = Activator.CreateInstance(this.AnomalyDetector, parameters);
+          this.LearnNormalMethod = AnomalyDetector.GetMethod("learnNormal");
             parameters = new string[] { "C:/Users/roee0/source/repos/Advanced-Programming-2/Advanced-Programming-2/Model/reg_flight.csv" };
             this.LearnNormalMethod.Invoke(AnomalyDetectionAlg, parameters);
+            MessageBox.Show("ff");
 
             this.DetectMethod = AnomalyDetector.GetMethod("detect");
             parameters = new string[] { csvFileName };
@@ -576,10 +577,10 @@ namespace Advanced_Programming_2.Model
 
             foreach (Tuple<string,string,int> a in anomalies)
             {
-                MessageBox.Show(a.Item1+" : "+a.Item2+" : "+a.Item3);
+                Console.WriteLine(a.Item1+" : "+a.Item2+" : "+a.Item3);
             }
 
-            this.DrawShapeMethod = AnomalyDetector.GetMethod("drawShape");
+         this.DrawShapeMethod = AnomalyDetector.GetMethod("drawShape");
         }
     }
     
