@@ -73,14 +73,14 @@
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <oxy:Plot TextColor="#13538a" Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="15" FontFamily="Yu Gothic UI Semibold" Margin="0" Background="Transparent">
+                <oxy:Plot  TextColor="#13538a" Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="15" FontFamily="Yu Gothic UI Semibold" Margin="0" Background="Transparent" LegendTitle="Legend" LegendTitleColor="Black" LegendTextColor="Tomato">
                     <oxy:Plot.Axes>
                         <oxy:LinearAxis TitleFontSize="15" Font="Yu Gothic UI Semibold" Position="Bottom" Title="{Binding VM_GraphName}"/>
                         <oxy:LinearAxis TitleFontSize="15" Font="Yu Gothic UI Semibold" Position="left" Title="{Binding VM_CorrelatedGraphName}"/>
                     </oxy:Plot.Axes>
-                    <oxy:Plot.Series>
-                        <oxy:LineSeries ItemsSource="{Binding VM_RegressionLine}" Color="#13538a" Title=""/>
-                        <oxy:LineSeries  ItemsSource="{Binding VM_Last30Points}" Color="Orange" LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="Black"/>
+                <oxy:Plot.Series>
+                        <oxy:LineSeries Title="Linear Regression Line" ItemsSource="{Binding VM_RegressionLine}" Color="#13538a"/>
+                        <oxy:LineSeries Title="Last 30 Seconds" ItemsSource="{Binding VM_Last30Points}" Color="Transparent" LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="Black"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>
