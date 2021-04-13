@@ -30,7 +30,7 @@
   MajorDivisionsCount="10"
   MinorDivisionsCount="5"
   CurrentValue="{Binding VM_Yaw}"
-  RangeIndicatorThickness="10"
+  RangeIndicatorThickness="8"
   RangeIndicatorLightRadius="10"
   ScaleLabelRadius="32"
   ScaleLabelSize="30,10"
