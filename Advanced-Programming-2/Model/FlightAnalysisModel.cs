@@ -623,7 +623,7 @@ namespace Advanced_Programming_2.Model
         {
             DllFileName = DLLfile;
 
-            this.DLLFileAssembly = Assembly.LoadFile(DLLfile);
+            this.DLLFileAssembly = Assembly.UnsafeLoadFrom(DLLfile);
 
             string className = Path.GetFileNameWithoutExtension(DLLfile);
             this.AnomalyDetector = DLLFileAssembly.GetType(className+".AnomalyDetector");
