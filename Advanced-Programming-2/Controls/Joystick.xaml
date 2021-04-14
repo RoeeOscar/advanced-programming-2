@@ -243,9 +243,9 @@
                 </Canvas>
             </Canvas>
             <Label Content="Elevator" Grid.Column="1"  FontSize="16" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" HorizontalAlignment="Left" Margin="424.667,46,-101,0" VerticalAlignment="Top" Width="117" Height="51"/>
-            <Image Source="/MediaPlayer/MediaPlayerView/Images/updownarrow.png" HorizontalAlignment="Left" Margin="391.333,34,0,82.333" Width="40" RenderTransformOrigin="0.25,-0.225" Grid.Column="1"/>
+            <Image Source="/Controls/Images/updownarrow.png" HorizontalAlignment="Left" Margin="391.333,34,0,82.333" Width="40" RenderTransformOrigin="0.25,-0.225" Grid.Column="1"/>
             <Label Content="Aileron" Grid.Column="1" FontSize="16" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" HorizontalAlignment="Left" Margin="424.333,10,-51,0" VerticalAlignment="Top" Height="36" Width="68"/>
-            <Image Source="/MediaPlayer/MediaPlayerView/Images/leftrightarrow.png" HorizontalAlignment="Left" Margin="391.333,0,0,116.333" Width="40" RenderTransformOrigin="0.25,-0.225" Grid.Column="1"/>
+            <Image Source="/Controls/Images/leftrightarrow.png" HorizontalAlignment="Left" Margin="391.333,0,0,116.333" Width="40" RenderTransformOrigin="0.25,-0.225" Grid.Column="1"/>
             <Label Content="Throttle" HorizontalAlignment="Left" FontSize="16" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" Margin="29,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.533,1.663" Grid.RowSpan="2"/>
             <Label Content="Rudder" Grid.Column="1"  FontSize="16" FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" HorizontalAlignment="Left" Margin="213.667,21,0,-0.333" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.774,0.573"/>
         </Grid>

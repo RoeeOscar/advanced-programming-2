@@ -176,39 +176,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MediaPlayer\MediaPlayerView\Images\play.png" />
+    <Resource Include="Controls\Images\play.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MediaPlayer\MediaPlayerView\Images\pause.png" />
+    <Resource Include="Controls\Images\stop.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MediaPlayer\MediaPlayerView\Images\stop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MediaPlayer\MediaPlayerView\Images\skip_forward.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MediaPlayer\MediaPlayerView\Images\skip_backward.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MediaPlayer\MediaPlayerViewModel\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MediaPlayer\MediaPlayerView\Images\airplane.png" />
+    <Resource Include="Controls\Images\airplane.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MediaPlayer\MediaPlayerView\Images\leftrightarrow.png" />
-    <Resource Include="MediaPlayer\MediaPlayerView\Images\updownarrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="updownarrow.png" />
+    <Resource Include="Controls\Images\leftrightarrow.png" />
+    <Resource Include="Controls\Images\updownarrow.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Plane.ico" />
+    <Resource Include="Controls\Images\Plane.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -196,7 +196,7 @@
                                                     <Grid>
                                                         <Rectangle x:Name="playButtonEll" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
                                                             <Rectangle.Fill>
-                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/play.png" Stretch="Fill"></ImageBrush>
+                                                                <ImageBrush ImageSource="/Controls/Images/play.png" Stretch="Fill"></ImageBrush>
                                                             </Rectangle.Fill>
                                                         </Rectangle>
                                                         <ContentPresenter />
@@ -216,7 +216,7 @@
                                                     <Grid>
                                                         <Ellipse HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0,0,-30,-30">
                                                             <Ellipse.Fill>
-                                                                <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/stop.png" Stretch="Fill"></ImageBrush>
+                                                                <ImageBrush ImageSource="/Controls/Images/stop.png" Stretch="Fill"></ImageBrush>
                                                             </Ellipse.Fill>
                                                         </Ellipse>
                                                         <ContentPresenter />
