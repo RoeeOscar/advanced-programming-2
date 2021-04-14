@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
-using System.Net;
 using System.IO;
 using System.Threading;
 using System.Xml;
@@ -12,8 +11,6 @@ using System.ComponentModel;
 //using System.Windows.Forms;
 using OxyPlot;
 using Advanced_Programming_2.Utilities;
-using OxyPlot.Series;
-using System.Windows.Forms;
 using System.Reflection;
 using System.Collections.ObjectModel;
 
@@ -367,22 +364,24 @@ namespace Advanced_Programming_2.Model
 
         private void updateGraphs()
         {
-     //       GraphPoints = new List<DataPoint>();
-     //       CorrelatedGraphPoints = new List<DataPoint>();
-            Last30Points = new List<DataPoint>();
-
+            //       GraphPoints = new List<DataPoint>();
+            //       CorrelatedGraphPoints = new List<DataPoint>();
+            //       Last30Points = new List<DataPoint>();
+            List<DataPoint> l30 = new List<DataPoint>();
 
             List<DataPoint> l1 = new List<DataPoint>();
             List<DataPoint> l2 = new List<DataPoint>();
-
+            string gn = graphName;
+            string cgn = correlatedGraphName;
+            int ci = currentIndex;
             if (graphName != null)
             {
-                for (int i = 0; i < currentIndex; i++)
+                for (int i = 0; i < ci; i++)
                 {
                     //        GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
                     //        CorrelatedGraphPoints.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
-                    l1.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
-                    l2.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
+                    l1.Add(new DataPoint(((double)i / 10), dictValues[gn][i]));
+                    l2.Add(new DataPoint(((double)i / 10), dictValues[cgn][i]));
                 }
             }
             GraphPoints = l1;
@@ -391,18 +390,19 @@ namespace Advanced_Programming_2.Model
             if (graphName != null)
             {
                 LastAnomalies = new List<DataPoint>();
-                for (int i = currentIndex - 300; i <= currentIndex; i++)
+                for (int i = ci - 300; i <= ci; i++)
                 {
                     if (i >= 0)
                     {
-                        Last30Points.Add(new DataPoint(dictValues[graphName][i], dictValues[correlatedGraphName][i]));
+                        l30.Add(new DataPoint(dictValues[gn][i], dictValues[cgn][i]));
                         if (CurrentAnomalies!=null && CurrentAnomalies.Contains(i))
                         {
-                            LastAnomalies.Add(new DataPoint(dictValues[graphName][i], dictValues[correlatedGraphName][i]));
+                            LastAnomalies.Add(new DataPoint(dictValues[gn][i], dictValues[cgn][i]));
                         }
                     }
 
                 }
+                Last30Points = l30;
             }
 
         }
@@ -448,7 +448,7 @@ namespace Advanced_Programming_2.Model
             }
 
         }
-
+        // Point of the graph
         private List<DataPoint> graphPoints;
         public List<DataPoint> GraphPoints
         {
@@ -463,9 +463,8 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
         volatile string graphName;
-
+        // Name of the graph
         public string GraphName
         {
             get
@@ -519,7 +518,7 @@ namespace Advanced_Programming_2.Model
                 }
             }
         }
-
+        // Correlated points of the graph
         private List<DataPoint> correlatedGraphPoints;
         public List<DataPoint> CorrelatedGraphPoints
         {
@@ -536,7 +535,7 @@ namespace Advanced_Programming_2.Model
         }
 
         volatile string correlatedGraphName;
-
+        // Name of the correlated graph
         public string CorrelatedGraphName
         {
             get
@@ -550,6 +549,7 @@ namespace Advanced_Programming_2.Model
             }
         }
         volatile List<DataPoint> regressionLine;
+        // Regression line
         public List<DataPoint> RegressionLine
         {
             get
@@ -563,7 +563,7 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
+        // 30 last points of the regression
         volatile List<DataPoint> last30Points;
         public List<DataPoint> Last30Points
         {
@@ -578,7 +578,7 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
+        // Default properties
         public string DllFileName { get; set; }
         public Assembly DLLFileAssembly { get; set; }
          public Type AnomalyDetector { get; set; }
@@ -589,6 +589,7 @@ namespace Advanced_Programming_2.Model
         List<Tuple<string, string, int>> anomalies;
 
         private ObservableCollection<int> currentAnomalies;
+        // Current anomalies
         public ObservableCollection<int> CurrentAnomalies
         {
             get
@@ -602,7 +603,7 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
+        // Last anomalies
         volatile List<DataPoint> lastAnomalies;
         public List<DataPoint> LastAnomalies
         {
@@ -617,7 +618,7 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
+        // Loading of the DLL
         public void loadDLL(string DLLfile)
         {
             DllFileName = DLLfile;
@@ -643,7 +644,7 @@ namespace Advanced_Programming_2.Model
             parameters = new string[] { GraphName };
             Shape=(List<DataPoint>) this.DrawShapeMethod.Invoke(AnomalyDetectionAlg, parameters);
         }
-
+        // Shape of the circle without anomalies
         private List<DataPoint> shape = null;
         public List<DataPoint> Shape
         {
