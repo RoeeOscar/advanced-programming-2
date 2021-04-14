@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading;
 using System.ComponentModel;
 using OxyPlot;
+using System.Collections.ObjectModel;
 
 namespace Advanced_Programming_2.Model
 {
@@ -56,6 +57,12 @@ namespace Advanced_Programming_2.Model
         List<DataPoint> Last30Points { get; set; }
 
         void loadDLL(string DLLfile);
+
+        List<DataPoint> Shape { get; set; }
+        List<DataPoint> LastAnomalies { get; set; }
+
+        ObservableCollection<int> CurrentAnomalies { get; set; }
+
     }
 
 
