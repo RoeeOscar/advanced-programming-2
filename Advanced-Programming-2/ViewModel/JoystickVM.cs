@@ -39,7 +39,7 @@ namespace Advanced_Programming_2.ViewModel
             get
             {
                 // Mult 125 for view 
-                return model.Aileron * 125;
+                return model.Aileron * 55;
             }
             set
             {
@@ -52,7 +52,7 @@ namespace Advanced_Programming_2.ViewModel
             get
             {
                 // Mult 125 for view 
-                return model.Elevator * 125;
+                return model.Elevator * 55;
             }
             set
             {
