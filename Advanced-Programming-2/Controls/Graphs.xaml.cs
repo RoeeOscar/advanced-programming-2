@@ -35,6 +35,7 @@ namespace Advanced_Programming_2.Controls
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            AnomaliesList.SelectedItem = -1;
             vm.changeGraph(listBox.SelectedItem.ToString());
         }
 
@@ -47,6 +48,14 @@ namespace Advanced_Programming_2.Controls
             if (openFileDialog.ShowDialog() == true)
             {
                 vm.loadDLL(openFileDialog.FileName);
+            }
+        }
+
+        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            if (AnomaliesList.SelectedItem != null)
+            {
+                vm.changeCurrentTime((int)AnomaliesList.SelectedItem / 10);
             }
         }
     }
