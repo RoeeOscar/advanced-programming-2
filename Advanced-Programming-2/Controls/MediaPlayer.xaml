@@ -242,7 +242,7 @@
                                     Video Speed:
                                 </Label>
                                 <!-- Video speed slider -->
-                                <Slider  Cursor="Hand" Style="{StaticResource Horizontal_Slider}"  Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="5" SmallChange="0.25" Minimum="0.25" LargeChange="0.25" Value="{Binding VM_Speed}" TickFrequency="0.25" IsSnapToTickEnabled="true" Foreground="#FF13538A" Background="#FF13538A"></Slider>
+                                <Slider  Cursor="Hand" Style="{StaticResource Horizontal_Slider}"  Name="V_SpeedSlider"  Grid.Column="1" Width="40" Height="20" Margin="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Maximum="3" SmallChange="0.25" Minimum="0.25" LargeChange="0.25" Value="{Binding VM_Speed}" TickFrequency="0.25" IsSnapToTickEnabled="true" Foreground="#FF13538A" Background="#FF13538A"></Slider>
                                 <!-- Current video speed -->
                                 <TextBlock Name="V_SpeedTextBlock" Grid.Column="2" FontSize="10" Margin="5,0,0,0" Width="30" HorizontalAlignment="Left" Foreground="#13538a" VerticalAlignment="center" Text="{Binding VM_Speed}" ></TextBlock>
                             </Grid>
