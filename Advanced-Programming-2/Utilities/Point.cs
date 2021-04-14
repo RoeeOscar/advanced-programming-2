@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Advanced_Programming_2.Utilities
 
-namespace Advanced_Programming_2.Utilities
 {
+    // Point class
     public class Point
     {
         double x, y;
@@ -14,7 +10,7 @@ namespace Advanced_Programming_2.Utilities
             this.x = x;
             this.y = y;
         }
-
+        // Getters
         public double getX()
         {
             return x;

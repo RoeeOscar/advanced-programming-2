@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
-using System.Net;
 using System.IO;
 using System.Threading;
 using System.Xml;
@@ -12,8 +11,6 @@ using System.ComponentModel;
 //using System.Windows.Forms;
 using OxyPlot;
 using Advanced_Programming_2.Utilities;
-using OxyPlot.Series;
-using System.Windows.Forms;
 using System.Reflection;
 using System.Collections.ObjectModel;
 
@@ -448,7 +445,7 @@ namespace Advanced_Programming_2.Model
             }
 
         }
-
+        // Point of the graph
         private List<DataPoint> graphPoints;
         public List<DataPoint> GraphPoints
         {
@@ -463,9 +460,8 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
         volatile string graphName;
-
+        // Name of the graph
         public string GraphName
         {
             get
@@ -519,7 +515,7 @@ namespace Advanced_Programming_2.Model
                 }
             }
         }
-
+        // Correlated points of the graph
         private List<DataPoint> correlatedGraphPoints;
         public List<DataPoint> CorrelatedGraphPoints
         {
@@ -536,7 +532,7 @@ namespace Advanced_Programming_2.Model
         }
 
         volatile string correlatedGraphName;
-
+        // Name of the correlated graph
         public string CorrelatedGraphName
         {
             get
@@ -550,6 +546,7 @@ namespace Advanced_Programming_2.Model
             }
         }
         volatile List<DataPoint> regressionLine;
+        // Regression line
         public List<DataPoint> RegressionLine
         {
             get
@@ -563,7 +560,7 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
+        // 30 last points of the regression
         volatile List<DataPoint> last30Points;
         public List<DataPoint> Last30Points
         {
@@ -578,7 +575,7 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
+        // Default properties
         public string DllFileName { get; set; }
         public Assembly DLLFileAssembly { get; set; }
          public Type AnomalyDetector { get; set; }
@@ -589,6 +586,7 @@ namespace Advanced_Programming_2.Model
         List<Tuple<string, string, int>> anomalies;
 
         private ObservableCollection<int> currentAnomalies;
+        // Current anomalies
         public ObservableCollection<int> CurrentAnomalies
         {
             get
@@ -602,7 +600,7 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
+        // Last anomalies
         volatile List<DataPoint> lastAnomalies;
         public List<DataPoint> LastAnomalies
         {
@@ -617,7 +615,7 @@ namespace Advanced_Programming_2.Model
 
             }
         }
-
+        // Loading of the DLL
         public void loadDLL(string DLLfile)
         {
             DllFileName = DLLfile;
@@ -643,7 +641,7 @@ namespace Advanced_Programming_2.Model
             parameters = new string[] { GraphName };
             Shape=(List<DataPoint>) this.DrawShapeMethod.Invoke(AnomalyDetectionAlg, parameters);
         }
-
+        // Shape of the circle without anomalies
         private List<DataPoint> shape = null;
         public List<DataPoint> Shape
         {
