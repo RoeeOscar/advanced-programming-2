@@ -15,6 +15,7 @@ using Advanced_Programming_2.Utilities;
 using OxyPlot.Series;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Collections.ObjectModel;
 
 //using System.Windows.Forms;
 namespace Advanced_Programming_2.Model
@@ -84,6 +85,7 @@ namespace Advanced_Programming_2.Model
 
             // There are 10 frames per second.
             TotalTime = records.Count() / 10;
+            CurrentTime = 0;
 
             correlations = new Correlations(dictValues);
         }
@@ -108,7 +110,7 @@ namespace Advanced_Programming_2.Model
         #endregion  
         #region Properties
         // Current time data member & property (in seconds).
-        volatile private int currentTime = 0;
+        volatile private int currentTime;
         public int CurrentTime
         {
             set
@@ -365,36 +367,39 @@ namespace Advanced_Programming_2.Model
 
         private void updateGraphs()
         {
-            GraphPoints = new List<DataPoint>();
-            CorrelatedGraphPoints = new List<DataPoint>();
-            RegressionLine = new List<DataPoint>();
+     //       GraphPoints = new List<DataPoint>();
+     //       CorrelatedGraphPoints = new List<DataPoint>();
             Last30Points = new List<DataPoint>();
+
+
+            List<DataPoint> l1 = new List<DataPoint>();
+            List<DataPoint> l2 = new List<DataPoint>();
 
             if (graphName != null)
             {
                 for (int i = 0; i < currentIndex; i++)
                 {
-                    GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
-                    CorrelatedGraphPoints.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
+                    //        GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
+                    //        CorrelatedGraphPoints.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
+                    l1.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
+                    l2.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
                 }
             }
-            List<CorrelatedFeatures> cf = correlations.getCorrelations();
-            foreach (CorrelatedFeatures x in cf)
-            {
-                if (x.getFeature1() == GraphName)
-                {
-                    RegressionLine.Add(new DataPoint(x.getMinXY().getX(), x.getMinXY().getY()));
-                    RegressionLine.Add(new DataPoint(x.getMaxXY().getX(), x.getMaxXY().getY()));
+            GraphPoints = l1;
+            CorrelatedGraphPoints = l2;
 
-                }
-            }
             if (graphName != null)
             {
+                LastAnomalies = new List<DataPoint>();
                 for (int i = currentIndex - 300; i <= currentIndex; i++)
                 {
                     if (i >= 0)
                     {
                         Last30Points.Add(new DataPoint(dictValues[graphName][i], dictValues[correlatedGraphName][i]));
+                        if (CurrentAnomalies!=null && CurrentAnomalies.Contains(i))
+                        {
+                            LastAnomalies.Add(new DataPoint(dictValues[graphName][i], dictValues[correlatedGraphName][i]));
+                        }
                     }
 
                 }
@@ -470,6 +475,7 @@ namespace Advanced_Programming_2.Model
             set
             {
                 graphName = value;
+               
                 NotifyPropertyChanged("GraphName");
             }
         }
@@ -483,6 +489,33 @@ namespace Advanced_Programming_2.Model
                 if (x.getFeature1() == GraphName)
                 {
                     CorrelatedGraphName = x.getFeature2();
+                }
+            }
+            string[] parameters = new string[] { attribute };
+            if (this.DrawShapeMethod != null)
+            {
+                Shape = (List<DataPoint>)this.DrawShapeMethod.Invoke(AnomalyDetectionAlg, parameters);
+            }
+
+            CurrentAnomalies = new ObservableCollection<int>();
+            if (anomalies != null) {
+                foreach (Tuple<string, string, int> anomaly in anomalies)
+                {
+                    if (anomaly.Item1 == attribute)
+                    {
+                        CurrentAnomalies.Add(anomaly.Item3);
+                    }
+                }
+            }
+            RegressionLine = new List<DataPoint>();
+
+            foreach (CorrelatedFeatures x in cf)
+            {
+                if (x.getFeature1() == GraphName)
+                {
+                    RegressionLine.Add(new DataPoint(x.getMinXY().getX(), x.getMinXY().getY()));
+                    RegressionLine.Add(new DataPoint(x.getMaxXY().getX(), x.getMaxXY().getY()));
+
                 }
             }
         }
@@ -554,33 +587,76 @@ namespace Advanced_Programming_2.Model
         public MethodInfo DetectMethod { get; set; }
         public MethodInfo DrawShapeMethod { get; set; }
         List<Tuple<string, string, int>> anomalies;
-        LineSeries shape;
+
+        private ObservableCollection<int> currentAnomalies;
+        public ObservableCollection<int> CurrentAnomalies
+        {
+            get
+            {
+                return currentAnomalies;
+            }
+            set
+            {
+                currentAnomalies = value;
+                NotifyPropertyChanged("CurrentAnomalies");
+
+            }
+        }
+
+        volatile List<DataPoint> lastAnomalies;
+        public List<DataPoint> LastAnomalies
+        {
+            get
+            {
+                return lastAnomalies;
+            }
+            set
+            {
+                lastAnomalies = value;
+                NotifyPropertyChanged("LastAnomalies");
+
+            }
+        }
+
         public void loadDLL(string DLLfile)
         {
             DllFileName = DLLfile;
 
             this.DLLFileAssembly = Assembly.LoadFile(DLLfile);
 
-            this.AnomalyDetector = DLLFileAssembly.GetType("circleAnomalyDetector.AnomalyDetector");
+            string className = Path.GetFileNameWithoutExtension(DLLfile);
+            this.AnomalyDetector = DLLFileAssembly.GetType(className+".AnomalyDetector");
 
 
             string[] parameters = { xmlFileName };
            this.AnomalyDetectionAlg = Activator.CreateInstance(this.AnomalyDetector, parameters);
           this.LearnNormalMethod = AnomalyDetector.GetMethod("learnNormal");
-            parameters = new string[] { "C:/Users/roee0/source/repos/Advanced-Programming-2/Advanced-Programming-2/Model/reg_flight.csv" };
+            parameters = new string[] { "Model/reg_flight.csv" };
             this.LearnNormalMethod.Invoke(AnomalyDetectionAlg, parameters);
-            MessageBox.Show("ff");
 
             this.DetectMethod = AnomalyDetector.GetMethod("detect");
             parameters = new string[] { csvFileName };
             anomalies = (List<Tuple<string,string,int>>) DetectMethod.Invoke(AnomalyDetectionAlg, parameters);
 
-            foreach (Tuple<string,string,int> a in anomalies)
-            {
-                Console.WriteLine(a.Item1+" : "+a.Item2+" : "+a.Item3);
-            }
 
          this.DrawShapeMethod = AnomalyDetector.GetMethod("drawShape");
+            parameters = new string[] { GraphName };
+            Shape=(List<DataPoint>) this.DrawShapeMethod.Invoke(AnomalyDetectionAlg, parameters);
+        }
+
+        private List<DataPoint> shape = null;
+        public List<DataPoint> Shape
+        {
+            get
+            {
+                return shape;
+            }
+            set
+            {
+                shape = value;
+                NotifyPropertyChanged("Shape");
+
+            }
         }
     }
     
