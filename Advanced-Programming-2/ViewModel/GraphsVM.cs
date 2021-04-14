@@ -2,6 +2,7 @@
 using OxyPlot;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -132,6 +133,50 @@ namespace Advanced_Programming_2.ViewModel
         public void loadDLL(string DLLfile)
         {
             model.loadDLL(DLLfile);
+        }
+
+        private List<DataPoint> VM_shape;
+        public List<DataPoint> VM_Shape
+        {
+            get
+            {
+                return model.Shape;
+            }
+            set
+            {
+                VM_shape = value;
+            }
+        }
+
+        private List<DataPoint> VM_lastAnomalies;
+        public List<DataPoint> VM_LastAnomalies
+        {
+            get
+            {
+                return model.LastAnomalies;
+            }
+            set
+            {
+                VM_lastAnomalies = value;
+            }
+        }
+
+        private ObservableCollection<int> VM_currentAnomalies;
+        public ObservableCollection<int> VM_CurrentAnomalies
+        {
+            get
+            {
+                return model.CurrentAnomalies;
+            }
+            set
+            {
+                VM_currentAnomalies = value;
+            }
+        }
+
+        public void changeCurrentTime(int newTime)
+        {
+            model.changeCurrentTime(newTime);
         }
     }
         
