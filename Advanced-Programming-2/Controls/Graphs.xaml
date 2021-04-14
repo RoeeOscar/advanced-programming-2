@@ -88,25 +88,11 @@
                 </oxy:Plot>
             </Grid>
             <ListBox Cursor="Hand" Name="listBox" ItemsSource="{Binding VM_Attributes}" AlternationCount="2" ItemContainerStyle="{StaticResource Style1}" SelectionChanged="ListBox_SelectionChanged" Margin="0,38,0.4,218">
-                <!--   <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem" >
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True" >
-                                <Setter Property="FontWeight" Value="Bold" />
-                                <Setter Property="Background" Value="LightGray" />
-                                <Setter Property="Foreground" Value="#135381" />
-                            </Trigger>
-                        </Style.Triggers>
-                        <Style.Resources>
-                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
-                        </Style.Resources>
-                    </Style>
-                </ListBox.ItemContainerStyle>-->
             </ListBox>
             <Button Content="Load Anomaly Detector DLL" Cursor="Hand" Name="V_LoadDLL" FontFamily="Yu Gothic UI Semibold" Height="26" Width="266" FontSize="16" BorderBrush="#13538a" Margin="0,414,0.4,10" Background="White" Foreground="#13538a" Click="V_LoadDLL_Click"/>
-            <ListBox Name="AnomaliesList"  HorizontalAlignment="Left" Height="138" Margin="0,262,0,0" VerticalAlignment="Top" Width="266" ItemsSource="{Binding VM_CurrentAnomalies}" SelectionChanged="ListBox_SelectionChanged_1"/>
-            <Label Content="Attributes" HorizontalAlignment="Left" Margin="102,7,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-            <Label Content="Anomalies" HorizontalAlignment="Left" Margin="102,236,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70"/>
+            <ListBox Cursor="Hand" Name="AnomaliesList"  HorizontalAlignment="Left" Height="138" Margin="0,262,0,0" VerticalAlignment="Top" Width="266" ItemContainerStyle="{StaticResource Style1}"  ItemsSource="{Binding VM_CurrentAnomalies}" SelectionChanged="ListBox_SelectionChanged_1"/>
+            <Label FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" Content="Attributes" HorizontalAlignment="Left" Margin="102,7,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label FontFamily="Yu Gothic UI Semibold" Foreground="#13538a" Content="Anomalies" HorizontalAlignment="Left" Margin="102,236,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70"/>
         </Grid>
     </Viewbox>
 </UserControl>
