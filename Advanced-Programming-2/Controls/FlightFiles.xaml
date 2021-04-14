@@ -9,7 +9,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/airplane.png"/>
+            <ImageBrush ImageSource="/Controls/Images/airplane.png"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

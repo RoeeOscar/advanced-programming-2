@@ -9,7 +9,7 @@
 	<Viewbox>
 		<Grid Margin="0,0,10,10" Height="453" Width="747">
 			<Grid.Background>
-				<ImageBrush ImageSource="/MediaPlayer/MediaPlayerView/Images/airplane.png"/>
+                <ImageBrush ImageSource="/Controls/Images/airplane.png"/>
 			</Grid.Background>
 			<Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Bottom" Width="100" Margin="0,0,0,350"/>
 			<Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>

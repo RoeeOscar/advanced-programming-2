@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Advanced_Programming_2"
         mc:Ignorable="d"
         xmlns:Controls="clr-namespace:Advanced_Programming_2.Controls"
-        Title="Flight Analyzer" Height="600" Width="800" WindowState="Normal" Icon="C:\Users\roee0\source\repos\Advanced-Programming-2\Advanced-Programming-2\Plane.ico">
+        Title="Flight Analyzer" Height="600" Width="800" WindowState="Normal" Icon="/Controls/Images/Plane.ico">
 
     <TabControl Margin="10" BorderBrush="Gainsboro" Name="V_TabControl">
         <TabControl.Resources>

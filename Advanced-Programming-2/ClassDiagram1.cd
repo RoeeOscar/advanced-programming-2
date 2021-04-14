@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Advanced_Programming_2.App">
+    <Position X="2.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Controls.DataControl" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controls\DataControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Controls.FlightFiles" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAACACAAAgACQAAAAAACAAAAAAAAAAAAEAAAAQAAA=</HashCode>
+      <FileName>Controls\FlightFiles.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Controls.Glossary" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Glossary.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Controls.Graphs" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAAEAAAJAAAA=</HashCode>
+      <FileName>Controls\Graphs.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Controls.Joystick" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controls\Joystick.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Controls.MediaPlayer" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAEAAEAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controls\MediaPlayer.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Controls.WelcomeScreenControl" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Controls\WelcomeScreenControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Model.FlightAnalysisModel" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AwIUQaAAGQksII2MpCgEIwaxlwQCFUOVGARAkDMABFQ=</HashCode>
+      <FileName>Model\FlightAnalysisModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.Properties.Resources">
+    <Position X="12" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAABEAAAAQCgAAAgAAAAAAAAIIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.Properties.Settings">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.Utilities.AnomalyDetectionUtil">
+    <Position X="2.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAgAAAAAAAAAAAAAAgAAAAAAAAAIAgAAA=</HashCode>
+      <FileName>Utilities\AnomalyDetectionUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.Utilities.CorrelatedFeatures">
+    <Position X="2.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAACISAAAAAAAAAIACACoLgAAIAAAAAACAAAAA=</HashCode>
+      <FileName>Utilities\CorrelatedFeatures.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.Utilities.Correlations">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Correlations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.Utilities.Line">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAQAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Line.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.Utilities.Point">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAGAAAAA=</HashCode>
+      <FileName>Utilities\Point.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.ViewModel.DataControlVM" BaseTypeListCollapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAgAAAAIIAAAAABAAAAgQAAAAAQAAIgEAAqIAA=</HashCode>
+      <FileName>ViewModel\DataControlVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.ViewModel.FlightFilesVM">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAQAAIAAAAAgAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>ViewModel\FlightFilesVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Advanced_Programming_2.ViewModel.GraphsVM" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAYECoAIBAKACQAAAAECAgAQAAggEAAIIAAAIgAE=</HashCode>
+      <FileName>ViewModel\GraphsVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.ViewModel.JoystickVM" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAIAAgAAAAAAAgAAAAAABBAAAIQQIACA=</HashCode>
+      <FileName>ViewModel\JoystickVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advanced_Programming_2.ViewModel.MediaPlayerVM" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQAQCQAAEBkIAAgAAIAgAAgAAIAAAACAAAAAEIAAA=</HashCode>
+      <FileName>ViewModel\MediaPlayerVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Advanced_Programming_2.Model.IFlightAnalysisModel">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIUQKAACAgEAAEApCAEAgKRAgQAEAERAARAgBIAAAA=</HashCode>
+      <FileName>Model\IFlightAnalysisModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
