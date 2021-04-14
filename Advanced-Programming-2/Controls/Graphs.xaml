@@ -73,18 +73,21 @@
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <oxy:Plot  TextColor="#13538a" Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="15" FontFamily="Yu Gothic UI Semibold" Margin="0" Background="Transparent" LegendTitle="Legend" LegendTitleColor="Black" LegendTextColor="Tomato">
+                <oxy:Plot  TextColor="#13538a" Title="Regression Line and Anomalies" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TitleFontSize="15" FontFamily="Yu Gothic UI Semibold" Margin="0" Background="Transparent" LegendTitle="Legend" LegendTitleColor="Black" LegendTitleFontSize="12" LegendTextColor="Tomato" LegendFontSize="9">
                     <oxy:Plot.Axes>
                         <oxy:LinearAxis TitleFontSize="12" Font="Yu Gothic UI Semibold" Position="Bottom" Title="{Binding VM_GraphName}"/>
                         <oxy:LinearAxis TitleFontSize="12" Font="Yu Gothic UI Semibold" Position="left" Title="{Binding VM_CorrelatedGraphName}"/>
                     </oxy:Plot.Axes>
-                <oxy:Plot.Series>
+                    <oxy:Plot.Series>
                         <oxy:LineSeries Title="Linear Regression Line" ItemsSource="{Binding VM_RegressionLine}" Color="#13538a"/>
                         <oxy:LineSeries Title="Last 30 Seconds" ItemsSource="{Binding VM_Last30Points}" Color="Transparent" LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="Black"/>
+                        <oxy:LineSeries Title="Non-Anomalous area" ItemsSource="{Binding VM_Shape}" Color="Transparent" LineStyle="None"  MarkerType="Circle" MarkerSize="1" MarkerFill="LightSlateGray"/>
+                        <oxy:LineSeries Title="Anomalies" ItemsSource="{Binding VM_LastAnomalies}" Color="Transparent" LineStyle="None"  MarkerType="Circle" MarkerSize="2" MarkerFill="Red"/>
+
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>
-            <ListBox Cursor="Hand" Name="listBox" ItemsSource="{Binding VM_Attributes}" AlternationCount="2" ItemContainerStyle="{StaticResource Style1}" SelectionChanged="ListBox_SelectionChanged" Margin="0,0,0.4,41">
+            <ListBox Cursor="Hand" Name="listBox" ItemsSource="{Binding VM_Attributes}" AlternationCount="2" ItemContainerStyle="{StaticResource Style1}" SelectionChanged="ListBox_SelectionChanged" Margin="0,38,0.4,218">
                 <!--   <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem" >
                         <Style.Triggers>
@@ -101,6 +104,9 @@
                 </ListBox.ItemContainerStyle>-->
             </ListBox>
             <Button Content="Load Anomaly Detector DLL" Cursor="Hand" Name="V_LoadDLL" FontFamily="Yu Gothic UI Semibold" Height="26" Width="266" FontSize="16" BorderBrush="#13538a" Margin="0,414,0.4,10" Background="White" Foreground="#13538a" Click="V_LoadDLL_Click"/>
+            <ListBox Name="AnomaliesList"  HorizontalAlignment="Left" Height="138" Margin="0,262,0,0" VerticalAlignment="Top" Width="266" ItemsSource="{Binding VM_CurrentAnomalies}" SelectionChanged="ListBox_SelectionChanged_1"/>
+            <Label Content="Attributes" HorizontalAlignment="Left" Margin="102,7,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label Content="Anomalies" HorizontalAlignment="Left" Margin="102,236,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="70"/>
         </Grid>
     </Viewbox>
 </UserControl>
