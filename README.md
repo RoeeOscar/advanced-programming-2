@@ -50,7 +50,12 @@ There is a class that implements the interface of the model:
 ![image](https://user-images.githubusercontent.com/71708182/114776014-a5e8cb00-9d7a-11eb-8531-9167a88e7a2e.png)
 
 There are utilities that help in the present of the graphs:  
-![image](https://user-images.githubusercontent.com/71708182/114776135-cca70180-9d7a-11eb-8a88-458089b5d601.png)
+![image](https://user-images.githubusercontent.com/71708182/114776135-cca70180-9d7a-11eb-8a88-458089b5d601.png)  
+
+## Requirements Downloads
+1. [FlightGear](https://www.flightgear.org/download/)  
+2. [Oxyplot](https://www.nuget.org/packages/OxyPlot.Wpf/2.1.0-Preview1)  
+3. [CircularGauge](https://www.nuget.org/packages/CircularGauge)  
 
 
 
