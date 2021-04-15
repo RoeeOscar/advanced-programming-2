@@ -1,4 +1,4 @@
-# Flight Gear Desktop App
+# Flight Inspection App
 The project Flight Gear Desktop App is a Flight Simulator based on MVVM design pattern which is written in C#. 
 The App shows data and indices about yhe flight that analyzed from the files of the flight.
 
@@ -23,7 +23,7 @@ The project is divided to 4 main parts:
 **4. Utilities** - additional classes to help calculate the regressions of the attributes.   
 The first three parts are the implement of the MVVM design pattern, and the last part is helper and external.   
 
-In the forth tab, the user can upload dll file for detect anomalies. The dll need to implement some methods so that the data will show in the App.   
+In the fourth tab, the user can upload dll file for detect anomalies. The dll need to implement some methods so that the data will show in the App.   
 **The DLL must contain the methods:**  
 **Constructor** -  needs to get a FlightGear XML file path that has all the flight attributes inside.  
 **LearnNormal** - needs to get a normal flight CSV file path. The dll will learn this file and get the normal thresolds and bounaries.  
