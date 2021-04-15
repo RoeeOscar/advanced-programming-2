@@ -4,21 +4,23 @@ The App shows data and indices about yhe flight that analyzed from the files of 
 
 There are 4 tabs in the App:  
 **Welcome Window** - In the Welcome Window we can see a short explanation of the app, where is all the indices of the flight, how to get the plane fly.  
-![image](https://user-images.githubusercontent.com/71708182/114770316-fb6da980-9d73-11eb-875b-89736f11b945.png)  
+![image](https://user-images.githubusercontent.com/71708182/114770316-fb6da980-9d73-11eb-875b-89736f11b945.png)   
 
 **Load Files Window** - The load files window is used to load the CSV and XML file for the app.  
-![image](https://user-images.githubusercontent.com/71708182/114770276-f27cd800-9d73-11eb-8f85-b83ad0fb50cc.png)
+![image](https://user-images.githubusercontent.com/71708182/114770276-f27cd800-9d73-11eb-8f85-b83ad0fb50cc.png)   
+
 **Data Window** - On the data window we have all the details on the plane during the live flight - Altimeter, Airspeed, Direction, Yaw, Roll and Pitch. In addition, we can see the mouvements of the plane which is displayed by a joystick and sliders.   
-![image](https://user-images.githubusercontent.com/71708182/114770379-0f191000-9d74-11eb-8406-47f239e80d55.png)
+![image](https://user-images.githubusercontent.com/71708182/114770379-0f191000-9d74-11eb-8406-47f239e80d55.png)   
+
 **Graph Window** - In the graph window we can see multiple graphs of the attributes and their corelatives, the regression line and anomalies. In addition you have also a feature to load DLL file for detect anomalies and get the anomaly time steps during the flight.   
 ![image](https://user-images.githubusercontent.com/71708182/114905383-92446f80-9e21-11eb-8ac5-c215c7d2f2ec.png)   
 
 
 The project is divided to 4 main parts:
-**1. Model** - there is an interface, and one class that impliments it, but all the view models use the interface, in order to keep the encapsulation.
-**2. View Model** - there are components that get notifications from the model about changes in data or get data.
-**3. Controls**- the View - components that present the data that binding to the view model.
-**4. Utilities** - additional classes to help calculate the regressions of the attributes.  
+**1. Model** - there is an interface, and one class that impliments it, but all the view models use the interface, in order to keep the encapsulation.   
+**2. View Model** - there are components that get notifications from the model about changes in data or get data.   
+**3. Controls**- the View - components that present the data that binding to the view model.   
+**4. Utilities** - additional classes to help calculate the regressions of the attributes.   
 The first three parts are the impliment of the MVVM design pattern, and the last part is helper and external.   
 
 In the forth tab, the user can upload dll file for detect anomalies. The dll need to impliment some methods so that the data will show in the App.   
