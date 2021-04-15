@@ -34,10 +34,7 @@ In the fourth tab, the user can upload dll file for detect anomalies. The dll ne
 ```c#
 public AnomalyDetector(string XMLFileName); // The constructor, get a XML file and parser it.   
 public void learnNormal(string CSVFileName); // get CSV file of a normal flight and learns it to know what data is considered to normal.  
-public List<Tuple<string, string, int>> detect(string CSVFileName); // get anomaly flight file and return anomalies in triples - First feature , Second feature (which is 
-
-
-relative to the first) and TimeStep of the anomaly  
+public List<Tuple<string, string, int>> detect(string CSVFileName); // get anomaly flight file and return anomalies in triples - First feature , Second feature (which is relative to the first) and TimeStep of the anomaly  
 public List<DataPoint> drawShape(string graphName); // get the display graph and output list of points of the shape that we want to test the anomalies
 ```  
 
