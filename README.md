@@ -16,7 +16,7 @@ There are 4 tabs in the App:
 ![image](https://user-images.githubusercontent.com/71708182/114905383-92446f80-9e21-11eb-8ac5-c215c7d2f2ec.png)   
 
 
-The project is divided to 4 main parts:
+The project is divided to 4 main parts:  
 **1. Model** - there is an interface, and one class that impliments it, but all the view models use the interface, in order to keep the encapsulation.   
 **2. View Model** - there are components that get notifications from the model about changes in data or get data.   
 **3. Controls**- the View - components that present the data that binding to the view model.   
