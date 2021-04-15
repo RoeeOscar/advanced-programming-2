@@ -17,13 +17,13 @@ There are 4 tabs in the App:
 
 
 The project is divided to 4 main parts:
-**1. Model** - there is an interface, and one class that impliments it, but all the view models use the interface, in order to keep the encapsulation.   
+**1. Model** - there is an interface, and one class that implements it, but all the view models use the interface, in order to keep the encapsulation.   
 **2. View Model** - there are components that get notifications from the model about changes in data or get data.   
 **3. Controls**- the View - components that present the data that binding to the view model.   
 **4. Utilities** - additional classes to help calculate the regressions of the attributes.   
-The first three parts are the impliment of the MVVM design pattern, and the last part is helper and external.   
+The first three parts are the implement of the MVVM design pattern, and the last part is helper and external.   
 
-In the forth tab, the user can upload dll file for detect anomalies. The dll need to impliment some methods so that the data will show in the App.   
+In the forth tab, the user can upload dll file for detect anomalies. The dll need to implement some methods so that the data will show in the App.   
 **The DLL must contain the methods:**  
 **Constructor** -  needs to get a FlightGear XML file path that has all the flight attributes inside.  
 **LearnNormal** - needs to get a normal flight CSV file path. The dll will learn this file and get the normal thresolds and bounaries.  
@@ -37,14 +37,14 @@ public List<Tuple<string, string, int>> detect(string CSVFileName) - get anomaly
 public List<DataPoint> drawShape(string graphName) - get the display graph and output list of points of the shape that we want to test the anomalies   
   
 **UML Diagrams**  
-There is an interface of the model, that each item in the view model contains an intance of modal that impliments that interface.
+There is an interface of the model, that each item in the view model contains an intance of modal that implements that interface.
 Each view that has a conneactio to the model, contains an instance od view model.  
 ![image](https://user-images.githubusercontent.com/71708182/114775890-7fc32b00-9d7a-11eb-9f44-0b623f6cb2ec.png)
 
 There are components in the view, that only present but don't need to bo connected to the view model and the model, so they are not part of the MVVM structure:    
 ![image](https://user-images.githubusercontent.com/71708182/114775814-65894d00-9d7a-11eb-89ad-a7e30da5a794.png)
 
-There is a class that impliments the interface of the model:   
+There is a class that implements the interface of the model:   
 ![image](https://user-images.githubusercontent.com/71708182/114776014-a5e8cb00-9d7a-11eb-8531-9167a88e7a2e.png)
 
 There are utilities that help in the present of the graphs:  
