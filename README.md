@@ -40,7 +40,7 @@ public List<DataPoint> drawShape(string graphName) // get the display graph and 
 
 **UML Diagrams**  
 There is an interface of the model, that each item in the view model contains an intance of modal that implements that interface.
-Each view that has a conneactio to the model, contains an instance od view model.  
+Each view that has a connection to the model, contains an instance od view model.  
 ![image](https://user-images.githubusercontent.com/71708182/114775890-7fc32b00-9d7a-11eb-9f44-0b623f6cb2ec.png)
 
 There are components in the view, that only present but don't need to bo connected to the view model and the model, so they are not part of the MVVM structure:    
