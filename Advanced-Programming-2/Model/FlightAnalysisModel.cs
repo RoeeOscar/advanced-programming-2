@@ -364,45 +364,43 @@ namespace Advanced_Programming_2.Model
 
         private void updateGraphs()
         {
-            //       GraphPoints = new List<DataPoint>();
-            //       CorrelatedGraphPoints = new List<DataPoint>();
-            //       Last30Points = new List<DataPoint>();
-            List<DataPoint> l30 = new List<DataPoint>();
 
-            List<DataPoint> l1 = new List<DataPoint>();
-            List<DataPoint> l2 = new List<DataPoint>();
-            string gn = graphName;
-            string cgn = correlatedGraphName;
-            int ci = currentIndex;
+            List<DataPoint> last30 = new List<DataPoint>();
+
+            List<DataPoint> tempList1 = new List<DataPoint>();
+            List<DataPoint> tempList2 = new List<DataPoint>();
+            List<DataPoint> tempLastAnomalies = new List<DataPoint>();
+            string tempGraphName = graphName;
+            string tempCorrelatedGraphName = correlatedGraphName;
+            int tempCurrentIndex = currentIndex;
             if (graphName != null)
             {
-                for (int i = 0; i < ci; i++)
+                for (int i = 0; i < tempCurrentIndex; i++)
                 {
-                    //        GraphPoints.Add(new DataPoint(((double)i / 10), dictValues[graphName][i]));
-                    //        CorrelatedGraphPoints.Add(new DataPoint(((double)i / 10), dictValues[correlatedGraphName][i]));
-                    l1.Add(new DataPoint(((double)i / 10), dictValues[gn][i]));
-                    l2.Add(new DataPoint(((double)i / 10), dictValues[cgn][i]));
+                    tempList1.Add(new DataPoint(((double)i / 10), dictValues[tempGraphName][i]));
+                    tempList2.Add(new DataPoint(((double)i / 10), dictValues[tempCorrelatedGraphName][i]));
                 }
             }
-            GraphPoints = l1;
-            CorrelatedGraphPoints = l2;
+            GraphPoints = tempList1;
+            CorrelatedGraphPoints = tempList2;
 
             if (graphName != null)
             {
                 LastAnomalies = new List<DataPoint>();
-                for (int i = ci - 300; i <= ci; i++)
+                for (int i = tempCurrentIndex - 300; i <= tempCurrentIndex; i++)
                 {
                     if (i >= 0)
                     {
-                        l30.Add(new DataPoint(dictValues[gn][i], dictValues[cgn][i]));
+                        last30.Add(new DataPoint(dictValues[tempGraphName][i], dictValues[tempCorrelatedGraphName][i]));
                         if (CurrentAnomalies!=null && CurrentAnomalies.Contains(i))
                         {
-                            LastAnomalies.Add(new DataPoint(dictValues[gn][i], dictValues[cgn][i]));
+                            tempLastAnomalies.Add(new DataPoint(dictValues[tempGraphName][i], dictValues[tempCorrelatedGraphName][i]));
                         }
                     }
 
                 }
-                Last30Points = l30;
+                LastAnomalies = tempLastAnomalies;
+                Last30Points = last30;
             }
 
         }
