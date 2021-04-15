@@ -52,8 +52,16 @@ There is a class that implements the interface of the model:
 There are utilities that help in the present of the graphs:  
 ![image](https://user-images.githubusercontent.com/71708182/114776135-cca70180-9d7a-11eb-8a88-458089b5d601.png)  
 
-## Requirements Downloads
+## Requirements Downloads and Installation
 1. [FlightGear](https://www.flightgear.org/download/)  
+1.1 After downloading, Open FlightGear    
+1.2 Go to Settings  
+1.3 Go to Additional Settings  
+1.4 In the Text box write the following commands:  
+    ```
+    --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small  
+    --fdm=null
+    ```  
 2. [Oxyplot](https://www.nuget.org/packages/OxyPlot.Wpf/2.1.0-Preview1)  
 3. [CircularGauge](https://www.nuget.org/packages/CircularGauge)  
 
