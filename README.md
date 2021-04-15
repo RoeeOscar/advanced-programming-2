@@ -38,19 +38,8 @@ public List<Tuple<string, string, int>> detect(string CSVFileName); // get anoma
 public List<DataPoint> drawShape(string graphName); // get the display graph and output list of points of the shape that we want to test the anomalies
 ```  
 
-**UML Diagrams**  
-There is an interface of the model, that each item in the view model contains an intance of modal that implements that interface.
-Each view that has a connection to the model, contains an instance od view model.  
-![image](https://user-images.githubusercontent.com/71708182/114775890-7fc32b00-9d7a-11eb-9f44-0b623f6cb2ec.png)
-
-There are components in the view, that only present but don't need to bo connected to the view model and the model, so they are not part of the MVVM structure:    
-![image](https://user-images.githubusercontent.com/71708182/114775814-65894d00-9d7a-11eb-89ad-a7e30da5a794.png)
-
-There is a class that implements the interface of the model:   
-![image](https://user-images.githubusercontent.com/71708182/114776014-a5e8cb00-9d7a-11eb-8531-9167a88e7a2e.png)
-
-There are utilities that help in the present of the graphs:  
-![image](https://user-images.githubusercontent.com/71708182/114776135-cca70180-9d7a-11eb-8a88-458089b5d601.png)  
+## UML Diagrams  
+To see more information about the UML in this project you can click [here](https://github.com/RoeeOscar/advanced-programming-2/blob/master/UML%20Diagrams.pdf).
 
 ## Requirements Downloads and Installation
 1. [FlightGear](https://www.flightgear.org/download/)  
