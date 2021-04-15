@@ -32,15 +32,15 @@ In the forth tab, the user can upload dll file for detect anomalies. The dll nee
   
 **Interface for the DLL file**  
 ```c#
-public AnomalyDetector(string XMLFileName) // The constructor, get a XML file and parser it.   
-public void learnNormal(string CSVFileName) // get CSV file of a normal flight and learns it to know what data is considered to normal.     
-public List<Tuple<string, string, int>> detect(string CSVFileName) // get anomaly flight file and return anomalies in triples - First feature , Second feature (which is correlative to the first) and TimeStep of the anomaly  
-public List<DataPoint> drawShape(string graphName) // get the display graph and output list of points of the shape that we want to test the anomalies
+public AnomalyDetector(string XMLFileName); // The constructor, get a XML file and parser it.   
+public void learnNormal(string CSVFileName); // get CSV file of a normal flight and learns it to know what data is considered to normal.  
+public List<Tuple<string, string, int>> detect(string CSVFileName); // get anomaly flight file and return anomalies in triples - First feature , Second feature (which is correlative to the first) and TimeStep of the anomaly  
+public List<DataPoint> drawShape(string graphName); // get the display graph and output list of points of the shape that we want to test the anomalies
 ```  
 
 **UML Diagrams**  
 There is an interface of the model, that each item in the view model contains an intance of modal that implements that interface.
-Each view that has a conneactio to the model, contains an instance od view model.  
+Each view that has a connection to the model, contains an instance od view model.  
 ![image](https://user-images.githubusercontent.com/71708182/114775890-7fc32b00-9d7a-11eb-9f44-0b623f6cb2ec.png)
 
 There are components in the view, that only present but don't need to bo connected to the view model and the model, so they are not part of the MVVM structure:    
@@ -50,7 +50,12 @@ There is a class that implements the interface of the model:
 ![image](https://user-images.githubusercontent.com/71708182/114776014-a5e8cb00-9d7a-11eb-8531-9167a88e7a2e.png)
 
 There are utilities that help in the present of the graphs:  
-![image](https://user-images.githubusercontent.com/71708182/114776135-cca70180-9d7a-11eb-8a88-458089b5d601.png)
+![image](https://user-images.githubusercontent.com/71708182/114776135-cca70180-9d7a-11eb-8a88-458089b5d601.png)  
+
+## Requirements Downloads
+1. [FlightGear](https://www.flightgear.org/download/)  
+2. [Oxyplot](https://www.nuget.org/packages/OxyPlot.Wpf/2.1.0-Preview1)  
+3. [CircularGauge](https://www.nuget.org/packages/CircularGauge)  
 
 
 
